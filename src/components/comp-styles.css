@@ -1,0 +1,145 @@
+.card-wrapper{
+    height: auto;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    background-color: #433D8B;
+    margin-bottom: 30px;
+    margin-right: 8px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+}
+
+.card-details{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.card-details-combined{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+#card-details-span1 {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.card-details-circles{
+    margin-top: 15px;
+    display: flex;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-evenly;
+}
+
+#refresh{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#card-details-circle1{
+    height: 25px;
+    width: 25px;
+    display: flex;
+    color: black;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: #ffcaf5;
+}
+
+#card-details-circle2{
+    height: 25px;
+    width: 25px;
+    display: flex;
+    color: black;
+    font-weight: bolder;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    background-color: #ffcaf5;
+}
+
+.sum-details{
+    width: 80%;
+    padding-bottom: 6px;
+}
+
+.sum-details-combined{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sum-details-span1 {
+    font-weight: 700;
+    font-size: 16px;
+    width: 80%;
+}
+
+#sum-details-span2 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.alert-details{
+    color: black;
+    width: 100%;
+    height: 100%;
+    padding: 6px 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.alert-details-combined{
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#alert-details-span1 {
+    font-weight: 700;
+    font-size: 16px;
+    padding: 4px 15px;
+}
+
+#alert-details-span2 {
+    font-weight: 600;
+    padding: 4px 15px;
+}
+
+#alert-details-span3 {
+   height: 20px;
+   width: 20px;
+   border-radius: 50%;
+}
+
+.alertCircle-wrapper{
+    height: 45px;
+    width: 45px;
+    margin-bottom: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.comm-wrapper{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height:500px;
+}
+
+.comm-wrapper h3{
+    text-align: center;
+}
