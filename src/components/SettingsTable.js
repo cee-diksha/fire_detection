@@ -8,10 +8,10 @@ const SettingsTable = () => {
         { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
         { id: 3, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: 50, smokeSensor: true, triggeringDevice: true },
         { id: 4, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: 50, smokeSensor: false, triggeringDevice: false },
-        { id: 1, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: 50, smokeSensor: true, triggeringDevice: false },
-        { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
-        { id: 3, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: 50, smokeSensor: true, triggeringDevice: true },
-        { id: 4, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: 50, smokeSensor: false, triggeringDevice: false },
+        { id: 5, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: 50, smokeSensor: true, triggeringDevice: false },
+        { id: 6, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
+        { id: 7, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: 50, smokeSensor: true, triggeringDevice: true },
+        { id: 8, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: 50, smokeSensor: false, triggeringDevice: false },
     ]);
 
     const handleSwitchChange = (id, field) => {
