@@ -6,7 +6,7 @@ const DropDown = ({cardData}) => {
     })
   return (
     <div>
-        <select>
+        <select style={{height: "40px", borderRadius: "10px", padding: "0 4px"}}>
             {optionsData.map((item, index) => {
                return <option key={index} value={item.value}>{item.label}</option>
             })}

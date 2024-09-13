@@ -206,7 +206,7 @@ input {
 }
 
 .dashboard-cardata .scrollable-content {
-    animation: scroll 10s linear forwards infinite;
+    animation: scroll 50s linear forwards infinite;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
