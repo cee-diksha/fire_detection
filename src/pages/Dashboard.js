@@ -8,6 +8,7 @@ import Communication from '../components/Communication'
 import user from "../assets/user.png"
 import settings from "../assets/settings.png"
 import { Link } from 'react-router-dom'
+import DropDown from '../components/DropDown'
 
 const Dashboard = () => {
     const [isLogin, setIsLogin] = useState(false)
@@ -95,6 +96,7 @@ const Dashboard = () => {
                         <AlertCircle item={item} />
                     )
                 })}
+                <DropDown cardData={cardData} />
                 </div>
                 <div>
                 </div>
