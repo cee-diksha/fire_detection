@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch'; 
 import './comp-styles.css';
 
 const SettingsTable = () => {
     const [data, setData] = useState([
-        { id: 1, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: '22°C', smokeSensor: true, triggeringDevice: false },
-        { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: '24°C', smokeSensor: false, triggeringDevice: true },
-        { id: 3, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: '23°C', smokeSensor: true, triggeringDevice: true },
-        { id: 4, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: '21°C', smokeSensor: false, triggeringDevice: false },
+        { id: 1, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: 50, smokeSensor: true, triggeringDevice: false },
+        { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
+        { id: 3, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: 50, smokeSensor: true, triggeringDevice: true },
+        { id: 4, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: 50, smokeSensor: false, triggeringDevice: false },
+        { id: 1, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: 50, smokeSensor: true, triggeringDevice: false },
+        { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
+        { id: 3, nodeId: 'A003', nodeType: 'trigger unit', axis: 'X-Y-Z', location: 'Room 103', tempSetpoint: 50, smokeSensor: true, triggeringDevice: true },
+        { id: 4, nodeId: 'A004', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 104', tempSetpoint: 50, smokeSensor: false, triggeringDevice: false },
     ]);
 
     const handleSwitchChange = (id, field) => {
@@ -17,6 +21,22 @@ const SettingsTable = () => {
             )
         );
     };
+
+    const handleLoctionChange= (id, location) => {
+        setData((prev) => 
+            prev.map(item => item.id === id ? {...item, "location": location} : item)
+        )
+    }
+
+    const handleTempChange= (id, temp) => {
+        setData((prev) => 
+            prev.map(item => item.id === id ? {...item, "tempSetpoint": temp} : item)
+        )
+    }
+
+    useEffect(() => {
+        console.log(data, "checking dataa")
+    }, [data])
 
     return (
         <div className='table-container'>
@@ -38,10 +58,10 @@ const SettingsTable = () => {
                         <tr key={item.id}>
                             <td>{index + 1}</td>
                             <td>{item.nodeId}</td>
-                            <td>{item.nodeType}</td>
+                            <td style={{textTransform: "capitalize"}}>{item.nodeType}</td>
                             <td>{item.axis}</td>
-                            <td>{item.location}</td>
-                            <td>{item.tempSetpoint}</td>
+                            <td><input type="text" style={{width: "90%"}} value={item.location} onChange={(e) => handleLoctionChange(item.id, e.target.value)}/></td>
+                            <td><input type="number" id="tempInput" placeholder="Enter a number" value={item.tempSetpoint} style={{width: "30%"}} onChange={(e) => handleTempChange(item.id, e.target.value)}/> °C</td>
                             <td>
                                 <Switch
                                     sx={{

@@ -21,16 +21,6 @@
     justify-content: space-between;
     align-items: flex-start; 
 }
-.dashboard-cardata {
-    padding: 15px 0;
-    width: 66%;
-    display: flex;
-    overflow-y: scroll;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    height: 65vh;
-}
 
 .dashboard-alerts {
     width: 8%;
@@ -144,17 +134,17 @@
 
 .login-form {
     margin-top: 6%;
-    background-color: #fff; /* White background for the form */
+    background-color: #fff; 
     padding: 30px;
-    border-radius: 10px; /* Rounded corners for the form */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for a card-like effect */
-    width: 300px; /* Set form width */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    width: 300px; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Input fields styling */
+
 .input-wrapper {
     width: 100%;
     margin-bottom: 20px;
@@ -170,19 +160,19 @@
 
 input {
     padding: 10px;
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
     width: 100%;
     font-size: 16px;
 }
 
-/* Styling for the login button */
+
 .login-button {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
+    background-color: #4CAF50;
+    color: white;
     border: none;
     padding: 10px;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px; 
     width: 100%;
     font-size: 16px;
     cursor: pointer;
@@ -190,5 +180,51 @@ input {
 }
 
 .login-button:hover {
-    background-color: #45a049; /* Slightly darker on hover */
+    background-color: #45a049; 
+}
+
+.main-dashboard-wrapper{
+    padding: 15px 0;
+    width: 66%;
+    display: flex;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    position: relative;
+}
+
+.dashboard-cardata {
+    padding: 15px 0;
+    display: flex;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    height: 65vh;
+    position: relative;
+}
+
+.dashboard-cardata .scrollable-content {
+    animation: scroll 10s linear forwards infinite;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.fixed-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
 }
