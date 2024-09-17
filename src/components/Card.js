@@ -5,7 +5,7 @@ import stopalarm from "../assets/stop_alarm.png"
 const Card = ({item}) => {
     const {status, data} = item
   return (
-    <div className='card-wrapper' style={{backgroundColor: `${status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${status === "yellow" ? "#000" : "#fff"}`}}>
+    <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${status === "yellow" ? "#000" : "#fff"}`}}>
       <div className='card-details'>
         <div className='card-details-combined'>
           <div id="card-details-span1">{data.node_name} </div>

@@ -5,6 +5,7 @@ import "../styles.css"
 import SettingsTable from '../components/SettingsTable'
 import { TotalRepeaterCard, TotalSmokeCard, TotalSuppressionCard } from '../components/SettingsCards'
 import LiveClock from '../components/LiveClock'
+import TempChart from '../components/TempChart'
 
 const Settings = () => {
   const [isLogin, setIsLogin] = useState(false)
