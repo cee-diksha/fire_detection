@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch'; 
 import './comp-styles.css';
+import ConfimationModal from './ConfimationModal';
 
 const SettingsTable = () => {
+    const [showModal, setShowModal] = useState(false)
     const [data, setData] = useState([
         { id: 1, nodeId: 'A001', nodeType: 'sensor', axis: 'X-Y-Z', location: 'Room 101', tempSetpoint: 50, smokeSensor: true, triggeringDevice: false },
         { id: 2, nodeId: 'A002', nodeType: 'repeater', axis: 'X-Y-Z', location: 'Room 102', tempSetpoint: 50, smokeSensor: false, triggeringDevice: true },
@@ -39,7 +41,10 @@ const SettingsTable = () => {
     }, [data])
 
     return (
-        <div className='table-container'>
+        <div className='settings-table-resetbtn-wrapper'>
+            <button onClick={() => setShowModal(true)}>Reset Database</button>
+            {showModal && <ConfimationModal open={true} handleClose={setShowModal}/>}
+            <div className='table-container'>
             <table>
                 <thead>
                     <tr>
@@ -96,6 +101,7 @@ const SettingsTable = () => {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
     );
 };

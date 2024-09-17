@@ -206,7 +206,7 @@ input {
 }
 
 .dashboard-cardata .scrollable-content {
-    animation: scroll 50s linear forwards infinite;
+    animation: scroll 180s linear forwards infinite;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-start;
@@ -227,4 +227,35 @@ input {
     100% {
         transform: translateY(-50%);
     }
+}
+
+.settings-img{
+    height: 26px;
+    width: 26px;
+}
+
+.settings-login{
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.settings-dashboard{
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.settings-imgWrapper{
+    display: flex;
+    align-items: center;
+} 
+
+.header-settings{
+    padding: 0 20px;
+    width: 96%;
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
 }
