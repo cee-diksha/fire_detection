@@ -15,7 +15,7 @@ const DropDown = ({cardData}) => {
     }
   return (
     <div>
-        <select style={{height: "40px", borderRadius: "10px", padding: "0 4px"}} onChange={(e) => handleClick(e)}>
+        <select style={{height: "40px", width: "100%",borderRadius: "10px", padding: "0 4px"}} onChange={(e) => handleClick(e)}>
             {optionsData.map((item, index) => {
                return <option key={index} value={item.value}>{item.label}</option>
             })}
