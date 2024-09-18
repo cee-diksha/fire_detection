@@ -2,7 +2,7 @@ import { info } from "../assets/info"
 import "./comp-styles.css"
 
 const totalUnits = (unit) => {
-    const result = info.filter(item => item.data.node_type === unit)
+    const result = info.filter(item => item.node_type === unit)
     return result.length
 }
 

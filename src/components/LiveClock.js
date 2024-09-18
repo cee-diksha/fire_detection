@@ -21,7 +21,7 @@ const LiveClock = () => {
       }, []);
     
       return (
-        <div className='live-clock' style={{ textAlign: 'center', backgroundColor: "#09ff01" }}>
+        <div className='live-clock'>
           <div className='live-clock-time'>
             {currentDateTime.time}
           </div>

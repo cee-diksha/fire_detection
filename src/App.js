@@ -1,9 +1,12 @@
 import {RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
+import { MainContextProvider } from './context/MainContext';
 
 function App() {
   return (
-    <RouterProvider router = {routes} />
+    <MainContextProvider>
+          <RouterProvider router = {routes} />
+    </MainContextProvider>
   );
 }
 

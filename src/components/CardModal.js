@@ -9,14 +9,13 @@ const CardModal = ({open, handleClose, option }) => {
     console.log(option, "option test")
     const [cardData, setCardData] = useState(info)
     const [specificData, setSpecificData] = useState(null)
-    const [status, setStatus] = useState(null)
 
     useEffect(() => {
-       const result =  cardData.filter(item => item.data.node_name === option)
+       const result =  cardData.filter(item => item.node_name === option)
        console.log(result, "result", cardData)
-       setSpecificData(result[0].data)
-       setStatus(result[0].status)
+       setSpecificData(result[0])
     }, [])
+    
   return (
     <>
       <Modal
@@ -28,7 +27,7 @@ const CardModal = ({open, handleClose, option }) => {
             >
             <div className='status-card-modal'>
                 <button onClick={() => handleClose(false)}>Close</button>
-            {(status && specificData) && <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${status === "yellow" ? "#000" : "#fff"}`}}>
+            {specificData && <div className={`${specificData.status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${specificData.status === "success" ? "#0eec00" : specificData.status === "yellow" ? "#FFFF00" : specificData.status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${specificData.status === "yellow" ? "#000" : "#fff"}`}}>
                 <div className='card-details'>
                     <div className='card-details-combined'>
                         <div id="card-details-span1">{specificData.node_name} </div>

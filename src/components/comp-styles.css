@@ -151,6 +151,10 @@
     flex-direction: column;
 }
 
+#btn-wrapper-table{
+    margin-left: auto;
+}
+
 .settings-table-resetbtn-wrapper button {
     height: 32px;
     color: #ffffff;
@@ -160,9 +164,22 @@
     font-weight: 600;
     border: none;
     border-radius: 6px;
-    margin-left: auto;
     margin-bottom: 10px;
     cursor: pointer;
+}
+
+#save-changes{
+    height: 32px;
+    color: #ffffff;
+    width: 150px;
+    background-color: #32bb00;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    margin-right: 4px;
 }
 
 /* Table styling */
@@ -253,7 +270,7 @@ tbody tr:hover {
 
 .live-clock{
     height: 40px;
-    background-color: #09ff01;
+    background-color: #32f02c;
     padding: 14px;
     border-radius: 6px;
     display: flex;
@@ -264,13 +281,13 @@ tbody tr:hover {
 }
 
 .live-clock-time{
-    color: #433D8B;
+    color: #ffffff;
     font-size: 24px;
     font-weight: 600;
 }
 
 .live-clock-date{
-    color: #4e4e4e;
+    color: #2f2e2e;
     font-size: 16px;
 }
 

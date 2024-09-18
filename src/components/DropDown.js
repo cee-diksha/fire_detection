@@ -6,7 +6,7 @@ const DropDown = ({cardData}) => {
   const [option, setOption] = useState(null)
 
     const optionsData = cardData.map(item => {
-        return {value: item.data.node_name, label: item.data.node_name}
+        return {value: item.node_name, label: item.node_name}
     })
   
     const handleClick = (e) => {

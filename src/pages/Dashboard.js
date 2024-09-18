@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../styles.css"
 import Card from '../components/Card'
 import AlertCircle from '../components/AlertCircle'
@@ -11,10 +11,16 @@ import { Link } from 'react-router-dom'
 import DropDown from '../components/DropDown'
 import TempChart from '../components/TempChart'
 import { info } from '../assets/info'
+import { MainContext } from '../context/MainContext'
 
 const Dashboard = () => {
     const [isLogin, setIsLogin] = useState(false)
     const [cardData, setCardData] = useState(info)
+    const {deviceInfo} = useContext(MainContext)
+
+    useEffect(() => {
+        setCardData(deviceInfo)
+    }, [deviceInfo])
   return (
     <>
         <div className='dashboard-wrapper'>
@@ -40,6 +46,7 @@ const Dashboard = () => {
                 {/* -------------------------------------------------------- */}
                 <div className='main-dashboard-wrapper'>
                 <div className='fixed-content'>
+                    {console.log(cardData, "checking if updates")}
                         {cardData.map((item) => {
                             return (
                                 item.status === "danger" && <Card key={item.id} item={item} />
