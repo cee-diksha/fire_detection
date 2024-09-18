@@ -12,6 +12,7 @@ import DropDown from '../components/DropDown'
 import TempChart from '../components/TempChart'
 import { info } from '../assets/info'
 import { MainContext } from '../context/MainContext'
+import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 
 const Dashboard = () => {
     const [isLogin, setIsLogin] = useState(false)
@@ -39,8 +40,11 @@ const Dashboard = () => {
             </div>
             {/* -------------------------------------------------------- */}
             <div className='dashboard-header-cards'>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "8%"}}>
-                    <h1 id="dashboard-heading">Dashboard</h1>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "10%"}}>
+                    <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
+                        <img style={{height: "100px"}} src={shipcrest} alt="ship" />
+                        <h1 id="dashboard-heading">INS Vikrant</h1>
+                    </div>
                     
                     <div className='imgWrapper'>
                         {isLogin ? <img src={user} alt="user-img" className='img'/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}

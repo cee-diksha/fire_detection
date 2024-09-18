@@ -13,7 +13,7 @@ const TempChart = () => {
             },
         ]}
         width={500}
-        height={300}
+        height={180}
       />
     </>
   )

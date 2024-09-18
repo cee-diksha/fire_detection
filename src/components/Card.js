@@ -12,8 +12,8 @@ const Card = ({item}) => {
           <div id="card-details-span2">{node_id}</div>
         </div>
         <div className='card-details-combined'>
-          <div id="card-details-span1">{bat_volt}</div>
-          <div id="card-details-span1">{temp}</div>
+          <div id="card-details-span1">{bat_volt} V</div>
+          <div id="card-details-span1">{temp}°C</div>
         </div>
         <div id="card-details-span1">Last Update</div>
         <div id="card-details-span2">{last_update}</div>
