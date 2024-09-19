@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch'; 
 import './comp-styles.css';
 import ConfimationModal from './ConfimationModal';
@@ -7,8 +7,8 @@ import { MainContext } from '../context/MainContext';
 
 const SettingsTable = () => {
     const [showModal, setShowModal] = useState(false);
-    const [data, setData] = useState(info.map(item => ({ ...item, isDeleted: false }))); // Adding isDeleted property
-    const { setDeviceInfo } = useContext(MainContext);
+    const { setDeviceInfo, deviceInfo } = useContext(MainContext);
+    const [data, setData] = useState(deviceInfo);
 
     const handleSwitchChange = (node_id, field) => {
         setData((prevData) =>
@@ -46,6 +46,10 @@ const SettingsTable = () => {
         console.log(data, "checking dataa");
         setDeviceInfo(data);
     };
+
+    useEffect(() => {
+        setData(deviceInfo)
+    }, [deviceInfo])
 
     return (
         <div className='settings-table-resetbtn-wrapper'>
