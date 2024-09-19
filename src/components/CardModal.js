@@ -1,13 +1,14 @@
 import { Modal } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { info } from '../assets/info'
+import React, { useContext, useEffect, useState } from 'react'
 import stopalarm from "../assets/stop_alarm.png"
 import "./comp-styles.css"
+import { MainContext } from '../context/MainContext'
 
 
 const CardModal = ({open, handleClose, option }) => {
     console.log(option, "option test")
-    const [cardData, setCardData] = useState(info)
+    const {deviceInfo} = useContext(MainContext)
+    const [cardData, setCardData] = useState(deviceInfo)
     const [specificData, setSpecificData] = useState(null)
 
     useEffect(() => {
@@ -15,6 +16,10 @@ const CardModal = ({open, handleClose, option }) => {
        console.log(result, "result", cardData)
        setSpecificData(result[0])
     }, [])
+
+    useEffect(() => {
+        setCardData(deviceInfo)
+    }, [deviceInfo])
     
   return (
     <>

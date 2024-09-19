@@ -1,15 +1,22 @@
-import { info } from "../assets/info"
+import { useContext, useEffect, useState } from "react"
 import "./comp-styles.css"
+import { MainContext } from "../context/MainContext"
 
-const totalUnits = (unit) => {
-    const result = info.filter(item => item.node_type === unit)
+const totalUnits = (allDevices, unit) => {
+    console.log(allDevices, "devices")
+    const result = allDevices.filter(item => item.node_type === unit)
     return result.length
 }
 
-totalUnits()
-
 export const TotalSuppressionCard = () => {
-    const count = totalUnits("trigger unit")
+    const {deviceInfo} = useContext(MainContext)
+    const [data, setData] = useState(deviceInfo)
+    const [count, setCount] = useState(totalUnits(data, "trigger unit"))
+
+    useEffect(() => {
+        setData(deviceInfo)
+        setCount(totalUnits(deviceInfo, "trigger unit"))
+    }, [deviceInfo])
     return(
         <div className="total-cards">
             <div className="total-label">
@@ -23,7 +30,14 @@ export const TotalSuppressionCard = () => {
 }
 
 export const TotalSmokeCard = () => {
-    const count = totalUnits("sensor")
+    const {deviceInfo} = useContext(MainContext)
+    const [data, setData] = useState(deviceInfo)
+    const [count, setCount] = useState(totalUnits(data, "sensor"))
+
+    useEffect(() => {
+        setData(deviceInfo)
+        setCount(totalUnits(deviceInfo, "sensor"))
+    }, [deviceInfo])
     return(
         <div className="total-cards">
             <div className="total-label">
@@ -38,7 +52,14 @@ export const TotalSmokeCard = () => {
 
 
 export const TotalRepeaterCard = () => {
-    const count = totalUnits("repeater")
+    const {deviceInfo} = useContext(MainContext)
+    const [data, setData] = useState(deviceInfo)
+    const [count, setCount] = useState(totalUnits(data, "repeater"))
+
+    useEffect(() => {
+        setData(deviceInfo)
+        setCount(totalUnits(deviceInfo, "repeater"))
+    }, [deviceInfo])
     return(
         <div className="total-cards">
             <div className="total-label">

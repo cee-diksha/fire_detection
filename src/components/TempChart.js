@@ -1,17 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { LineChart } from "@mui/x-charts";
+import { MainContext } from '../context/MainContext';
 
 
 const TempChart = () => {
+    const {deviceInfo} = useContext(MainContext)
+    const temp = deviceInfo.map(item => item.temp)
+    const node = deviceInfo.map(item => item.node_id)
+    const nodeName = deviceInfo.map(item => item.node_name)
+
   return (
     <>
       <LineChart
-        xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
+        xAxis={[{ data: node }]}
         series={[
             {
-            data: [2, 5.5, 2, 8.5, 1.5, 5],
+            data: temp,
+            label: 'Temperature'
             },
         ]}
+        tooltip={{
+          formatter: (params) => {
+            const nodeId = params.x;
+            const tempValue = params.y;
+            return `Node ID: ${nodeId}\nTemperature: ${tempValue}°C`;
+          },
+        }}
         width={500}
         height={180}
       />

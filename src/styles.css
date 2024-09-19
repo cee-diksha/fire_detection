@@ -10,6 +10,7 @@
     color: #fff;
 }
 
+
 .dashboard-main-screen{
     justify-content: space-between;
     display: flex;
@@ -274,4 +275,55 @@ input {
     display: flex ;
     align-items: center;
     justify-content: space-between;
+}
+
+.link-style{
+    text-decoration: none;
+}
+
+#h4{
+    font-size: 24px;
+}
+
+.specific-device-header{
+    display: flex;
+    align-items: center;
+}
+
+#status-circle{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+
+.specific-device-wrapper{
+    min-height: 100vh;
+    height: auto; 
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    background-color: #17153B;
+    color: #fff;
+}
+
+.specific-device-imgWrapper{
+    width: auto;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.specific-device-charts{
+    display: flex;
+    width: 90%;
+    background-color: #ffffff;
+    margin-top: 40px;
+}
+
+.specific-device-mainheader{
+    width: 98%;
+    display: flex;
 }

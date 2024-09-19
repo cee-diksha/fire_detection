@@ -10,14 +10,13 @@ import settings from "../assets/settings.png"
 import { Link } from 'react-router-dom'
 import DropDown from '../components/DropDown'
 import TempChart from '../components/TempChart'
-import { info } from '../assets/info'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 
 const Dashboard = () => {
     const [isLogin, setIsLogin] = useState(false)
-    const [cardData, setCardData] = useState(info)
     const {deviceInfo} = useContext(MainContext)
+    const [cardData, setCardData] = useState(deviceInfo)
 
     useEffect(() => {
         setCardData(deviceInfo)
@@ -58,17 +57,17 @@ const Dashboard = () => {
                         {console.log(cardData, "checking if updates")}
                             {cardData.map((item) => {
                                 return (
-                                    item.status === "danger" && <Card key={item.id} item={item} />
+                                    item.status === "danger" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                                 ) 
                             })}
                             {cardData.map((item) => {
                                 return (
-                                    item.status === "orange" && <Card key={item.id} item={item} />
+                                    item.status === "orange" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                                 ) 
                             })}
                             {cardData.map((item) => {
                                 return (
-                                    item.status === "yellow" && <Card key={item.id} item={item} />
+                                    item.status === "yellow" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                                 ) 
                             })}
                         </div>
@@ -76,12 +75,12 @@ const Dashboard = () => {
                         <div className='scrollable-content'>
                             {cardData.map((item) => {
                                 return (
-                                item.status === "success" && <Card key={item.id} item={item} />
+                                item.status === "success" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                                 ) 
                             })}
                             {cardData.map((item) => {
                                 return (
-                                    item.status === "success" &&  <Card key={item.id + '-duplicate'} item={item} />
+                                    item.status === "success" &&  <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id + '-duplicate'} item={item} /></Link>
                                 ) 
                             })}
                         </div>

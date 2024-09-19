@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch'; 
 import './comp-styles.css';
 import ConfimationModal from './ConfimationModal';
-import { info } from '../assets/info';
 import { MainContext } from '../context/MainContext';
 
 const SettingsTable = () => {
     const [showModal, setShowModal] = useState(false)
-    const [data, setData] = useState(info);
-    const {setDeviceInfo} = useContext(MainContext)
+    const {setDeviceInfo, deviceInfo} = useContext(MainContext)
+    const [data, setData] = useState(deviceInfo);
 
     const handleSwitchChange = (node_id, field) => {
         setData((prevData) =>
@@ -33,10 +32,20 @@ const SettingsTable = () => {
         )
     }
 
+    const handleDeleteRow = (node_id) => {
+        const filtered =  data.filter(item => item.node_id !== node_id)
+        setData(prevData => prevData.filter(item => item.node_id !== node_id));
+        setDeviceInfo(filtered)
+    };
+
     const saveChanges = () => {
         console.log(data, "checking dataa")
         setDeviceInfo(data)
     }
+
+    useEffect(() => {
+        setData(deviceInfo)
+    }, [deviceInfo])
 
     return (
         <div className='settings-table-resetbtn-wrapper'>
@@ -57,6 +66,7 @@ const SettingsTable = () => {
                         <th>Temp Setpoint</th>
                         <th>Smoke Sensor</th>
                         <th>Triggering Device</th>
+                        <th>Remove Device</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -97,6 +107,9 @@ const SettingsTable = () => {
                                     onChange={() => handleSwitchChange(item.node_id, 'triggeringDevice')}
                                     disabled={item.node_type === 'repeater' || item.node_type === 'trigger unit'}
                                 />
+                            </td>
+                            <td>
+                                <button onClick={() => handleDeleteRow(item.node_id)}>Delete</button> {/* Delete button */}
                             </td>
                         </tr>
                     ))}
