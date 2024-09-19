@@ -27,7 +27,7 @@ const SpecificDevice = () => {
         </div>
       </div>
         <div className='specific-device-header'>
-            <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#0eec00" : device[0].status === "yellow" ? "#FFFF00" : device[0].status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`}}></div>
+            <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#0eec00" : device[0].status === "yellow" ? "#FFFF00" : device[0].status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
             <h4 id="h4">{device[0].node_name}</h4> 
         </div>
       <div>

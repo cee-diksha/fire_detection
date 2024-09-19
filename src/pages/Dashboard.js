@@ -92,7 +92,7 @@ const Dashboard = () => {
                     <div className='dashboard-alerts'>
                     {cardData.map((item) => {
                         return (
-                            <AlertCircle item={item} />
+                            <Link className='link-style' to={`info/${item.node_name}`}><AlertCircle item={item} /></Link>
                         )
                     })}
                     <DropDown cardData={cardData} />
