@@ -5,6 +5,7 @@ import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
 import { SpecificBattChart, SpecificTempChart } from '../components/SpeicificCharts'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
+import Grid from '../components/Grid'
 
 
 const SpecificDevice = () => {
@@ -63,6 +64,7 @@ const SpecificDevice = () => {
         <SpecificTempChart />
         <SpecificBattChart />
       </div>
+      <Grid />
     </div>
   )
 }
