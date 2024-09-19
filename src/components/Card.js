@@ -3,9 +3,9 @@ import "./comp-styles.css"
 import stopalarm from "../assets/stop_alarm.png"
 
 const Card = ({item}) => {
-    const {status, node_name, node_id, bat_volt, temp, last_update} = item
+    const {status, node_name, node_id, bat_volt, temp, last_update, isDeleted} = item
   return (
-    <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${status === "yellow" ? "#000" : "#fff"}`}}>
+    <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${status === "yellow" ? "#000" : "#fff"}`, opacity: isDeleted ? 0.5 : 1 }}>
       <div className='card-details'>
         <div className='card-details-combined'>
           <div id="card-details-span1">{node_name} </div>

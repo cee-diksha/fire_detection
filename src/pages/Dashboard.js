@@ -39,7 +39,7 @@ const Dashboard = () => {
             </div>
             {/* -------------------------------------------------------- */}
             <div className='dashboard-header-cards'>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "10%"}}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%"}}>
                     <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
                         <img style={{height: "100px"}} src={shipcrest} alt="ship" />
                         <h1 id="dashboard-heading">INS Vikrant</h1>

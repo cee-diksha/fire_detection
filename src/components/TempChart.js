@@ -1,14 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { LineChart } from "@mui/x-charts";
 import { MainContext } from '../context/MainContext';
 
 
 const TempChart = () => {
     const {deviceInfo} = useContext(MainContext)
-    const temp = deviceInfo.map(item => item.temp)
-    const node = deviceInfo.map(item => item.node_id)
-    const nodeName = deviceInfo.map(item => item.node_name)
+    const [info, setInfo] = useState(deviceInfo)
+    const temp = info.map(item => item.temp)
+    const node = info.map(item => item.node_id)
 
+    useEffect(() => {
+      console.log("chekcinh temp", deviceInfo)
+      setInfo(deviceInfo)
+    }, [deviceInfo])
   return (
     <>
       <LineChart
