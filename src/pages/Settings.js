@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import user from "../assets/user.png"
 import "../styles.css"
 import SettingsTable from '../components/SettingsTable'
 import { TotalRepeaterCard, TotalSmokeCard, TotalSuppressionCard } from '../components/SettingsCards'
 import LiveClock from '../components/LiveClock'
-import TempChart from '../components/TempChart'
+import { MainContext } from '../context/MainContext'
 
 const Settings = () => {
-  const [isLogin, setIsLogin] = useState(false)
+  const {isLogin} = useContext(MainContext)
 
   return (
     <div className='dashboard-wrapper'>

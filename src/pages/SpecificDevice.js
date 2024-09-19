@@ -9,7 +9,7 @@ import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 
 const SpecificDevice = () => {
     const {id} = useParams()
-    const {deviceInfo} = useContext(MainContext)
+    const {deviceInfo, isLogin} = useContext(MainContext)
     const device = deviceInfo.filter(item => item.node_name === id)
     console.log(device[0], id, "device")
 
@@ -23,7 +23,8 @@ const SpecificDevice = () => {
         <div className='specific-device-imgWrapper'>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
             <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>
-            <Link to="/settings"><img src={settings} alt="settings" className='img'/></Link>
+            <Link to={isLogin ? "/settings" : "#"} 
+             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
       </div>
         <div className='specific-device-header'>

@@ -14,13 +14,14 @@ import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 
 const Dashboard = () => {
-    const [isLogin, setIsLogin] = useState(false)
-    const {deviceInfo} = useContext(MainContext)
+    const {deviceInfo, isLogin} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
 
     useEffect(() => {
         setCardData(deviceInfo)
     }, [deviceInfo])
+
+    console.log(isLogin, "is logged in")
   return (
     <>
         <div  className='dashboard-wrapper'>
@@ -47,7 +48,8 @@ const Dashboard = () => {
                     
                     <div className='imgWrapper'>
                         {isLogin ? <img src={user} alt="user-img" className='img'/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
-                        <Link to="/settings"><img src={settings} alt="settings" className='img'/></Link>
+                        <Link to={isLogin ? "/settings" : "#"} 
+                        style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
                     </div>
                 </div>
                 <div className='dashboard-main-wrapper'>
