@@ -12,6 +12,7 @@ import DropDown from '../components/DropDown'
 import TempChart from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
+import DeckCard from '../components/DeckCard'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin} = useContext(MainContext)
@@ -28,8 +29,12 @@ const Dashboard = () => {
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>
-                    <h4>SUMMARY</h4>
-                    <SummaryCard />
+                    <div className='div1'>
+                        <SummaryCard />
+                    </div>
+                    <div className='div2'>
+                        <DeckCard />
+                    </div>
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
                     <TempChart />
