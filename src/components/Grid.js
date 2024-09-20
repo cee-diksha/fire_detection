@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Grid-style.css"; 
 
-const Grid = () => {
+const Grid = ({compartment}) => {
   const [highlightedId, setHighlightedId] = useState(null); 
 
-  const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
+  useEffect(() => {
+    setHighlightedId(compartment)
+  }, [compartment])
 
-  const handleHighlight = (id) => {
-    setHighlightedId(id);
-  };
+  const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
 
   return (
     <div>
@@ -22,16 +22,6 @@ const Grid = () => {
             {boxId}
           </div>
         ))}
-      </div>
-
-      <div className="input-section">
-        <input
-          type="number"
-          placeholder="Enter box ID"
-          min="1"
-          max="60"
-          onChange={(e) => handleHighlight(Number(e.target.value))}
-        />
       </div>
     </div>
   );

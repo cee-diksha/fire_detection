@@ -10,6 +10,20 @@
     padding-bottom: 10px;
 }
 
+
+.blinking-border {
+    height: auto;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    background-color: #433D8B;
+    margin-bottom: 30px;
+    margin-right: 8px;
+    border-radius: 10px;
+    border: 7px solid #d9ff00; 
+    animation: blink-border 0.5s infinite;
+  }
+
 .card-details{
     margin-top: 10px;
     margin-left: 10px;
@@ -71,25 +85,6 @@
     border-radius: 100%;
     background-color: #ffcaf5;
 }
-
-.deckcard{
-    border-radius: 10px;
-    width: 100%;
-    background-color: #fff;
-    color: #000000;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-bottom: 4px;
-}
-
-.deckcard button{
-    border: none;
-    cursor: pointer;
-}
-
 .sum-details{
     border-radius: 10px;
     width: 100%;
@@ -367,19 +362,6 @@ tbody tr:hover {
     font-weight: 600;
     cursor: pointer;
 }
-
-.blinking-border {
-    height: auto;
-    width: 180px;
-    display: flex;
-    flex-direction: column;
-    background-color: #433D8B;
-    margin-bottom: 30px;
-    margin-right: 8px;
-    border-radius: 10px;
-    border: 7px solid #d9ff00; 
-    animation: blink-border 0.5s infinite;
-  }
   
   @keyframes blink-border {
     0% {

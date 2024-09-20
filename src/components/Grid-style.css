@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(10, 30px); 
     grid-gap: 5px;
-    margin: 20px;
+    margin: 4x;
   }
   .box {
     width: 30px;
@@ -18,19 +18,20 @@
   }
   
   .highlighted {
-    background-color: yellow;
+    background-color: red;
+    color: #ffffff;
     animation: blinking 1s infinite;
   }
   
   @keyframes blinking {
     0% {
-      background-color: yellow;
+      background-color: red;
     }
     50% {
       background-color: orange;
     }
     100% {
-      background-color: yellow;
+      background-color: red;
     }
   }
   
@@ -45,3 +46,72 @@
     width: 100px;
   }
   
+
+  .deckcard{
+    border-radius: 10px;
+    width: 100%;
+    background-color: #fff;
+    color: #000000;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-bottom: 4px;
+}
+
+.deckcard button{
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    width: 80px;
+    background-color: #dbdbdb;
+}
+
+.btnstyle{
+
+}
+
+.alert{
+  animation: blinkingDeck 1s infinite;
+  color: white;
+}
+
+.status-grid-modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.popup-grid-modal{
+  margin: auto;
+  height: 340px;
+  width: 400px;
+  padding: 18px;
+  border-radius: 6px;
+  background-color: #433D8B;
+}
+
+.status-grid-modal h4{
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.close-btn{
+  margin-left: auto;
+  cursor: pointer;
+}
+
+
+@keyframes blinkingDeck {
+  0% {
+    background-color: red;
+  }
+  50% {
+    background-color: orange;
+  }
+  100% {
+    background-color: red;
+  }
+}
