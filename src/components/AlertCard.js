@@ -23,7 +23,7 @@ const AlertCard = () => {
         </div>
         <div className='alert-details-combined' >
             <div id="alert-details-span1">Level - 3</div>
-            <div id="alert-details-span3" style={{backgroundColor: "#F73030"}}></div>
+            <div id="alert-details-span3" style={{backgroundColor: "#F84848"}}></div>
             <div id="alert-details-span2">Red</div>
         </div>
     </div>

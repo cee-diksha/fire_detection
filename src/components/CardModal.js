@@ -32,7 +32,7 @@ const CardModal = ({open, handleClose, option }) => {
             >
             <div className='status-card-modal' style={{cursor: "pointer"}}>
                 <button onClick={() => handleClose(false)}>Close</button>
-            {specificData && <div className={`${specificData.status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${specificData.status === "success" ? "#7BFF6D" : specificData.status === "yellow" ? "#FFC648" : specificData.status === "orange" ? "#FF6B3B" : "#F73030"}`, color: `${(specificData.status === "yellow" || specificData.status ==="success") ? "#000" : "#fff"}`}}>
+            {specificData && <div className={`${specificData.status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${specificData.status === "success" ? "#7BFF6D" : specificData.status === "yellow" ? "#FFC648" : specificData.status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${(specificData.status === "yellow" || specificData.status ==="success") ? "#000" : "#fff"}`}}>
                 <div className='card-details'>
                     <div className='card-details-combined'>
                         <div id="card-details-span1">{specificData.node_name} </div>
