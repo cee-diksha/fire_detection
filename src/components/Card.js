@@ -5,7 +5,7 @@ import stopalarm from "../assets/stop_alarm.png"
 const Card = ({item}) => {
     const {status, node_name, node_id, bat_volt, temp, last_update, isDeleted} = item
   return (
-    <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${isDeleted ? "#D0D0D0" : status === "success" ? "#0eec00" : status === "yellow" ? "#FFFF00" : status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${isDeleted ? "#000000" : status === "yellow" ? "#000" : "#fff"}`}}>
+    <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${isDeleted ? "#D0D0D0" : status === "success" ? "#7BFF6D" : status === "yellow" ? "#FFC648" : status === "orange" ? "#FF6B3B" : "#F73030"}`, color: `${isDeleted ? "#000000" : (status === "yellow" || status === "success") ? "#000" : "#fff"}`}}>
       <div className='card-details'>
         <div className='card-details-combined'>
           <div id="card-details-span1">{node_name} </div>

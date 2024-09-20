@@ -37,6 +37,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 #card-details-span1 {
@@ -45,6 +46,11 @@
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
+    font-weight: 600;
+}
+
+#card-details-span2{
+    font-weight: 600;
 }
 
 .card-details-circles{
@@ -60,6 +66,8 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    /* background-color: #3F3F3F; */
+    /* color: #fff; */
 }
 
 #card-details-circle1{
@@ -89,10 +97,10 @@
     border-radius: 10px;
     width: 100%;
     padding-bottom: 4px;
-    padding-left: 4px;
-    padding-right: 4px;
-    background-color: #fff;
-    color: #000000;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: #393939;
+    color: #f4efef;
     height: 100%;
     display: flex;
     align-items: center;
@@ -101,7 +109,7 @@
 .sum-details h4{
     margin-top: 4px;
     text-align: center;
-    color:#17153B
+    color:#f4efef;
 }
 
 .sum-details-combined{
@@ -113,7 +121,7 @@
 
 #sum-details-span1 {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 14px;
     width: 80%;
 }
 

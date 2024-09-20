@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    background-color: #17153B;
+    background-color: #1A1C1D;
     color: #fff;
 }
 
@@ -88,7 +88,7 @@
 
     .dashboard-content-alert h4{
         text-align: center;
-        color:#17153B;
+        color:#1A1C1D;
     }
 
     .dashboard-content-comm {
@@ -96,7 +96,7 @@
         width: 100%;
         height: 40%;
         border-radius: 10px;
-        background-color: #433D8B;
+        background-color: #3F3F3F;
     }
 
 .imgWrapper{
@@ -147,7 +147,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #17153B;
+    background-color: #1A1C1D;
 }
 
 .login-form {
@@ -306,7 +306,7 @@ input {
     width: 100%;
     align-items: center;
     flex-direction: column;
-    background-color: #17153B;
+    background-color: #1A1C1D;
     color: #fff;
 }
 

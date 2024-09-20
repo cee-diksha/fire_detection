@@ -9,6 +9,26 @@ import Grid from '../components/Grid'
 
 
 const SpecificDevice = () => {
+
+
+  const myLocalStorage = () => {
+    const setItem = (key, val, time) => {
+      localStorage.setItem(key, val)
+      setTimeout(() => {
+        localStorage.setItem(key, null)
+      }, time)
+    }
+    const getItem = (key) => {
+      return localStorage.getItem(key)
+    }
+    return ({setItem, getItem})
+  }
+
+  const storage = myLocalStorage()
+  storage.setItem("test", "testing", 1000)
+  console.log(storage.getItem("test"), "testing que")
+
+
     const {id} = useParams()
     const {deviceInfo, isLogin} = useContext(MainContext)
     const device = deviceInfo.filter(item => item.node_name === id)
@@ -29,7 +49,7 @@ const SpecificDevice = () => {
         </div>
       </div>
         <div className='specific-device-header'>
-            <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#0eec00" : device[0].status === "yellow" ? "#FFFF00" : device[0].status === "orange" ? "#FFA500" : "#fe2222"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
+            <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F73030"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
             <h4 id="h4">{device[0].node_name}</h4> 
         </div>
       <div>

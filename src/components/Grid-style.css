@@ -50,8 +50,8 @@
   .deckcard{
     border-radius: 10px;
     width: 100%;
-    background-color: #fff;
-    color: #000000;
+    background-color: #393939;
+    color: #ffffff;
     height: 100%;
     display: flex;
     align-items: center;
@@ -65,7 +65,8 @@
     cursor: pointer;
     font-size: 14px;
     width: 80px;
-    background-color: #dbdbdb;
+    background-color: #4c4c4c;
+    color: #f4efef;
 }
 
 .btnstyle{

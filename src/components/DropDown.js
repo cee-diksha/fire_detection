@@ -16,7 +16,7 @@ const DropDown = ({cardData}) => {
     }
   return (
     <div>
-        <select style={{height: "40px", width: "100%",borderRadius: "10px", padding: "0 4px"}} onChange={(e) => handleClick(e)}>
+        <select style={{height: "40px", width: "100%",borderRadius: "10px", padding: "0 4px", backgroundColor: "#3F3F3F", color: "#ffffff", borderColor: "transparent"}} onChange={(e) => handleClick(e)}>
             {optionsData.map((item, index) => {
               console.log(item, item, "item.isDeleted")
                return <option key={index} value={item.value} disabled = {item.disabled ? true : false}>{item.label}</option>

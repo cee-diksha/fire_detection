@@ -48,7 +48,7 @@ const Dashboard = () => {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%"}}>
                     <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
                         <img style={{height: "100px"}} src={shipcrest} alt="ship" />
-                        <h1 id="dashboard-heading">INS Vikrant</h1>
+                        <h2 id="dashboard-heading">Ship Name</h2>
                     </div>
                     
                     <div className='imgWrapper'>
@@ -78,7 +78,7 @@ const Dashboard = () => {
                                 ) 
                             })}
                         </div>
-                    <div className='dashboard-cardata'>
+                    {/* <div className='dashboard-cardata'>
                         <div className='scrollable-content'>
                             {cardData.map((item) => {
                                 return (
@@ -91,7 +91,7 @@ const Dashboard = () => {
                                 ) 
                             })}
                         </div>
-                    </div>
+                    </div> */}
                     </div>
 
                     {/* -------------------------------------------------------- */}
