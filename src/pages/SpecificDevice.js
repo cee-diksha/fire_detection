@@ -64,7 +64,6 @@ const SpecificDevice = () => {
         <SpecificTempChart />
         <SpecificBattChart />
       </div>
-      <Grid />
     </div>
   )
 }
