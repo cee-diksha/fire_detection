@@ -25,11 +25,11 @@ const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
 }
 
 export const DeckDashboardPageDiv = ({data}) => {
-  console.log(data, "deckdivdatacheeck")
     return (
       <div>
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
           <h4>Deck {data.deck}</h4>
+          {console.log(data, "daatchekforcomp")}
           <Grid compartment={data.compartment} /> 
         </div>
       </div>

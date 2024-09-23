@@ -73,33 +73,37 @@ const SettingsTable = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, index) => (
-                            <tr key={item.node_id} style={{ opacity: item.isDeleted ? 0.5 : 1 }}> {/* Greyed out effect */}
-                                <td>{index + 1}</td>
-                                <td>{item.node_id}</td>
-                                <td style={{textTransform: "capitalize"}}>{item.node_type}</td>
-                                <td>{item.axis}</td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        style={{width: "90%"}}
-                                        defaultValue={item.node_name}
-                                        onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
-                                        disabled={item.isDeleted} // Disable input if greyed out
-                                    />
-                                </td>
-                                <td>
+                    {data.map((item, index) => (
+                        <tr key={item.node_id} style={{ opacity: item.isDeleted ? 0.5 : 1 }}>
+                            <td>{index + 1}</td>
+                            <td>{item.node_id}</td>
+                            <td style={{ textTransform: "capitalize" }}>{item.node_type}</td>
+                            <td>{item.axis}</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    style={{ width: "90%" }}
+                                    defaultValue={item.node_name}
+                                    onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
+                                    disabled={item.isDeleted} // Disable input if greyed out
+                                />
+                            </td>
+                            <td>
+                                {item.temp === null ? "NA" :   <>
                                     <input
                                         type="number"
                                         id="tempInput"
                                         placeholder="Enter a number"
                                         value={item.temp}
-                                        style={{width: "30%"}}
+                                        style={{ width: "30%" }}
                                         onChange={(e) => handleTempChange(item.node_id, e.target.value)}
                                         disabled={item.isDeleted} // Disable input if greyed out
-                                    /> °C
-                                </td>
-                                <td>
+                                    />
+                                    <span> °C</span> {/* Place °C in a span */}
+                                </>}
+                            </td>
+                            <td>
+                                {item.smokeSensor !== null ? (
                                     <Switch
                                         sx={{
                                             '& .MuiSwitch-thumb': { backgroundColor: "#3F3F3F" },
@@ -109,8 +113,12 @@ const SettingsTable = () => {
                                         onChange={() => handleSwitchChange(item.node_id, 'smokeSensor')}
                                         disabled={item.isDeleted || item.node_type === 'repeater' || item.node_type === 'trigger unit'}
                                     />
-                                </td>
-                                <td>
+                                ) : (
+                                    "NA" // Display "NA" if smokeSensor is null
+                                )}
+                            </td>
+                            <td>
+                                {item.triggeringDevice !== null ? (
                                     <Switch
                                         sx={{
                                             '& .MuiSwitch-thumb': { backgroundColor: "#3F3F3F" },
@@ -120,15 +128,19 @@ const SettingsTable = () => {
                                         onChange={() => handleSwitchChange(item.node_id, 'triggeringDevice')}
                                         disabled={item.isDeleted || item.node_type === 'repeater' || item.node_type === 'trigger unit'}
                                     />
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDeleteRow(item.node_id)}>
-                                        {item.isDeleted ? "Undo" : "Delete"}
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
+                                ) : (
+                                    "NA" // Display "NA" if triggeringDevice is null
+                                )}
+                            </td>
+                            <td>
+                                <button onClick={() => handleDeleteRow(item.node_id)}>
+                                    {item.isDeleted ? "Undo" : "Delete"}
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+
                 </table>
             </div>
         </div>

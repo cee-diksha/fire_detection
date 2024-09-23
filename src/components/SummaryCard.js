@@ -18,7 +18,7 @@ const SummaryCard = () => {
             <div id="sum-details-span2">11/12</div>
         </div>
         <div className='sum-details-combined' >
-            <div id="sum-details-span1">Available Suppression</div>
+            <div id="sum-details-span1">Available Suppression Units</div>
             <div id="sum-details-span2">1/1</div>
         </div>
     </div>

@@ -18,11 +18,24 @@ import { DeckDashboardPageDiv } from '../components/DeckModal'
 const Dashboard = () => {
     const {deviceInfo, isLogin} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
-    const danger = cardData.filter(item => item.status === "danger")
-    const [deck, setDeck] = useState(danger)
+    const filtering = cardData.filter(item => item.status === "danger").reduce((acc, curr) => {
+        const exists = acc.find(item => item.deck === curr.deck)
+        if (exists) {
+            exists.compartment = [...new Set([...exists.compartment, ...curr.compartment])];
+        } else {
+            acc.push({
+                ...curr,
+                compartment: [...curr.compartment]
+            })
+        }
+        return acc
+    }, [])
+    console.log(filtering, "check filtering")
+
+    const [deck, setDeck] = useState(filtering)
 
     useEffect(() => {
-        setDeck(danger)
+        setDeck(filtering)
         setCardData(deviceInfo)
     }, [deviceInfo])
 

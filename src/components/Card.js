@@ -3,7 +3,7 @@ import "./comp-styles.css"
 import stopalarm from "../assets/stop_alarm.png"
 
 const Card = ({item}) => {
-    const {status, node_name, node_id, bat_volt, temp, last_update, isDeleted} = item
+    const {status, node_name, node_id, bat_volt, temp, last_update, isDeleted, smokeSensor, triggeringDevice} = item
 
     const handleRefresh = (event) => {
       event.preventDefault()
@@ -24,14 +24,14 @@ const Card = ({item}) => {
         </div>
         <div className='card-details-combined'>
           <div id="card-details-span1">{bat_volt} V</div>
-          <div id="card-details-span1">{temp}°C</div>
+          {temp !== null && <div id="card-details-span1">{temp}°C</div>}
         </div>
         <div id="card-details-span1">Last Update</div>
         <div id="card-details-span2">{last_update}</div>
       </div>
       <div className='card-details-circles'>
-          <div id="card-details-circle1">S</div>
-          <div id="card-details-circle2">T</div>
+          {smokeSensor !== null && <div id="card-details-circle1">S</div>}
+          {triggeringDevice !== null && <div id="card-details-circle2">T</div>}
           <button id="refresh" onClick={handleRefresh}>Refresh</button>
           <img src={stopalarm} alt="stop-alarm" onClick={handleStopAlarm} style={{height: "30px", cursor: "pointer"}}/>        
         </div>

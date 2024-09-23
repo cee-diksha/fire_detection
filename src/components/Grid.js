@@ -20,7 +20,7 @@ const Grid = ({compartment}) => {
           <div
             key={boxId}
             id={`box-${boxId}`}
-            className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
+            className={`box ${highlightedId === boxId ? "highlighted" : ""}`}
           >
             {boxId}
           </div>

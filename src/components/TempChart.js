@@ -9,9 +9,11 @@ const TempChart = () => {
     const temp = info.map(item => item.temp)
     const node = info.map(item => item.node_id)
 
+    console.log(temp, node, "nodetempchart")
+
     useEffect(() => {
       console.log("chekcinh temp", deviceInfo)
-      setInfo(deviceInfo)
+      setInfo(deviceInfo.filter(item => item.node_type === "sensor"))
     }, [deviceInfo])
   return (
     <>
