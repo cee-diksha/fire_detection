@@ -60,6 +60,7 @@ const Dashboard = () => {
                 <div className='dashboard-main-wrapper'>
                     {/* -------------------------------------------------------- */}
                     <div className='main-dashboard-wrapper'>
+                    <DropDown cardData={cardData} />
                     <div className='fixed-content'>
                         {console.log(cardData, "checking if updates")}
                             {cardData.map((item) => {
@@ -99,12 +100,14 @@ const Dashboard = () => {
                     <div className='dashboard-alerts'>
                     {cardData.map((item) => {
                         return (
-                            <Link className='link-style' to={`info/${item.node_name}`}><AlertCircle item={item} /></Link>
+                            <Link className='link-style' to={`info/${item.node_name}`}>
+                                <div className="hover-container">
+                                    <AlertCircle item={item} />
+                                    <div className="hover-text">{item.node_name}</div>
+                                </div>
+                            </Link>
                         )
                     })}
-                    <DropDown cardData={cardData} />
-                    </div>
-                    <div>
                     </div>
                 </div>
             </div>

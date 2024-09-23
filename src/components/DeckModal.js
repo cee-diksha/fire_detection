@@ -2,8 +2,8 @@ import { Modal } from '@mui/material'
 import React from 'react'
 import Grid from "./Grid.js"
 
-const DeckModal = ({open, handleClose, deck, compartment, alertDeck}) => {
-
+const DeckModal = ({open, handleClose, clickedDeck, deckinfo}) => {
+const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
   return (
     <div>
       <Modal
@@ -16,8 +16,8 @@ const DeckModal = ({open, handleClose, deck, compartment, alertDeck}) => {
            
             <div className='status-grid-modal' style={{cursor: "pointer"}}>
             <button className='close-btn' onClick={() => handleClose(false)}>Close</button>
-              <h4>Deck {deck}</h4>
-               {deck === alertDeck ? <Grid compartment={compartment} /> : <Grid compartment={null} />}
+              <h4>Deck {clickedDeck}</h4>
+               {alertdeck.length > 0 && <Grid compartment={alertdeck[0].compartment} /> }
             </div>
         </Modal>
     </div>

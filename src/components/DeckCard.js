@@ -8,11 +8,10 @@ const DeckCard = () => {
     const {deviceInfo} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
     const [showModal, setShowModal] = useState(false)
-    const [deck, setDeck] = useState(null)
-    const [compartment, setCompartment] = useState(null)
+    const danger = cardData.filter(item => item.status === "danger")
+    const [deck, setDeck] = useState(danger)
     const [deckNo, setDeckNo] = useState(null)
     const totalDecks = 6
-    const danger = cardData.filter(item => item.status === "danger")
 
     const handleBtnClick = (deckNo) => {
       setShowModal(true)
@@ -20,20 +19,24 @@ const DeckCard = () => {
     }
 
     useEffect(() => {
-        setDeck(danger[0].deck)
-        console.log(danger[0].deck, "danger[0].deck")
-        setCompartment(danger[0].compartment)
+        setDeck(danger)
         setCardData(deviceInfo)
     }, [deviceInfo])
      
   return (
     <div className='deckcard'>
         {Array(totalDecks).fill().map((_, index) => {
+          console.log(deck, "deck check")
+          const dangerDeckNos = deck.map(item => item.deck)
           return(
-            <button className={`${index+1 === deck ? "alert" : "btnstyle"}`} onClick={ () => handleBtnClick((index+1))}>Deck {index+1}</button>          
+            <button className={`${dangerDeckNos.includes(index+1)  ? "alert" : "btnstyle"}`} onClick={ () => handleBtnClick((index+1))}>Deck {index+1}</button>          
           )
         })}
-        {showModal && <DeckModal open={true} handleClose={setShowModal} deck={deckNo} compartment={compartment} alertDeck={deck}/>}
+        {showModal && deck.map((item, index) =>{
+          return (
+            <DeckModal key= {index} open={true} handleClose={setShowModal} clickedDeck={deckNo} deckinfo = {deck}/>
+          )
+        })}
     </div>
   )
 }

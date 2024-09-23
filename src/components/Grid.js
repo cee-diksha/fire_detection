@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./Grid-style.css"; 
 
 const Grid = ({compartment}) => {
-  const [highlightedId, setHighlightedId] = useState(null); 
+  const [highlightedId, setHighlightedId] = useState(compartment); 
+  console.log(compartment, "compartment check")
 
   useEffect(() => {
     setHighlightedId(compartment)
   }, [compartment])
+
+  console.log(highlightedId, "compart")
 
   const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
 
@@ -17,7 +20,7 @@ const Grid = ({compartment}) => {
           <div
             key={boxId}
             id={`box-${boxId}`}
-            className={`box ${highlightedId === boxId ? "highlighted" : ""}`}
+            className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
           >
             {boxId}
           </div>
