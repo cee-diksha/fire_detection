@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Grid-style.css"; 
 
-const Grid = ({compartment}) => {
-  const [highlightedId, setHighlightedId] = useState(compartment); 
-  console.log(compartment, "compartment check")
+const Grid = ({devices}) => {
+  const dangerCompartments = devices.map(item => item.comp)
+  const [highlightedId, setHighlightedId] = useState(dangerCompartments); 
+  console.log(dangerCompartments, "compartment check")
 
   useEffect(() => {
-    setHighlightedId(compartment)
-  }, [compartment])
+    setHighlightedId(dangerCompartments)
+  }, [dangerCompartments])
 
   console.log(highlightedId, "compart")
 
@@ -20,7 +21,7 @@ const Grid = ({compartment}) => {
           <div
             key={boxId}
             id={`box-${boxId}`}
-            className={`box ${highlightedId === boxId ? "highlighted" : ""}`}
+            className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
           >
             {boxId}
           </div>

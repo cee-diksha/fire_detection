@@ -1,10 +1,11 @@
 import { createContext, useState } from "react";
-import { info } from "../assets/info";
+import { info, deckInfo} from "../assets/info";
 
 const MainContext = createContext()
 
 const MainContextProvider = (props) => {
     const [deviceInfo, setDeviceInfo] = useState(info)
+    const [deckData, setDeckData] = useState(deckInfo)
     const [isLogin, setIsLogin] = useState(false)
 
     return (
@@ -12,6 +13,8 @@ const MainContextProvider = (props) => {
         value={{
             deviceInfo,
             setDeviceInfo,
+            deckData,
+            setDeckData,
             isLogin,
             setIsLogin
         }}>

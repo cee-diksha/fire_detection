@@ -18,3 +18,32 @@ export const info = [
     {id: 17, status: "success", tempSetpoint: 50, smokeSensor: null, triggeringDevice: true , axis: 'X-Y-Z', node_type: "suppression unit" ,node_name: "Fwd JS Mess", node_id: 117, bat_volt: 3.6, temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9},
     {id: 18, status: "success", tempSetpoint: 50, smokeSensor: true, triggeringDevice: null , axis: 'X-Y-Z', node_type: "sensor" ,node_name: "Fwd SS Mess", node_id: 118, bat_volt: 3.6, temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 11}
 ]
+
+export const deckInfo = [
+    { id: "1", deck: 1, devices: [
+        { comp: 1, node_info: [{ node: 101, status: "success" }, { node: 110, status: "success" }] },
+        { comp: 8, node_info: [{ node: 116, status: "success" }] },
+        { comp: 9, node_info: [{ node: 108, status: "success" }, { node: 117, status: "success" }] }
+    ]},
+    { id: "2", deck: 2, devices: [
+        { comp: 1, node_info: [{ node: 102, status: "success" }] },
+        { comp: 2, node_info: [{ node: 112, status: "success" }] },
+        { comp: 6, node_info: [{ node: 107, status: "success" }] }
+    ]},
+    { id: "3", deck: 3, devices: [
+        { comp: 1, node_info: [{ node: 103, status: "success" }, { node: 115, status: "success" }] },
+        { comp: 7, node_info: [{ node: 105, status: "danger" }] }
+    ]},
+    { id: "4", deck: 4, devices: [
+        { comp: 1, node_info: [{ node: 111, status: "success" }] },
+        { comp: 3, node_info: [{ node: 104, status: "yellow" }, { node: 113, status: "success" }] }
+    ]},
+    { id: "5", deck: 5, devices: [
+        { comp: 2, node_info: [{ node: 114, status: "success" }] },
+        { comp: 5, node_info: [{ node: 106, status: "danger" }] },
+        { comp: 11, node_info: [{ node: 118, status: "success" }] }
+    ]},
+    { id: "6", deck: 6, devices: [
+        { comp: 2, node_info: [{ node: 109, status: "success" }] }
+    ]}
+];

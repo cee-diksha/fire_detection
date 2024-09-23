@@ -16,28 +16,46 @@ import DeckCard from '../components/DeckCard'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
 
 const Dashboard = () => {
-    const {deviceInfo, isLogin} = useContext(MainContext)
-    const [cardData, setCardData] = useState(deviceInfo)
-    const filtering = cardData.filter(item => item.status === "danger").reduce((acc, curr) => {
-        const exists = acc.find(item => item.deck === curr.deck)
-        if (exists) {
-            exists.compartment = [...new Set([...exists.compartment, ...curr.compartment])];
-        } else {
-            acc.push({
-                ...curr,
-                compartment: [...curr.compartment]
-            })
-        }
-        return acc
-    }, [])
-    console.log(filtering, "check filtering")
+    const {deviceInfo, isLogin, deckData} = useContext(MainContext)
 
-    const [deck, setDeck] = useState(filtering)
+    const dangerDevices = deckData.map(deck => ({
+        ...deck,
+        devices: deck.devices.filter(device => 
+            device.node_info.some(node => node.status === "danger")
+        )
+    }))
+    .filter(deck => deck.devices.length > 0);
+
+    console.log(dangerDevices, "dangerDevices");
+
+    const [cardData, setCardData] = useState(deviceInfo)
+    const [deckInfo, setDeckInfo] = useState(dangerDevices)
+
+    // const filtering = cardData.filter(item => item.status === "danger").reduce((acc, curr) => {
+    //     const exists = acc.find(item => item.deck === curr.deck)
+    //     if (exists) {
+    //         exists.compartment = [...new Set([...exists.compartment, ...curr.compartment])];
+    //     } else {
+    //         acc.push({
+    //             ...curr,
+    //             compartment: [...curr.compartment]
+    //         })
+    //     }
+    //     return acc
+    // }, [])
+
 
     useEffect(() => {
-        setDeck(filtering)
+        const dangerDevices = deckData.map(deck => ({
+            ...deck,
+            devices: deck.devices.filter(device => 
+                device.node_info.some(node => node.status === "danger")
+            )
+        }))
+        .filter(deck => deck.devices.length > 0);
+        setDeckInfo(dangerDevices)
         setCardData(deviceInfo)
-    }, [deviceInfo])
+    }, [deviceInfo, deckData])
 
     console.log(isLogin, "is logged in")
   return (
@@ -78,13 +96,6 @@ const Dashboard = () => {
                     {/* -------------------------------------------------------- */}
                     <div className='main-dashboard-wrapper'>
                     <DropDown cardData={cardData} />
-                    {deck.length > 0 && <div className='deck-display-grid'>
-                       {deck.map((item, index) => {
-                        return (
-                            <DeckDashboardPageDiv key={index} data={item} />
-                        )
-                       })} 
-                    </div>}
                     <div className='fixed-content'>
                         {console.log(cardData, "checking if updates")}
                             {cardData.map((item) => {
@@ -103,6 +114,14 @@ const Dashboard = () => {
                                 ) 
                             })}
                         </div>
+                        {deckInfo.length > 0 && <div className='deck-display-grid'>
+                            {console.log(deckInfo, "checkingdeckinfo")}
+                       {deckInfo.map((item, index) => {
+                        return (
+                            <DeckDashboardPageDiv key={index} data={item} />
+                        )
+                       })} 
+                    </div>}
                     {/* <div className='dashboard-cardata'>
                         <div className='scrollable-content'>
                             {cardData.map((item) => {

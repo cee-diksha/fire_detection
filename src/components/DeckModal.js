@@ -30,7 +30,7 @@ export const DeckDashboardPageDiv = ({data}) => {
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
           <h4>Deck {data.deck}</h4>
           {console.log(data, "daatchekforcomp")}
-          <Grid compartment={data.compartment} /> 
+          <Grid devices={data.devices} /> 
         </div>
       </div>
     )
