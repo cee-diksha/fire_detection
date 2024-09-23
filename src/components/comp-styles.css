@@ -1,5 +1,5 @@
 .card-wrapper{
-    height: 160px;
+    height: 232px;
     width: 180px;
     display: flex;
     flex-direction: column;
@@ -31,6 +31,20 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+}
+
+.card-details-nodetype{
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.card-details-location{
+    font-weight: 600;
+    background-color: #fff;
+    padding: 0 5px;
+    border-radius: 6px;
+    color: #000000;
+    margin: 4px 0;
 }
 
 .card-details-combined{

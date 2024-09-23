@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Grid-style.css"; 
+import { Link } from "react-router-dom";
 
-const Grid = ({devices}) => {
+const Grid = ({devices, deck}) => {
   const dangerCompartments = devices.map(item => item.comp)
   const [highlightedId, setHighlightedId] = useState(dangerCompartments); 
   console.log(dangerCompartments, "compartment check")
@@ -18,13 +19,15 @@ const Grid = ({devices}) => {
     <div style={{marginRight: "14px"}}>
       <div className="grid-container">
         {boxes.map((boxId) => (
-          <div
-            key={boxId}
-            id={`box-${boxId}`}
-            className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
-          >
-            {boxId}
-          </div>
+          <Link style={{textDecoration: "none"}} to={`deck/${deck}`}>
+              <div
+              key={boxId}
+              id={`box-${boxId}`}
+              className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
+            >
+              {boxId}
+            </div>
+          </Link>
         ))}
       </div>
     </div>

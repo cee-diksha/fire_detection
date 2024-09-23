@@ -39,7 +39,7 @@ const SpecificDevice = () => {
       <div className='specific-device-mainheader'>
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
             <img style={{height: "100px"}} src={shipcrest} alt="ship" />
-            <h1 id="dashboard-heading">INS Vikrant</h1>
+            <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>

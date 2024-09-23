@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard"
 import Settings from "./pages/Settings"
 import Login from "./pages/Login"
 import SpecificDevice from "./pages/SpecificDevice";
+import SpecificDeck from "./pages/SpecificDeck";
 
 
 export const routes = createBrowserRouter([
@@ -21,5 +22,9 @@ export const routes = createBrowserRouter([
     {
         path: "/info/:id",
         element: <SpecificDevice />
+    },
+    {
+        path: "/deck/:id",
+        element: <SpecificDeck />
     }
 ])
