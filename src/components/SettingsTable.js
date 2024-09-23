@@ -102,8 +102,8 @@ const SettingsTable = () => {
                                 <td>
                                     <Switch
                                         sx={{
-                                            '& .MuiSwitch-thumb': { backgroundColor: "#433D8B" },
-                                            '& .MuiSwitch-track': { backgroundColor: "#433D8B" }
+                                            '& .MuiSwitch-thumb': { backgroundColor: "#3F3F3F" },
+                                            '& .MuiSwitch-track': { backgroundColor: "#3F3F3F" }
                                         }}
                                         checked={item.smokeSensor}
                                         onChange={() => handleSwitchChange(item.node_id, 'smokeSensor')}
@@ -113,8 +113,8 @@ const SettingsTable = () => {
                                 <td>
                                     <Switch
                                         sx={{
-                                            '& .MuiSwitch-thumb': { backgroundColor: "#433D8B" },
-                                            '& .MuiSwitch-track': { backgroundColor: "#433D8B" }
+                                            '& .MuiSwitch-thumb': { backgroundColor: "#3F3F3F" },
+                                            '& .MuiSwitch-track': { backgroundColor: "#3F3F3F" }
                                         }}
                                         checked={item.triggeringDevice}
                                         onChange={() => handleSwitchChange(item.node_id, 'triggeringDevice')}

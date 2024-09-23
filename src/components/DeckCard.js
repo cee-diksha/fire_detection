@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "./Grid-style.css"
 import { MainContext } from '../context/MainContext'
-import DeckModal from './DeckModal'
+import {DeckModal} from "./DeckModal"
 
 
 const DeckCard = () => {

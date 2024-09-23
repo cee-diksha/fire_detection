@@ -2,7 +2,7 @@ import { Modal } from '@mui/material'
 import React from 'react'
 import Grid from "./Grid.js"
 
-const DeckModal = ({open, handleClose, clickedDeck, deckinfo}) => {
+export const DeckModal = ({open, handleClose, clickedDeck, deckinfo}) => {
 const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
   return (
     <div>
@@ -24,4 +24,15 @@ const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
   )
 }
 
-export default DeckModal
+export const DeckDashboardPageDiv = ({data}) => {
+  console.log(data, "deckdivdatacheeck")
+    return (
+      <div>
+        <div className='status-grid-modal' style={{cursor: "pointer"}}>
+          <h4>Deck {data.deck}</h4>
+          <Grid compartment={data.compartment} /> 
+        </div>
+      </div>
+    )
+  }
+

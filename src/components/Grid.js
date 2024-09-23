@@ -14,7 +14,7 @@ const Grid = ({compartment}) => {
   const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
 
   return (
-    <div>
+    <div style={{marginRight: "14px"}}>
       <div className="grid-container">
         {boxes.map((boxId) => (
           <div

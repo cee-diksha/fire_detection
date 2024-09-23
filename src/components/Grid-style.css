@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(10, 30px); 
     grid-gap: 5px;
-    margin: 4x;
   }
   .box {
     width: 30px;
@@ -115,4 +114,13 @@
   100% {
     background-color: red;
   }
+}
+
+.deck-display-grid{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
 }

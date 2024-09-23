@@ -13,12 +13,16 @@ import TempChart from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import DeckCard from '../components/DeckCard'
+import { DeckDashboardPageDiv } from '../components/DeckModal'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
+    const danger = cardData.filter(item => item.status === "danger")
+    const [deck, setDeck] = useState(danger)
 
     useEffect(() => {
+        setDeck(danger)
         setCardData(deviceInfo)
     }, [deviceInfo])
 
@@ -61,6 +65,13 @@ const Dashboard = () => {
                     {/* -------------------------------------------------------- */}
                     <div className='main-dashboard-wrapper'>
                     <DropDown cardData={cardData} />
+                    {deck.length > 0 && <div className='deck-display-grid'>
+                       {deck.map((item, index) => {
+                        return (
+                            <DeckDashboardPageDiv key={index} data={item} />
+                        )
+                       })} 
+                    </div>}
                     <div className='fixed-content'>
                         {console.log(cardData, "checking if updates")}
                             {cardData.map((item) => {
