@@ -81,8 +81,8 @@ return (
       <div><span style={{fontWeight: "600"}}>Compartment:</span> {compartment}</div>
     </div>
     <div className="segment" id='temp-battery'>
-      <div><img src={temperature} alt="temperature-logo" style={{height: "20px", marginRight: "6px"}}/>{temp}</div>
-      <div><img src={battery} alt="battery-logo" style={{height: "20px", marginRight: "6px"}}/>{battery_percentage}</div>
+      <div><img src={temperature} alt="temperature-logo" style={{height: "20px", marginRight: "6px"}}/>{temp}°C</div>
+      <div><img src={battery} alt="battery-logo" style={{height: "20px", marginRight: "6px"}}/>{battery_percentage}%</div>
     </div>
     <div className="segment" id='last-update'>
       <img src={status === "yellow" ? update2 : update} alt="update-logo" style={{height: "20px", marginRight: "6px"}}/>

@@ -162,17 +162,21 @@ justify-content:center ;
     justify-content: space-evenly;
 }
 
+.deckcard{
+    padding: 0 4px;
+}
+
 .alert-details-combined{
     display: flex;
-    width: auto;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
 }
 
 #alert-details-span1 {
     font-weight: 700;
-    font-size: 16px;
-    padding: 4px 15px;
+    font-size: 14px;
+    padding: 4px 2px;
 }
 
 #alert-details-span2 {

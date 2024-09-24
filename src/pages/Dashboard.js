@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "../styles.css"
 import Card from '../components/Card'
-import AlertCircle from '../components/AlertCircle'
 import SummaryCard from '../components/SummaryCard'
-import AlertCard from '../components/AlertCard'
 import Communication from '../components/Communication'
 import user from "../assets/user.png"
 import settings from "../assets/settings.png"
 import { Link } from 'react-router-dom'
 import DropDown from '../components/DropDown'
-import TempChart from '../components/TempChart'
+import {TempChart, BatteryChart} from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
-import DeckCard from '../components/DeckCard'
+import AlertsCard from '../components/AlertsCard'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
+import Footer from '../components/Footer'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData} = useContext(MainContext)
@@ -68,11 +67,14 @@ const Dashboard = () => {
                         <SummaryCard />
                     </div>
                     <div className='div2'>
-                        <DeckCard />
+                        <AlertsCard />
                     </div>
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
                     <TempChart />
+                </div>
+                <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
+                    <BatteryChart />
                 </div>
                 <div className='dashboard-content-comm'>
                     <Communication />
@@ -140,7 +142,7 @@ const Dashboard = () => {
 
                     {/* -------------------------------------------------------- */}
 
-                    <div className='dashboard-alerts'>
+                    {/* <div className='dashboard-alerts'>
                     {cardData.map((item) => {
                         return (
                             <Link className='link-style' to={`info/${item.node_name}`}>
@@ -151,12 +153,13 @@ const Dashboard = () => {
                             </Link>
                         )
                     })}
-                    </div>
+                    </div> */}
                 </div>
             </div>
             </div>
+            {/* -------------------------------------------------------- */}
             <div className="dashboard-sticky">
-                <AlertCard />
+                <Footer />
             </div>
         </div>
     </>

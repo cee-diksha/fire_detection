@@ -3,7 +3,7 @@ import { LineChart } from "@mui/x-charts";
 import { MainContext } from '../context/MainContext';
 
 
-const TempChart = () => {
+export const TempChart = () => {
     const {deviceInfo} = useContext(MainContext)
     const [info, setInfo] = useState(deviceInfo)
     const temp = info.map(item => item.temp)
@@ -39,4 +39,38 @@ const TempChart = () => {
   )
 }
 
-export default TempChart
+export const BatteryChart = () => {
+  const {deviceInfo} = useContext(MainContext)
+  const [info, setInfo] = useState(deviceInfo)
+  const battery = info.map(item => item.battery_percentage)
+  const node = info.map(item => item.node_id)
+
+  console.log(battery, node, "nodetempchart")
+
+  useEffect(() => {
+    console.log("chekcinh temp", deviceInfo)
+    setInfo(deviceInfo.filter(item => item.node_type === "sensor"))
+  }, [deviceInfo])
+    return (
+      <>
+        <LineChart
+          xAxis={[{ data: node }]}
+          series={[
+              {
+              data: battery,
+              label: 'Battery'
+              },
+          ]}
+          tooltip={{
+            formatter: (params) => {
+              const nodeId = params.x;
+              const battValue = params.y;
+              return `Node ID: ${nodeId}\nBattery: ${battValue}°C`;
+            },
+          }}
+          width={500}
+          height={180}
+        />
+      </>
+    )
+}
