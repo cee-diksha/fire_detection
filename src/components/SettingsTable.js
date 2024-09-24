@@ -17,15 +17,9 @@ const SettingsTable = () => {
         );
     };
 
-    const handleLocationChange = (node_id, location) => {
+    const handleFieldChange = (node_id, field, value) => {
         setData((prev) => 
-            prev.map(item => item.node_id === node_id ? { ...item, location, node_name: location } : item)
-        );
-    };
-
-    const handleTempChange = (node_id, temp) => {
-        setData((prev) => 
-            prev.map(item => item.node_id === node_id ? { ...item, temp: temp } : item)
+            prev.map(item => item.node_id === node_id ? { ...item, [field]: value } : item)
         );
     };
 
@@ -80,14 +74,22 @@ const SettingsTable = () => {
                             <td>{index + 1}</td>
                             <td>{item.node_id}</td>
                             <td style={{ textTransform: "capitalize" }}>{item.node_type}</td>
-                            <td>{item.axis}</td>
+                            <td>
+                                <input
+                                    type="text"
+                                    style={{ width: "60%" }}
+                                    defaultValue={item.axis}
+                                    onChange={(e) => handleFieldChange(item.node_id, 'axis', e.target.value)}
+                                    disabled={item.isDeleted}
+                                />
+                            </td>
                             <td>
                                 <input
                                     type="text"
                                     style={{ width: "90%" }}
                                     defaultValue={item.node_name}
-                                    onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
-                                    disabled={item.isDeleted} // Disable input if greyed out
+                                    onChange={(e) => handleFieldChange(item.node_id, 'node_name', e.target.value)}
+                                    disabled={item.isDeleted}
                                 />
                             </td>
                             <td>
@@ -98,10 +100,10 @@ const SettingsTable = () => {
                                         placeholder="Enter a number"
                                         value={item.temp}
                                         style={{ width: "30%" }}
-                                        onChange={(e) => handleTempChange(item.node_id, e.target.value)}
-                                        disabled={item.isDeleted} // Disable input if greyed out
+                                        onChange={(e) => handleFieldChange(item.node_id, 'temp', e.target.value)}
+                                        disabled={item.isDeleted}
                                     />
-                                    <span> °C</span> {/* Place °C in a span */}
+                                    <span> °C</span>
                                 </>}
                             </td>
                             <td>
@@ -116,7 +118,7 @@ const SettingsTable = () => {
                                         disabled={item.isDeleted || item.node_type === 'repeater' || item.node_type === 'trigger unit'}
                                     />
                                 ) : (
-                                    "NA" // Display "NA" if smokeSensor is null
+                                    "NA" 
                                 )}
                             </td>
                             <td>
@@ -131,25 +133,25 @@ const SettingsTable = () => {
                                         disabled={item.isDeleted || item.node_type === 'repeater' || item.node_type === 'trigger unit'}
                                     />
                                 ) : (
-                                    "NA" // Display "NA" if triggeringDevice is null
+                                    "NA" 
                                 )}
                             </td>
                             <td>
                                 <input
-                                        type="number"
-                                        style={{ width: "40%" }}
+                                        type="text"
+                                        style={{ width: "60%" }}
                                         defaultValue={item.deck}
-                                        onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
-                                        disabled={item.isDeleted} // Disable input if greyed out
+                                        onChange={(e) => handleFieldChange(item.node_id, 'deck', e.target.value)}
+                                        disabled={item.isDeleted}
                                     />
                             </td>
                             <td>
                                 <input
-                                        type="number"
-                                        style={{ width: "40%" }}
+                                        type="text"
+                                        style={{ width: "60%" }}
                                         defaultValue={item.compartment}
-                                        onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
-                                        disabled={item.isDeleted} // Disable input if greyed out
+                                        onChange={(e) => handleFieldChange(item.node_id, 'compartment', e.target.value)}
+                                        disabled={item.isDeleted}
                                     />
                             </td>
                             <td>
