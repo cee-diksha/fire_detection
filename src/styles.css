@@ -286,13 +286,20 @@ input {
     text-decoration: none;
 }
 
-#h4{
-    font-size: 24px;
+.h4{
+    font-size: 26px;
+    text-transform: capitalize;
 }
-
+.specific-header-location{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
 .specific-device-header{
     display: flex;
     align-items: center;
+    height: 40px;
 }
 
 #status-circle{
@@ -302,8 +309,11 @@ input {
     border-radius: 50%;
 }
 
+.device-table{
+    margin-bottom: 40px;
+}
 
-.specific-device-wrapper{
+.specific-device-wrapper, .specific-deck-wrapper{
     min-height: 100vh;
     height: auto; 
     display: flex;
@@ -321,11 +331,37 @@ input {
     margin-left: auto;
 }
 
+.alerts-chart-wrapper {
+    display: flex;
+    width: 99%;
+    align-items:flex-start;
+    justify-content: space-evenly;
+    margin: 40px 0;
+}
+
 .specific-device-charts{
     display: flex;
-    width: 90%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
     background-color: #ffffff;
-    margin-top: 40px;
+}
+
+.single-alert{
+    margin-bottom: 10px;
+}
+
+.alert-logs{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+}
+
+.alert-span{
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 .specific-device-mainheader{

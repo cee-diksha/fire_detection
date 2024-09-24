@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const Grid = ({devices, deck}) => {
   const dangerCompartments = devices.map(item => item.comp)
   const [highlightedId, setHighlightedId] = useState(dangerCompartments); 
-  console.log(dangerCompartments, "compartment check")
+  console.log(dangerCompartments, "compartment check", devices)
 
   useEffect(() => {
     setHighlightedId(dangerCompartments)
-  }, [dangerCompartments])
+  }, [])
 
   console.log(highlightedId, "compart")
 
@@ -19,7 +19,7 @@ const Grid = ({devices, deck}) => {
     <div style={{marginRight: "14px"}}>
       <div className="grid-container">
         {boxes.map((boxId) => (
-          <Link style={{textDecoration: "none"}} to={`deck/${deck}`}>
+         highlightedId.includes(boxId) ? <Link style={{textDecoration: "none"}} to={`deck/${deck}`}>
               <div
               key={boxId}
               id={`box-${boxId}`}
@@ -27,7 +27,14 @@ const Grid = ({devices, deck}) => {
             >
               {boxId}
             </div>
-          </Link>
+          </Link> : <div
+          key={boxId}
+          id={`box-${boxId}`}
+          style={{cursor: "not-allowed"}}
+          className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
+        >
+          {boxId}
+        </div>
         ))}
       </div>
     </div>
