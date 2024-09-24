@@ -6,10 +6,6 @@ const SummaryCard = () => {
     <div className='sum-details'>
         <h4>SUMMARY</h4>
         <div className='sum-details-combined' >
-            <div id="sum-details-span1">Available devices</div>
-            <div id="sum-details-span2">24/25</div>
-        </div>
-        <div className='sum-details-combined' >
             <div id="sum-details-span1">Available Repeaters</div>
             <div id="sum-details-span2">10/10</div>
         </div>
@@ -20,6 +16,10 @@ const SummaryCard = () => {
         <div className='sum-details-combined' >
             <div id="sum-details-span1">Available Suppression Units</div>
             <div id="sum-details-span2">1/1</div>
+        </div>
+        <div className='sum-details-combined' >
+            <div id="sum-details-span1">Available devices</div>
+            <div id="sum-details-span2">24/25</div>
         </div>
     </div>
   )

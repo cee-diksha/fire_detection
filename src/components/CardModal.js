@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import stopalarm from "../assets/stop_alarm.png"
 import "./comp-styles.css"
 import { MainContext } from '../context/MainContext'
+import battery from "../assets/battery.png"
+import temp from "../assets/temp.png"
 
 
 const CardModal = ({open, handleClose, option }) => {
@@ -53,8 +55,8 @@ const CardModal = ({open, handleClose, option }) => {
                         <div id="card-details-span2">{specificData.node_id}</div>
                     </div>
                     <div className='card-details-combined'>
-                        <div id="card-details-span1">{specificData.bat_volt}</div>
-                        <div id="card-details-span1">{specificData.temp}</div>
+                        <div class="battery-span"><img src={battery} alt="battery-logo" style={{height: "20px"}}/>{specificData.battery_percentage}</div>
+                        <div class="battery-span"><img src={temp} alt="battery-logo" style={{height: "20px"}}/>{specificData.temp}</div>
                     </div>
                     <div id="card-details-span1">Last Update</div>
                     <div id="card-details-span2">{specificData.last_update}</div>

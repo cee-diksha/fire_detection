@@ -63,7 +63,7 @@ const SpecificDevice = () => {
                     <th>3 Axis</th>
                     <th>Location</th>
                     <th>Temperature</th>
-                    <th>Battery Volt</th>
+                    <th>Battery</th>
                     <th>Last Update</th>
                     <th>Smoke Sensor</th>
                     <th>Triggering Device</th>
@@ -74,8 +74,8 @@ const SpecificDevice = () => {
                 <td style={{textTransform: "capitalize"}}>{device[0].node_type}</td>
                 <td>{device[0].axis}</td>
                 <td>{device[0].node_name}</td>
-                <td>{device[0].temp}</td>
-                <td>{device[0].bat_volt}</td>
+                <td>{device[0].temp}°C</td>
+                <td>{device[0].battery_percentage}</td>
                 <td>{device[0].last_update}</td>
                 <td>{device[0].smokeSensor ? "True" : "False"}</td>
                 <td>{device[0].triggeringDevice ? "True" : "False"}</td>

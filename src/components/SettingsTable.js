@@ -69,6 +69,8 @@ const SettingsTable = () => {
                             <th>Temp Setpoint</th>
                             <th>Smoke Sensor</th>
                             <th>Triggering Device</th>
+                            <th>Deck No.</th>
+                            <th>Compartment No.</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -131,6 +133,24 @@ const SettingsTable = () => {
                                 ) : (
                                     "NA" // Display "NA" if triggeringDevice is null
                                 )}
+                            </td>
+                            <td>
+                                <input
+                                        type="number"
+                                        style={{ width: "40%" }}
+                                        defaultValue={item.deck}
+                                        onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
+                                        disabled={item.isDeleted} // Disable input if greyed out
+                                    />
+                            </td>
+                            <td>
+                                <input
+                                        type="number"
+                                        style={{ width: "40%" }}
+                                        defaultValue={item.compartment}
+                                        onChange={(e) => handleLocationChange(item.node_id, e.target.value)}
+                                        disabled={item.isDeleted} // Disable input if greyed out
+                                    />
                             </td>
                             <td>
                                 <button onClick={() => handleDeleteRow(item.node_id)}>
