@@ -10,56 +10,79 @@ import DropDown from '../components/DropDown'
 import {TempChart, BatteryChart} from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
-import AlertsCard from '../components/AlertsCard'
+import DeckCard from '../components/DeckCard'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
 import Footer from '../components/Footer'
+import AlertCard from '../components/AlertCard'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
     const [deckInfo, setDeckInfo] = useState(null)
-    // const [normalDevices, setNormalDevices] = useState(null)
 
-    // const filtering = cardData.filter(item => item.status === "danger").reduce((acc, curr) => {
-    //     const exists = acc.find(item => item.deck === curr.deck)
-    //     if (exists) {
-    //         exists.compartment = [...new Set([...exists.compartment, ...curr.compartment])];
-    //     } else {
-    //         acc.push({
-    //             ...curr,
-    //             compartment: [...curr.compartment]
-    //         })
-    //     }
-    //     return acc
-    // }, [])
-
-
+    console.log(deckData, "deckData")
     useEffect(() => {
-        const dangerDevices = deckData.map(deck => ({
-            ...deck,
-            devices: deck.devices.filter(device => 
-                device.node_info.some(node => node.status === "danger")
-            )
-        }))
-
-        // const normalDevices = deckData.map(deck => ({
-        //     ...deck,
-        //     devices: deck.devices.filter(device => 
-        //         device.node_info.some(node => node.status === "success")
-        //     )
-        // }))
-        .filter(deck => deck.devices.length > 0);
-        setDeckInfo(dangerDevices)
-        // setNormalDevices(normalDevices)
+        const reducedData = deckData.reduce((acc, curr) => {
+            const existingDeck = acc.find(item => item.deck === curr.deck);
+          
+           const hasDanger = [];
+            const hasOrange = [];
+            const hasYellow = [];
+            const hasSuccess = [];
+          
+            curr.devices.forEach(device => {
+              const compartments = device.node_info.map(item => ({
+                node: item.node,
+                status: item.status,
+                comp: device.comp 
+              }));
+          
+              compartments.forEach(compartment => {
+                if (compartment.status === "danger") {
+                  hasDanger.push(compartment.comp);
+                } else if (compartment.status === "orange") {
+                  hasOrange.push(compartment.comp);
+                } else if (compartment.status === "yellow") {
+                  hasYellow.push(compartment.comp);
+                } else if (compartment.status === "success") {
+                  hasSuccess.push(compartment.comp);
+                }
+              });
+            });       
+            if (existingDeck) {
+              existingDeck.danger.push(...hasDanger);
+              existingDeck.normal.push(...hasSuccess);
+              existingDeck.temprise.push(...hasOrange);
+              existingDeck.lowbattery.push(...hasYellow);
+            } else {
+                const newDeck = {
+                    deck: curr.deck,
+                    danger: hasDanger,
+                    normal: hasSuccess,
+                    temprise: hasOrange,
+                    lowbattery: hasYellow,
+                };
+            
+                if (hasDanger.length > 0) {
+                    acc.unshift(newDeck);  //to insert the decks having danger at start
+                } else {
+                    acc.push(newDeck);   
+                }
+            }
+          
+            return acc;
+          }, []);
+          
+        console.log(reducedData, "reduced data check")
+        setDeckInfo(reducedData)
         setCardData(deviceInfo)
     }, [deviceInfo, deckData])
 
-    console.log(isLogin, "is logged in")
   return (
     <>
         <div  className='dashboard-wrapper'>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%", width: "96%"}}>
-            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "300px"}}>
                 <img style={{height: "100px"}} src={shipcrest} alt="ship" />
                 <h2 id="dashboard-heading">Ship Name</h2>
             </div>
@@ -73,11 +96,10 @@ const Dashboard = () => {
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>
-                    <div className='div1'>
+                    <AlertCard />
+                    <div className='div-nested'>
                         <SummaryCard />
-                    </div>
-                    <div className='div2'>
-                        <AlertsCard />
+                        <DeckCard />
                     </div>
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
@@ -114,7 +136,7 @@ const Dashboard = () => {
                         {console.log(deckInfo, "checkingdeckinfo")}
                     {deckInfo.map((item, index) => {
                     return (
-                        <DeckDashboardPageDiv key={index} data={item} />
+                        <DeckDashboardPageDiv key={index} data={item} deckNo={item.deck}/>
                     )
                     })} 
                 </div>}

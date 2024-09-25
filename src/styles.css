@@ -47,7 +47,7 @@
 }
 
 .dashboard-middle {
-    width: 24%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,21 +56,20 @@
 }
     .dashboard-content-summary{
         width: 100%;
-        padding-bottom: 10px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 4%;
         height: 180px;
     }
 
-    .dashboard-content-summary .div1{
-        width: 65%;
-        height: 100%;
-    }
-    .dashboard-content-summary .div2{
-        width: 30%;
-        height: 100%;
+    .dashboard-content-summary .div-nested{
+        margin-top: 16px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
     }
 
     .dashboard-content-alert{
@@ -92,7 +91,7 @@
     }
 
     .dashboard-content-comm {
-        margin-top: 4%;
+        margin: 4% auto 0 auto;
         width: 100%;
         height: 40%;
         border-radius: 10px;
@@ -119,9 +118,15 @@
     position: sticky;
     bottom: 0;
     width: 100%;
-    background-color: #ffffff;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    background-color: #B22222;
     text-align: center;
     z-index: 1000; 
+    font-size: 14px;
 }
 
 .link{
@@ -205,7 +210,7 @@ input {
 }
 
 .main-dashboard-wrapper{
-    width: 74%;
+    width: 64%;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
@@ -344,11 +349,11 @@ input {
 
 .specific-device-charts{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: auto;
     background-color: #ffffff;
+    margin: 40px 0;
 }
 
 .single-alert{

@@ -1,13 +1,12 @@
   .grid-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 34px); 
+    grid-gap: 6px;
   }
 
   .box {
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 26px;
     background-color: lightgray;
     display: flex;
     justify-content: center;
@@ -23,21 +22,37 @@
     justify-content: center;
   }
   
-  .highlighted {
-    background-color: red;
+  .danger {
+    background-color: #F84848;
     color: #ffffff;
     animation: blinking 1s infinite;
+  }
+
+  .temprise {
+    background-color: #ff9a03;
+    color: #ffffff;
+  }
+
+  .lowbattery {
+    background-color: #ffeb32;
+    color: #000000;
+  }
+
+  .normal {
+    background-color: #7BFF6D;
+    color: #000000;
   }
   
   @keyframes blinking {
     0% {
-      background-color: red;
+      background-color: #F84848;
     }
     50% {
-      background-color: orange;
+      color: #000000;
+      background-color: rgb(255, 255, 255);
     }
     100% {
-      background-color: red;
+      background-color: #F84848;
     }
   }
   
@@ -53,33 +68,30 @@
   }
   
 
-  .deckcard{
-    border-radius: 10px;
-    width: 100%;
-    background-color: #393939;
-    color: #ffffff;
-    height: 100%;
+  .deckcard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+  }
+  
+  .btnstyle {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: space-evenly;
-    padding-bottom: 4px;
-}
-
-.deckcard button{
-    border: none;
-    cursor: pointer;
+    justify-content: center;
+    background-color: lightgray;
+    color: black;
+    margin: 2px 0;
     font-size: 14px;
-    width: 80px;
-    background-color: #4c4c4c;
-    color: #f4efef;
-}
-
-.btnstyle{
-
-}
+  }
 
 .alert{
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2px 0;
   animation: blinkingDeck 1s infinite;
   color: white;
 }
@@ -115,7 +127,7 @@
     background-color: red;
   }
   50% {
-    background-color: orange;
+    background-color: rgb(255, 255, 255);
   }
   100% {
     background-color: red;
@@ -124,7 +136,6 @@
 
 .deck-display-grid{
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-evenly;

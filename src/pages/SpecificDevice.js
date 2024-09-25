@@ -39,7 +39,7 @@ const SpecificDevice = () => {
         </div>
       </div>
        
-      <div className='alerts-chart-wrapper'>
+      {/* <div className='alerts-chart-wrapper'>
         {specificData[0].node_type === "sensor"&& <div className='alert-logs'>
           <h2>Alert Logs</h2>
          {alertlogsInfoTemp.map(item => <div className='single-alert'>
@@ -49,12 +49,13 @@ const SpecificDevice = () => {
           <span className='alert-span' style={{color: item.info === "[INFO]" ? "#05abf9" : item.info === "[WARNING]" ? "#FFC300" : "#F84848" }}>Temperature: {item.value} °C</span>
          </div>)}
         </div>}
-        <div className='specific-device-charts'>
+        
+      </div> */}
+      <div className='specific-device-charts'>
           {specificData[0].node_type === "sensor" && <SpecificTempChart temperature = {specificData[0].temperature} status={device[0].status}/>}
           <SpecificBattChart batt = {specificData[0].battery_percentage} />
         </div>
-      </div>
-      <div className='device-table'>
+      {/* <div className='device-table'>
         <table>
             <thead>
                 <tr>
@@ -81,7 +82,7 @@ const SpecificDevice = () => {
                 <td>{device[0].triggeringDevice ? "True" : "False"}</td>
             </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   )
 }

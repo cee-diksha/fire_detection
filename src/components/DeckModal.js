@@ -24,14 +24,24 @@ const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
   )
 }
 
-export const DeckDashboardPageDiv = ({data}) => {
+export const DeckDashboardPageDiv = ({data, deckNo}) => {
+  console.log(data, "grid rendering")
     return (
       <div>
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
-          <h4>Deck {data.deck}</h4>
-          <Grid devices={data.devices} deck={data.deck} /> 
+          <h4>Deck {deckNo}</h4>
+          <Grid data={data} deckNo={deckNo} /> 
         </div>
       </div>
     )
   }
 
+
+  
+  // const dangerDevices = data?.map(deck => ({
+  //       ...deck,
+  //       devices: deck.devices.filter(device => 
+  //           device.node_info.some(node => node.status === "danger")
+  //       )
+  //   })).filter(deck => deck.devices.length > 0);
+  // console.log(data.devices, "checking devices")
