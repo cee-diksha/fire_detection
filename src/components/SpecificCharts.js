@@ -3,8 +3,8 @@ import { LineChart } from "@mui/x-charts"
 
 export const SpecificBattChart = ({batt}) => {
     console.log(batt, "battbatt")
-    const time = batt.map(item => item.time)
-    const battery = batt.map(item => item.value)
+    const time = [0, ...batt.map(item => item.time)]
+    const battery = [0, ...batt.map(item => item.value)]
     const lineColor = "#05abf9"
 
  return(
@@ -32,8 +32,8 @@ export const SpecificBattChart = ({batt}) => {
 
 export const SpecificTempChart = ({temperature, status}) => {
     console.log(temperature, status, "speciifc temp chart")
-    const time = temperature.map(item => item.time)
-    const temp = temperature.map(item => item.value)
+    const time = [0, ...temperature.map(item => item.time)]
+    const temp = [0, ...temperature.map(item => item.value)]
     const lineColor = status === "danger" ? "#F84848" : status === "yellow" ? "#FFC648" : status === "orange" ? "#FF6B3B" : "#05abf9"
     return(
         <LineChart

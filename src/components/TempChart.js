@@ -42,8 +42,8 @@ export const TempChart = () => {
 export const BatteryChart = () => {
   const {deviceInfo} = useContext(MainContext)
   const [info, setInfo] = useState(deviceInfo)
-  const battery = info.map(item => item.battery_percentage)
-  const node = info.map(item => item.node_id)
+  const battery = [0, ...info.map(item => item.battery_percentage)]
+  const node = [0, ...info.map(item => item.node_id)]
 
   console.log(battery, node, "nodetempchart")
 

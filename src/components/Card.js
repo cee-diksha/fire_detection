@@ -65,6 +65,7 @@ const Card = ({item}) => {
   }
 
   const handleStopAlarm =  (event) => {
+    console.log("stop alarm btn")
     event.preventDefault()
     event.stopPropagation()
   }
@@ -93,7 +94,7 @@ return (
     </div>
     <div className="segment" style={{borderBottom: "none"}} id='refresh-alarm-btn'>
       <button onClick={handleRefresh} id='refresh-alarm-btn-both'>Refresh</button>
-      <button onClick={handleStopAlarm} id={`${status === "danger" ? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`}>Stop Alarm</button>
+      <button onClick={handleStopAlarm} id={`${status === "danger" ? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} disabled = {status === "danger" ? false : true}>Stop Alarm</button>
     </div>
   </div>
 )
