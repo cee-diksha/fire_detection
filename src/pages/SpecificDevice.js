@@ -32,7 +32,7 @@ const SpecificDevice = () => {
         </div>
       </div>
       <div className='specific-header-location'>
-        <h4 className="h4">{device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
+        <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
         <div className='specific-device-header'>
             <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
             <h4 className="h4">{device[0].node_name}</h4> 

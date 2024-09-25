@@ -6,8 +6,8 @@ import { MainContext } from '../context/MainContext';
 export const TempChart = () => {
     const {deviceInfo} = useContext(MainContext)
     const [info, setInfo] = useState(deviceInfo)
-    const temp = info.map(item => item.temp)
-    const node = info.map(item => item.node_id)
+    const temp = [0, ...info.map(item => item.temp)]
+    const node = [0, ...info.map(item => item.node_id)]
 
     console.log(temp, node, "nodetempchart")
 

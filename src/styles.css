@@ -288,12 +288,15 @@ input {
 .h4{
     font-size: 26px;
     text-transform: capitalize;
+    margin-top: 0px;
 }
 .specific-header-location{
     display: flex;
     align-items: center;
     flex-direction: column;
     height: auto;
+    margin-top: -60px;
+    height: 100px;
 }
 .specific-device-header{
     display: flex;
@@ -304,6 +307,7 @@ input {
 #status-circle{
     height: 30px;
     width: 30px;
+    margin-top: -30px;
     margin-right: 10px;
     border-radius: 50%;
 }

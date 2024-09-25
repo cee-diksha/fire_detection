@@ -1,8 +1,10 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(10, 30px); 
-    grid-gap: 5px;
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px;
   }
+
   .box {
     width: 30px;
     height: 30px;
@@ -14,6 +16,11 @@
     border: 1px solid #ccc;
     cursor: pointer;
     color: #000000;
+  }
+
+  .grid-row {
+    display: flex;
+    justify-content: center;
   }
   
   .highlighted {
@@ -90,7 +97,6 @@
   width: 400px;
   padding: 18px;
   border-radius: 6px;
-  background-color: #433D8B;
 }
 
 .status-grid-modal h4{
@@ -123,4 +129,5 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-bottom: 30px;
+  width: 100%;
 }

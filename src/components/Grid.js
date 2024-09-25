@@ -1,42 +1,51 @@
 import React, { useEffect, useState } from "react";
-import "./Grid-style.css"; 
+import "./Grid-style.css";
 import { Link } from "react-router-dom";
 
-const Grid = ({devices, deck}) => {
-  const dangerCompartments = devices.map(item => item.comp)
-  const [highlightedId, setHighlightedId] = useState(dangerCompartments); 
-  console.log(dangerCompartments, "compartment check", devices)
+const Grid = ({ devices, deck }) => {
+  const dangerCompartments = devices.map(item => item.comp);
+  const [highlightedId, setHighlightedId] = useState(dangerCompartments);
 
   useEffect(() => {
-    setHighlightedId(dangerCompartments)
-  }, [])
+    setHighlightedId(dangerCompartments);
+  }, []);
 
-  console.log(highlightedId, "compart")
+  // Define the number of boxes in each row for the ship-like shape
+  const rowSizes = [14, 13, 11, 9, 7]; 
 
-  const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
+  let boxId = 1; // Track the box ID
 
   return (
-    <div style={{marginRight: "14px"}}>
-      <div className="grid-container">
-        {boxes.map((boxId) => (
-         highlightedId.includes(boxId) ? <Link style={{textDecoration: "none"}} to={`deck/${deck}`}>
+    <div className="grid-container">
+      {rowSizes.map((rowSize, rowIndex) => (
+        <div key={rowIndex} className="grid-row">
+          {Array.from({ length: rowSize }, (_, index) => {
+            const currentBoxId = boxId++;
+            return highlightedId.includes(currentBoxId) ? (
+              <Link
+                key={currentBoxId}
+                style={{ textDecoration: "none" }}
+                to={`deck/${deck}`}
+              >
+                <div
+                  id={`box-${currentBoxId}`}
+                  className={`box highlighted`}
+                >
+                  {currentBoxId}
+                </div>
+              </Link>
+            ) : (
               <div
-              key={boxId}
-              id={`box-${boxId}`}
-              className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
-            >
-              {boxId}
-            </div>
-          </Link> : <div
-          key={boxId}
-          id={`box-${boxId}`}
-          style={{cursor: "not-allowed"}}
-          className={`box ${highlightedId.includes(boxId) ? "highlighted" : ""}`}
-        >
-          {boxId}
+                key={currentBoxId}
+                id={`box-${currentBoxId}`}
+                className={`box`}
+              >
+                {currentBoxId}
+              </div>
+            );
+          })}
         </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 };
