@@ -42,8 +42,8 @@ export const deckInfo = [
     },
     {
         id: "4", deck: 4, devices: [
-            { comp: 5, node_info: [{ node: 111, status: "danger" }] },
-            { comp: 3, node_info: [{ node: 104, status: "yellow" }, { node: 113, status: "success" }] }
+            { comp: 3, node_info: [{ node: 113, status: "success" }, { node: 104, status: "yellow" }] },
+            { comp: 5, node_info: [{ node: 111, status: "danger" }] }
         ]
     },
     {

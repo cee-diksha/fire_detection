@@ -18,11 +18,11 @@ export const TempChart = () => {
   return (
     <>
       <LineChart
-        xAxis={[{ data: node,  scaleType: 'band' }]}
+        xAxis={[{ data: node,  scaleType: 'band', label: "Node ID" }]}
         series={[
             {
             data: temp,
-            label: 'Temperature'
+            label: 'Temperature(°C)'
             },
         ]}
         tooltip={{
@@ -47,19 +47,19 @@ export const BatteryChart = () => {
 
   console.log(battery, node, "nodetempchart")
 
+
   useEffect(() => {
-    console.log("chekcinh temp", deviceInfo)
     setInfo(deviceInfo)
   }, [deviceInfo])
     return (
       <>
         <LineChart
-          xAxis={[{ data: node, scaleType: 'band' }]}
+          xAxis={[{ data: node, scaleType: 'band', label: "Node ID" }]}
           series={[
               {
               data: battery,
-              label: 'Battery'
-              },
+              label: 'Battery (%)',
+              }
           ]}
           tooltip={{
             formatter: (params) => {

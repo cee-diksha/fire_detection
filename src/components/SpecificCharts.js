@@ -9,7 +9,7 @@ export const SpecificBattChart = ({batt, status}) => {
 
  return(
         <LineChart
-            xAxis={[{ data: time, scaleType: 'band'}]}
+            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)"}]}
             series={[
                 {
                 data: battery,
@@ -21,7 +21,7 @@ export const SpecificBattChart = ({batt, status}) => {
             formatter: (params) => {
                 const time = params.x;
                 const batteryVal = params.y;
-                return `Node ID: ${time}\nBattery: ${batteryVal}°C`;
+                return `Time(hrs): ${time}\nBattery: ${batteryVal}°C`;
             },
             }}
             width={500}
@@ -37,7 +37,7 @@ export const SpecificTempChart = ({temperature, status}) => {
     const lineColor = status === "danger" ? "#F84848" : status === "orange" ? "#FF6B3B" : "#05abf9"
     return(
         <LineChart
-            xAxis={[{ data: time, scaleType: 'band' }]}
+            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)" }]}
             series={[
                 {
                 data: temp,
@@ -49,7 +49,7 @@ export const SpecificTempChart = ({temperature, status}) => {
             formatter: (params) => {
                 const time = params.x;
                 const tempValue = params.y;
-                return `Node ID: ${time}\nTemperature: ${tempValue}°C`;
+                return `Time(hrs): ${time}\nTemperature: ${tempValue}°C`;
             },
             }}
             width={500}

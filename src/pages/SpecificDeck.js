@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../styles.css"
 import { Link, useParams } from 'react-router-dom'
 import Footer from '../components/Footer'
@@ -7,10 +7,39 @@ import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import user from "../assets/user.png"
+import Card from '../components/Card'
 
 const SpecificDeck = () => {
     const {deck} = useParams()
-    const {isLogin} = useContext(MainContext)
+    const {isLogin, deckData, deviceInfo} = useContext(MainContext)
+    const [deckInfo, setDeckInfo] = useState([])
+
+    useEffect(() => {
+      const filtered = deckData.filter(item => item.deck === parseInt(deck)).flatMap(item => {
+      const arr = [];
+      item.devices.forEach(data => {
+        const sortedNodeInfo = data.node_info.sort((a, b) => {
+          const statusOrder = { danger: 1, orange: 2, yellow: 3, success: 4 };
+          return statusOrder[a.status] - statusOrder[b.status];
+        });
+
+        if (sortedNodeInfo.some(info => info.status === "yellow")) {
+          arr.unshift({ ...data, node_info: sortedNodeInfo });
+        } else if (sortedNodeInfo.some(info => info.status === "orange")) {
+          arr.unshift({ ...data, node_info: sortedNodeInfo });
+        } else if (sortedNodeInfo.some(info => info.status === "danger")) {
+          arr.unshift({ ...data, node_info: sortedNodeInfo });
+        } else {
+          arr.push({ ...data, node_info: sortedNodeInfo });
+        }
+        });
+
+        return arr;
+      });
+
+      console.log(filtered, "final filtered output", deckData);
+      setDeckInfo(filtered)
+    }, [deckData])
 
   return (
     <div className='specific-deck-wrapper'>
@@ -27,9 +56,25 @@ const SpecificDeck = () => {
         </div>
       </div>
       <h4 className="h4">Deck - {deck} </h4>
-    <div className="dashboard-sticky">    
-      <Footer />
-    </div>
+      <div className='card-holder-specificdeck'>
+        {deckInfo.map((item, index) => {
+          const details = deviceInfo.filter(data => (data.deck === parseInt(deck) && data.compartment === item.comp))
+          console.log(details, 'detailsdetails', deviceInfo)
+          return(
+            details.map(detail => {
+              return (
+                <div className='specific-card'>
+                <h3>Compartment No. - {item.comp}</h3>
+                <Card item={detail}key={index} />
+              </div>
+              )
+            })
+          )
+        })}
+      </div>
+      <div className="dashboard-sticky">    
+        <Footer />
+      </div>
     </div>
   )
 }

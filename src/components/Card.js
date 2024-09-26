@@ -73,7 +73,7 @@ console.log("card data check", status, node_type, node_name, node_id, battery_pe
 return (
   <div className={`${status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${isDeleted ? "#D0D0D0" : status === "success" ? "#7BFF6D" : status === "yellow" ? "#FFC648" : status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${isDeleted ? "#000000" : (status === "yellow" || status === "success") ? "#000" : "#fff"}`}}>
     <div className="segment" id='node-type-id'>
-      <p id="sensor-name"><img src={status === "yellow" ? sensor2 : sensor} alt="sensor-logo" style={{height: "30px", marginTop: "4px", marginRight: "10px"}}/>{node_type}</p>
+      <p id="sensor-name"><img src={(status === "yellow" || status === "success")? sensor2 : sensor} alt="sensor-logo" style={{height: "30px", marginTop: "4px", marginRight: "10px"}}/>{node_type}</p>
       <p>{node_id}</p>
     </div>
     <div className="segment" id='node-location'>
@@ -86,7 +86,7 @@ return (
       <div><img src={battery} alt="battery-logo" style={{height: "20px", marginRight: "6px"}}/>{battery_percentage}%</div>
     </div>
     <div className="segment" id='last-update'>
-      <img src={status === "yellow" ? update2 : update} alt="update-logo" style={{height: "20px", marginRight: "6px"}}/>
+      <img src={(status === "yellow" || status === "success") ? update2 : update} alt="update-logo" style={{height: "20px", marginRight: "6px"}}/>
       <div>
         <span style={{fontWeight: "600"}}>Last update</span>
         <span style={{fontSize: "12px"}}>{last_update}</span>
