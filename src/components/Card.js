@@ -58,7 +58,7 @@ import update2 from "../assets/update2.png"
 
 const Card = ({item}) => {
   const {status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, smokeSensor, triggeringDevice, deck, compartment} = item
-
+console.log("card data check", status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted)
   const handleRefresh = (event) => {
     event.preventDefault()
     event.stopPropagation()

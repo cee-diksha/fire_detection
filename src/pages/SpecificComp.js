@@ -4,21 +4,22 @@ import "../styles.css"
 import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
-import { deckInfo } from '../assets/info'
+import { info } from '../assets/info'
+import Card from '../components/Card'
 
 
 const SpecificComp = () => {
     const {deck, comp} = useParams()
     const {isLogin} = useContext(MainContext)
-    const [compData, setCompData] = useState(null)
-    console.log(compData, "deckData")
+    const [compData, setCompData] = useState([])
+    console.log(compData, "deckData", deck, comp)
 
     useEffect(() => {
-      const deckdata = deckInfo.filter(item => item.deck === parseInt(deck))
-      const compdata = deckdata[0].devices.filter(item => item.comp === parseInt(comp))
-      console.log(compdata, "compdata")
+      const compdata = info.filter(item => (item.deck === parseInt(deck) && item.compartment === parseInt(comp)))
+      // const compdata = deckdata[0].devices.filter(item => item.comp === parseInt(comp))
+      console.log(compdata, "compdata", info)
       setCompData(compdata)
-    }, [deckInfo])
+    }, [info])
 
   return (
     <div className='specific-deck-wrapper'>
@@ -35,8 +36,11 @@ const SpecificComp = () => {
         </div>
       </div>
       <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
-      <div>
-        
+      <div className='display-specific-comp-card'>
+      {compData?.length !== 0 ? compData.map((item, index) => {
+        console.log(item, "item check")
+        return <Link className='link-style' to={`/info/${item.node_name}`}><Card key={index} item={item} /></Link>
+        }) : <h2>No device installed in this compartment</h2>}
       </div>
     </div>
   )

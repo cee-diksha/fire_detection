@@ -26,6 +26,7 @@
 }
 
 #dashboard-heading{
+    font-size: 26px;
     margin-left: 10px;
 }
 
@@ -401,3 +402,10 @@ input {
     visibility: visible;
   }
   
+  .display-specific-comp-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 90%;
+  }
