@@ -153,11 +153,12 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-between;
     background-color: #1A1C1D;
 }
 
 .login-form {
-    margin-top: 6%;
+    margin-top: -130px;
     background-color: #3F3F3F; 
     color: white;
     padding: 30px;
@@ -328,6 +329,7 @@ input {
     display: flex;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
     flex-direction: column;
     background-color: #1A1C1D;
     color: #fff;

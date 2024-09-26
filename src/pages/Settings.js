@@ -6,6 +6,7 @@ import SettingsTable from '../components/SettingsTable'
 import { TotalRepeaterCard, TotalSmokeCard, TotalSuppressionCard } from '../components/SettingsCards'
 import LiveClock from '../components/LiveClock'
 import { MainContext } from '../context/MainContext'
+import Footer from '../components/Footer'
 
 const Settings = () => {
   const {isLogin} = useContext(MainContext)
@@ -25,6 +26,9 @@ const Settings = () => {
         <TotalSmokeCard />
       </div>
       <SettingsTable />
+      <div className="dashboard-sticky">    
+        <Footer />
+      </div>
     </div>
   )
 }

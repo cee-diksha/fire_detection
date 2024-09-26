@@ -88,7 +88,7 @@ const Dashboard = () => {
             </div>
             <DropDown cardData={cardData} />
             <div className='imgWrapper'>
-                {isLogin ? <img src={user} alt="user-img" className='img'/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+                {isLogin ? <img src={user} alt="user-img" className='img' style={{marginTop: "3px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
                 <Link to={isLogin ? "/settings" : "#"} 
                 style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
             </div>

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react'
-import "./comp-styles.css"
+import "../comp-styles.css"
 
 const LiveClock = () => {
     const [currentDateTime, setCurrentDateTime] = useState({

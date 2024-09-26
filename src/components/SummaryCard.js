@@ -1,5 +1,5 @@
 import React from 'react'
-import "./comp-styles.css"
+import "../comp-styles.css"
 
 const SummaryCard = () => {
   return (

@@ -4,7 +4,7 @@ import Settings from "./pages/Settings"
 import Login from "./pages/Login"
 import SpecificDevice from "./pages/SpecificDevice";
 import SpecificComp from "./pages/SpecificComp";
-import SpecificDeck from "./components/SpecificDeck";
+import SpecificDeck from "./pages/SpecificDeck";
 
 
 export const routes = createBrowserRouter([

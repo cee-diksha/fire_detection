@@ -6,6 +6,8 @@ import settings from "../assets/settings.png"
 import { SpecificBattChart, SpecificTempChart } from '../components/SpecificCharts'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { specificDeviceChartData } from '../assets/info'
+import Footer from '../components/Footer'
+import user from "../assets/user.png"
 
 
 const SpecificDevice = () => {
@@ -26,7 +28,7 @@ const SpecificDevice = () => {
         </div>
         <div className='specific-device-imgWrapper'>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>
+            {isLogin ? <img src={user} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
             <Link to={isLogin ? "/settings" : "#"} 
              style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
@@ -83,6 +85,9 @@ const SpecificDevice = () => {
             </tbody>
         </table>
       </div> */}
+      <div className="dashboard-sticky">    
+        <Footer />
+      </div>
     </div>
   )
 }

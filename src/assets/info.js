@@ -140,14 +140,14 @@ export const specificDeviceChartData = [
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
+            { time: "15", value: "90", info: "[WARN]", status: "Battery dropping" },
+            { time: "16", value: "85", info: "[WARN]", status: "Battery dropping" },
+            { time: "17", value: "80", info: "[WARN]", status: "Battery dropping" },
+            { time: "18", value: "75", info: "[WARN]", status: "Battery dropping" },
+            { time: "19", value: "70", info: "[WARN]", status: "Battery dropping" },
+            { time: "20", value: "60", info: "[WARN]", status: "Battery dropping" },
+            { time: "21", value: "55", info: "[WARN]", status: "Battery dropping" },
+            { time: "22", value: "50", info: "[WARN]", status: "Battery dropping" }]
     },
     {
         node_type: "suppression unit", node_name: "SS Dining Hall", node_id: 105, deck:3, comp: 7, temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },

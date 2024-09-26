@@ -1,7 +1,7 @@
 import { Modal } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import stopalarm from "../assets/stop_alarm.png"
-import "./comp-styles.css"
+import "../comp-styles.css"
 import { MainContext } from '../context/MainContext'
 import battery from "../assets/battery.png"
 import temp from "../assets/temp.png"

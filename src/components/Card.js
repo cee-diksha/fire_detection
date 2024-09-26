@@ -1,5 +1,5 @@
 import React from 'react'
-import "./comp-styles.css"
+import "../comp-styles.css"
 import stopalarm from "../assets/stop_alarm.png"
 import battery from "../assets/battery.png"
 import temperature from "../assets/temp.png"

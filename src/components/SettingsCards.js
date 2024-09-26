@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import "./comp-styles.css"
+import "../comp-styles.css"
 import { MainContext } from "../context/MainContext"
 
 const totalUnits = (allDevices, unit) => {
@@ -11,11 +11,11 @@ const totalUnits = (allDevices, unit) => {
 export const TotalSuppressionCard = () => {
     const {deviceInfo} = useContext(MainContext)
     const [data, setData] = useState(deviceInfo)
-    const [count, setCount] = useState(totalUnits(data, "trigger unit"))
+    const [count, setCount] = useState(totalUnits(data, "suppression"))
 
     useEffect(() => {
         setData(deviceInfo)
-        setCount(totalUnits(deviceInfo, "trigger unit"))
+        setCount(totalUnits(deviceInfo, "suppression"))
     }, [deviceInfo])
     return(
         <div className="total-cards">

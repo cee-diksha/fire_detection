@@ -219,6 +219,7 @@ justify-content:center ;
 
 .settings-table-resetbtn-wrapper{
     width: 98.5%;
+    margin-top: 3%;
     display: flex;
     flex-direction: column;
 }
@@ -257,12 +258,12 @@ justify-content:center ;
 /* Table styling */
 .table-container {
     width: 100%;
-    height: 400px;
+    height: 50vh;
     overflow-x: auto;
     overflow-y: auto;
     padding: 0px;
     box-sizing: border-box;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 table {
