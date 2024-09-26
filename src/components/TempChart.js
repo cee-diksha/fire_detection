@@ -18,7 +18,7 @@ export const TempChart = () => {
   return (
     <>
       <LineChart
-        xAxis={[{ data: node }]}
+        xAxis={[{ data: node,  scaleType: 'band' }]}
         series={[
             {
             data: temp,
@@ -49,12 +49,12 @@ export const BatteryChart = () => {
 
   useEffect(() => {
     console.log("chekcinh temp", deviceInfo)
-    setInfo(deviceInfo.filter(item => item.node_type === "sensor"))
+    setInfo(deviceInfo)
   }, [deviceInfo])
     return (
       <>
         <LineChart
-          xAxis={[{ data: node }]}
+          xAxis={[{ data: node, scaleType: 'band' }]}
           series={[
               {
               data: battery,

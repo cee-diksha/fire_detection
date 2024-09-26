@@ -50,7 +50,7 @@ const Grid = ({ data, deckNo }) => {
             <Link
               key={boxId}
               style={{ textDecoration: "none" }}
-              to={`deck/${deckNo}`}
+              to={`deck/${deckNo}/${boxId}`}
             >
               <div
                 id={`box-${boxId}`}

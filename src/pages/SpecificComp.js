@@ -7,24 +7,17 @@ import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { deckInfo } from '../assets/info'
 
 
-const SpecificDeck = () => {
-    const {id} = useParams()
+const SpecificComp = () => {
+    const {deck, comp} = useParams()
     const {isLogin} = useContext(MainContext)
-    const [deckData, setDeckData] = useState(deckInfo.filter(item => item.deck === parseInt(id)))
-    console.log(deckData, "deckData")
-
-    const dangerDevices = deckData.map(deck => ({
-      ...deck,
-      devices: deck.devices.filter(device => 
-          device.node_info.some(node => node.status === "danger")
-      )
-  }))
-  .filter(deck => deck.devices.length > 0);
-
-  console.log(dangerDevices, "speicifc deck")
+    const [compData, setCompData] = useState(null)
+    console.log(compData, "deckData")
 
     useEffect(() => {
-      setDeckData(deckInfo.filter(item => item.deck === parseInt(id)))
+      const deckdata = deckInfo.filter(item => item.deck === parseInt(deck))
+      const compdata = deckdata[0].devices.filter(item => item.comp === parseInt(comp))
+      console.log(compdata, "compdata")
+      setCompData(compdata)
     }, [deckInfo])
 
   return (
@@ -41,7 +34,7 @@ const SpecificDeck = () => {
              style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
       </div>
-      <h4 className="h4">Deck - {id} </h4>
+      <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
       <div>
         
       </div>
@@ -49,4 +42,4 @@ const SpecificDeck = () => {
   )
 }
 
-export default SpecificDeck
+export default SpecificComp

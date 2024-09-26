@@ -53,7 +53,7 @@ const SpecificDevice = () => {
       </div> */}
       <div className='specific-device-charts'>
           {specificData[0].node_type === "sensor" && <SpecificTempChart temperature = {specificData[0].temperature} status={device[0].status}/>}
-          <SpecificBattChart batt = {specificData[0].battery_percentage} />
+          <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
         </div>
       {/* <div className='device-table'>
         <table>
