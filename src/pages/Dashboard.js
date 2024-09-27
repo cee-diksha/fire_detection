@@ -16,9 +16,8 @@ import Footer from '../components/Footer'
 import AlertCard from '../components/AlertCard'
 
 const Dashboard = () => {
-    const {deviceInfo, isLogin, deckData} = useContext(MainContext)
+    const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
-    const [deckInfo, setDeckInfo] = useState(null)
 
     console.log(deckData, "deckData")
     useEffect(() => {
@@ -74,7 +73,7 @@ const Dashboard = () => {
           }, []);
           
         console.log(reducedData, "reduced data check")
-        setDeckInfo(reducedData)
+        setfilteredDeckInfo(reducedData)
         setCardData(deviceInfo)
     }, [deviceInfo, deckData])
 
@@ -132,9 +131,9 @@ const Dashboard = () => {
                         ) 
                     })}
                 </div>
-                    {deckInfo !== null && deckInfo.length > 0 && <div className='deck-display-grid'>
-                        {console.log(deckInfo, "checkingdeckinfo")}
-                    {deckInfo.map((item, index) => {
+                    {filteredDeckInfo !== null && filteredDeckInfo.length > 0 && <div className='deck-display-grid'>
+                        {console.log(filteredDeckInfo, "checkingdeckinfo")}
+                    {filteredDeckInfo.map((item, index) => {
                     return (
                         <DeckDashboardPageDiv key={index} data={item} deckNo={item.deck}/>
                     )

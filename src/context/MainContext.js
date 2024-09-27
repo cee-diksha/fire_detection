@@ -7,6 +7,8 @@ const MainContextProvider = (props) => {
     const [deviceInfo, setDeviceInfo] = useState(info)
     const [deckData, setDeckData] = useState(deckInfo)
     const [isLogin, setIsLogin] = useState(false)
+    const [filteredDeckInfo, setfilteredDeckInfo] = useState(null)
+
 
     return (
         <MainContext.Provider
@@ -16,7 +18,9 @@ const MainContextProvider = (props) => {
             deckData,
             setDeckData,
             isLogin,
-            setIsLogin
+            setIsLogin,
+            filteredDeckInfo,
+            setfilteredDeckInfo
         }}>
             {props.children}
         </MainContext.Provider>

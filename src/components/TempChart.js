@@ -6,8 +6,8 @@ import { MainContext } from '../context/MainContext';
 export const TempChart = () => {
     const {deviceInfo} = useContext(MainContext)
     const [info, setInfo] = useState(deviceInfo)
-    const temp = [0, ...info.map(item => item.temp)]
-    const node = [0, ...info.map(item => item.node_id)]
+    const temp = info.map(item => item.temp)
+    const node = info.map(item => item.node_id)
 
     console.log(temp, node, "nodetempchart")
 
@@ -19,6 +19,10 @@ export const TempChart = () => {
     <>
       <LineChart
         xAxis={[{ data: node,  scaleType: 'band', label: "Node ID" }]}
+        yAxis={[{
+          min: 0,
+          label: 'Temperature(°C)',
+      }]}
         series={[
             {
             data: temp,
@@ -42,8 +46,8 @@ export const TempChart = () => {
 export const BatteryChart = () => {
   const {deviceInfo} = useContext(MainContext)
   const [info, setInfo] = useState(deviceInfo)
-  const battery = [0, ...info.map(item => item.battery_percentage)]
-  const node = [0, ...info.map(item => item.node_id)]
+  const battery = info.map(item => item.battery_percentage)
+  const node = info.map(item => item.node_id)
 
   console.log(battery, node, "nodetempchart")
 
@@ -55,6 +59,10 @@ export const BatteryChart = () => {
       <>
         <LineChart
           xAxis={[{ data: node, scaleType: 'band', label: "Node ID" }]}
+          yAxis={[{
+            min: 0,
+            label: 'Battery(%)',
+        }]}
           series={[
               {
               data: battery,
