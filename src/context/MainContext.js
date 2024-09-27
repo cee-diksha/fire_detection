@@ -9,7 +9,6 @@ const MainContextProvider = (props) => {
     const [isLogin, setIsLogin] = useState(false)
     const [filteredDeckInfo, setfilteredDeckInfo] = useState(null)
 
-
     return (
         <MainContext.Provider
         value={{
