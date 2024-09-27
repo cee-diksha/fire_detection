@@ -13,8 +13,6 @@ const SpecificComp = () => {
     const {deck, comp} = useParams()
     const {isLogin} = useContext(MainContext)
     const [compData, setCompData] = useState([])
-    console.log(compData, "deckData", deck, comp)
-
     useEffect(() => {
       const compdata = info.filter(item => (item.deck === parseInt(deck) && item.compartment === parseInt(comp)))
       // const compdata = deckdata[0].devices.filter(item => item.comp === parseInt(comp))

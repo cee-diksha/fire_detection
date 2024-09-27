@@ -22,18 +22,18 @@ const Card = ({ item }) => {
     event.stopPropagation();
     setIsAlarmMuted(!isAlarmMuted);  // Toggle the mute state for this card
   };
-
+console.log(status.includes("success"), "status check")
   return (
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#D0D0D0" : status === "success" ? "#7BFF6D" : status === "yellow" ? "#FFC648" : status === "orange" ? "#FF6B3B" : "#F84848"}`, 
-        color: `${isDeleted ? "#000000" : (status === "yellow" || status === "success") ? "#000" : "#fff"}`
+        backgroundColor: `${isDeleted ? "#D0D0D0" : status.includes("success") ? "#7BFF6D" : status.includes("yellow" )? "#FFC648" : status.includes("orange" )? "#FF6B3B" : "#F84848"}`, 
+        color: `${isDeleted ? "#000000" : (status.includes("yellow" )|| status.includes("success")) ? "#000" : "#fff"}`
       }}
     >
       <div className="segment" id="node-type-id">
         <p id="sensor-name">
-          <img src={(status === "yellow" || status === "success") ? sensor2 : sensor} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
+          <img src={(status.includes("yellow" )|| status.includes("success")) ? sensor2 : sensor} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
         <p>{node_id}</p>
@@ -44,17 +44,17 @@ const Card = ({ item }) => {
         <div><span style={{ fontWeight: "600" }}>Compartment:</span> {compartment}</div>
       </div>
       <div className="segment" id="temp-battery">
-        <div className= {(status === "danger" || status === "orange" || status === "yellow") ? "dangertext" : "normaltext"}>
+        <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "6px" }} />
           {temp}°C
         </div>
-        <div className= {(status === "danger" || status === "orange" || status === "yellow") ? "dangertext" : "normaltext"}>
+        <div className= {(status === "yellow") ? "dangertext" : "normaltext"}>
           <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "6px" }} />
           {battery_percentage}%
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={(status === "yellow" || status === "success") ? update2 : update} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <img src={(status.includes("yellow") || status.includes("success")) ? update2 : update} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
@@ -64,8 +64,8 @@ const Card = ({ item }) => {
         <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>
         <button 
           onClick={handleMuteAlarm} 
-          id={`${status === "danger" && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
-          disabled={status !== "danger"}
+          id={`${status.includes("danger") && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
+          disabled={status.includes("danger")}
         >
           {isAlarmMuted ? "Unmute Alarm" : "Mute Alarm"}
         </button>

@@ -9,10 +9,7 @@ export const TempChart = () => {
     const temp = info.map(item => item.temp)
     const node = info.map(item => item.node_id)
 
-    console.log(temp, node, "nodetempchart")
-
     useEffect(() => {
-      console.log("chekcinh temp", deviceInfo)
       setInfo(deviceInfo.filter(item => item.node_type === "sensor"))
     }, [deviceInfo])
   return (
@@ -48,9 +45,6 @@ export const BatteryChart = () => {
   const [info, setInfo] = useState(deviceInfo)
   const battery = info.map(item => item.battery_percentage)
   const node = info.map(item => item.node_id)
-
-  console.log(battery, node, "nodetempchart")
-
 
   useEffect(() => {
     setInfo(deviceInfo)

@@ -18,8 +18,6 @@ import AlertCard from '../components/AlertCard'
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
-
-    console.log(deckData, "deckData")
     useEffect(() => {
         const reducedData = deckData.reduce((acc, curr) => {
             const existingDeck = acc.find(item => item.deck === curr.deck);
@@ -37,13 +35,13 @@ const Dashboard = () => {
               }));
           
               compartments.forEach(compartment => {
-                if (compartment.status === "danger") {
+                if (compartment.status.includes("danger")) {
                   hasDanger.push(compartment.comp);
-                } else if (compartment.status === "orange") {
+                } else if (compartment.status.includes("orange")) {
                   hasOrange.push(compartment.comp);
-                } else if (compartment.status === "yellow") {
+                } else if (compartment.status.includes("yellow")) {
                   hasYellow.push(compartment.comp);
-                } else if (compartment.status === "success") {
+                } else if (compartment.status.includes("success")) {
                   hasSuccess.push(compartment.comp);
                 }
               });
@@ -72,7 +70,6 @@ const Dashboard = () => {
             return acc;
           }, []);
           
-        console.log(reducedData, "reduced data check")
         setfilteredDeckInfo(reducedData)
         setCardData(deviceInfo)
     }, [deviceInfo, deckData])
@@ -114,25 +111,23 @@ const Dashboard = () => {
             {/* -------------------------------------------------------- */}
                 <div className='main-dashboard-wrapper'>
                 <div className='fixed-content'>
-                    {console.log(cardData, "checking if updates")}
                     {cardData.map((item) => {
                         return (
-                            item.status === "danger" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
+                            item.status.includes("danger") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                         ) 
                     })}
                     {cardData.map((item) => {
                         return (
-                            item.status === "orange" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
+                            item.status.includes("orange") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                         ) 
                     })}
                     {cardData.map((item) => {
                         return (
-                            item.status === "yellow" && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
+                            item.status.includes("yellow") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
                         ) 
                     })}
                 </div>
                     {filteredDeckInfo !== null && filteredDeckInfo.length > 0 && <div className='deck-display-grid'>
-                        {console.log(filteredDeckInfo, "checkingdeckinfo")}
                     {filteredDeckInfo.map((item, index) => {
                     return (
                         <DeckDashboardPageDiv key={index} data={item} deckNo={item.deck}/>

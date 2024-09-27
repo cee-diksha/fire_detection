@@ -25,7 +25,6 @@ const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
 }
 
 export const DeckDashboardPageDiv = ({data, deckNo}) => {
-  console.log(data, "grid rendering")
     return (
       <div>
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
