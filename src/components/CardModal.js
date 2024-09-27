@@ -46,7 +46,7 @@ const CardModal = ({open, handleClose, option }) => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
             >
-            {/* <div className='status-card-modal' style={{cursor: "pointer"}}>
+            <div className='status-card-modal' style={{cursor: "pointer"}}>
                 <button onClick={(e) => {
                     handleClose(false)
                     e.preventDefault()
@@ -72,9 +72,9 @@ const CardModal = ({open, handleClose, option }) => {
                     <img src={stopalarm} onClick={handleStopAlarm} style={{margin: "0 4px", height: "30px", cursor: "pointer"}} alt="stop-alarm" />        
                 </div>
                 </div>}
-            </div> */}
+            </div> 
             {console.log(specificData, "resultresult")}
-            {specificData && <div className={`${specificData.status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${specificData.isDeleted ? "#D0D0D0" : specificData.status === "success" ? "#7BFF6D" : specificData.status === "yellow" ? "#FFC648" : specificData.status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${specificData.isDeleted ? "#000000" : (specificData.status === "yellow" || specificData.status === "success") ? "#000" : "#fff"}`}}>
+            {/* {specificData && <div className={`${specificData.status === "danger" ? "blinking-border" : "card-wrapper"}`} style={{backgroundColor: `${specificData.isDeleted ? "#D0D0D0" : specificData.status === "success" ? "#7BFF6D" : specificData.status === "yellow" ? "#FFC648" : specificData.status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${specificData.isDeleted ? "#000000" : (specificData.status === "yellow" || specificData.status === "success") ? "#000" : "#fff"}`}}>
             <div className="segment" id='node-type-id'>
                 <p id="sensor-name"><img src={(specificData.status === "yellow" || specificData.status === "success") ? sensor2 : sensor} alt="sensor-logo" style={{height: "30px", marginTop: "4px", marginRight: "10px"}}/>{specificData.node_type}</p>
                 <p>{specificData.node_id}</p>
@@ -99,7 +99,7 @@ const CardModal = ({open, handleClose, option }) => {
                 <button onClick={handleRefresh} id='refresh-alarm-btn-both'>Refresh</button>
                 <button onClick={handleStopAlarm} id={`${specificData.status === "danger" ? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} disabled = {specificData.status === "danger" ? false : true}>Stop Alarm</button>
             </div>
-        </div>}
+        </div>} */}
         </Modal>
     </>
   )

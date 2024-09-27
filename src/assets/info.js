@@ -62,7 +62,7 @@ export const deckInfo = [
 
 export const specificDeviceChartData = [
     {
-        node_type: "sensor", node_name: "Engine Room", node_id: 101, deck: 1, comp: 1, temperature: [
+        node_type: "sensor", node_name: "Engine Room", node_id: 101, deck: 1, comp: 1,  alertlogstemp: [], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "49", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
@@ -91,7 +91,7 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "repeater", node_name: "GT Room", node_id: 102, deck: 2, comp: 1, temperature: null, battery_percentage: [
+        node_type: "repeater", node_name: "GT Room", node_id: 102, deck: 2, comp: 1, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -107,7 +107,7 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "suppression unit", node_name: "Boiler Room", node_id: 103, deck:3, comp: 3, temperature: null, battery_percentage: [
+        node_type: "suppression unit", node_name: "Boiler Room", node_id: 103, deck:3, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -123,7 +123,15 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:4, comp:3 , temperature: [
+        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:4, comp:3 , alertlogstemp: [], alertlogsbattery: [
+            { time: "0800 hrs", message: "Battery level at 50%" },
+            { time: "1000 hrs", message: "Battery level at 40%" },
+            { time: "1200 hrs", message: "Battery level at 30%" },
+            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
+            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
+            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
+            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+        ], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
@@ -150,7 +158,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "50", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "SS Dining Hall", node_id: 105, deck:3, comp: 7, temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "SS Dining Hall", node_id: 105, deck:3, comp: 7, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -164,7 +172,14 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, deck:5, comp: 5,  temperature: [
+        node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, deck:5, comp: 5,  alertlogstemp: [
+            { time: "1300 hrs", message: "Temperature rise detected" },
+            { time: "1320 hrs", message: "Temperature above critical" },
+            { time: "1400 hrs", message: "Smoke detected" },
+            { time: "1430 hrs", message: "Fire detected" },
+            { time: "1440 hrs", message: "Fire extinguishing started" },
+            { time: "Afterwards", message: "Temperature reducing" }
+        ], alertlogsbattery: [], temperature: [
             { info: "[INFO]", time: "11", status: "Sensor initialized", value: "50" },
             { info: "[INFO]", time: "12", status: "Normal operation", value: "50" },
             { info: "[INFO]", time: "13", status: "Normal operation", value: "49" },
@@ -191,7 +206,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "Main Switch Board", node_id: 107, deck:2, comp: 6, temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "Main Switch Board", node_id: 107, deck:2, comp: 6, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -205,7 +220,10 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "MCO", node_id: 108, deck: 1, comp: 9, temperature: [
+        node_type: "sensor", node_name: "MCO", node_id: 108, deck: 1, comp: 9, alertlogstemp: [
+            { time: "1300 hrs", message: "Temperature rise detected" },
+            { time: "1320 hrs", message: "Temperature above critical" }
+        ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
@@ -232,7 +250,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "Engg JS Mess", node_id: 109, deck: 6, comp: 2, temperature: [
+        node_type: "sensor", node_name: "Engg JS Mess", node_id: 109, deck: 6, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: [
             { time: "11", value: "47" },
             { time: "12", value: "46" },
             { time: "13", value: "45" },
@@ -259,7 +277,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -273,7 +291,14 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, deck:4, comp: 5, temperature: [
+        node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, deck:4, comp: 5, alertlogstemp: [
+            { time: "1300 hrs", message: "Temperature rise detected" },
+            { time: "1320 hrs", message: "Temperature above critical" },
+            { time: "1400 hrs", message: "Smoke detected" },
+            { time: "1430 hrs", message: "Fire detected" },
+            { time: "1440 hrs", message: "Fire extinguishing started" },
+            { time: "Afterwards", message: "Temperature reducing" }
+        ], alertlogsbattery: [], temperature: [
             { info: "[INFO]", time: "11", status: "Sensor initialized", value: "50" },
             { info: "[INFO]", time: "12", status: "Normal operation", value: "50" },
             { info: "[INFO]", time: "13", status: "Normal operation", value: "49" },
@@ -300,7 +325,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "CMR", node_id: 112, deck: 2, comp: 2,  temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "CMR", node_id: 112, deck: 2, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -314,7 +339,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "AC Compartment", node_id: 113, deck: 4, comp: 3, temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "AC Compartment", node_id: 113, deck: 4, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -328,7 +353,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "ASP", node_id: 114, deck:5, comp: 2, temperature: [
+        node_type: "sensor", node_name: "ASP", node_id: 114, deck:5, comp: 2,  alertlogstemp: [], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
@@ -355,7 +380,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "Pump Room", node_id: 115, deck:3, comp: 3, temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "Pump Room", node_id: 115, deck:3, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -369,7 +394,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "Cabin Flat", node_id: 116, deck:1, comp: 8, temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "Cabin Flat", node_id: 116, deck:1, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -383,7 +408,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "Fwd JS Mess", node_id: 117, deck: 1, comp: 9, temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "Fwd JS Mess", node_id: 117, deck: 1, comp: 9, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -397,7 +422,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, deck:5, comp: 11,  temperature: [
+        node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, deck:5, comp: 11,   alertlogstemp: [], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },

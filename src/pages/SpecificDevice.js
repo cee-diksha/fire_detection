@@ -15,6 +15,8 @@ const SpecificDevice = () => {
   const {deviceInfo, isLogin} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
+  console.log(specificData, "specificData", id)
+
   const alertlogsInfoTemp = specificData[0].temperature
   console.log(alertlogsInfoTemp, "specificData")
 
@@ -35,28 +37,36 @@ const SpecificDevice = () => {
       </div>
       <div className='specific-header-location'>
         <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
-        <div className='specific-device-header'>
-            <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
-            <h4 className="h4">{device[0].node_name}</h4> 
-        </div>
+          <div className='specific-device-header'>
+              <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
+              <h4 className="h4">{device[0].node_name}</h4> 
+          </div>
+       </div>
+      <div className='indication' style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`,
+        color: `${device[0].status === "success" ? "#fffff" : device[0].status === "yellow" ? "#000000" : device[0].status === "orange" ? "#ffffff" : "#ffffff"}`
+      }}>
+      {device[0].status === "success" ? null : device[0].status === "yellow" ? "Low Battery" : device[0].status === "orange" ? "Temp Rising" : "Fire"}
       </div>
-       
-      {/* <div className='alerts-chart-wrapper'>
-        {specificData[0].node_type === "sensor"&& <div className='alert-logs'>
-          <h2>Alert Logs</h2>
-         {alertlogsInfoTemp.map(item => <div className='single-alert'>
-          <span className='alert-span' style={{ fontWeight: "600", color: item.info === "[INFO]" ? "#05abf9" : item.info === "[WARNING]" ? "#FFC300" : "#F84848" }}>{item.info}</span>
-          <span className='alert-span'style={{fontWeight: "600"}}>{item.time}:00 hrs</span>
-          <span className='alert-span'>{item.status}</span>
-          <span className='alert-span' style={{color: item.info === "[INFO]" ? "#05abf9" : item.info === "[WARNING]" ? "#FFC300" : "#F84848" }}>Temperature: {item.value} °C</span>
-         </div>)}
-        </div>}
-        
-      </div> */}
-      <div className='specific-device-charts'>
-          {specificData[0].node_type === "sensor" && <SpecificTempChart temperature = {specificData[0].temperature} status={device[0].status}/>}
-          <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
-        </div>
+      <div className='alerts-chart-wrapper'>
+          {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
+            <h2 style={{color:"#F84848"}}>Alert Logs - Temperature</h2>
+          {specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.map(item => <div className='single-alert'>
+            <span className='alert-span'style={{fontWeight: "600"}}>{item.time} - </span>
+            <span className='alert-span'>{item.message}</span>
+          </div>)}
+          </div>}
+          {(specificData[0].alertlogsbattery !== null  && specificData[0].alertlogsbattery.length !== 0) && <div className='alert-logs'>
+            <h2 style={{color:"#FFC648"}}>Alert Logs - Battery</h2>
+          {specificData[0].alertlogsbattery !== null && specificData[0].alertlogsbattery.map(item => <div className='single-alert'>
+            <span className='alert-span'style={{fontWeight: "600"}}>{item.time} - </span>
+            <span className='alert-span'>{item.message}</span>
+          </div>)}
+          </div>}
+          <div className='specific-device-charts'>
+            {specificData[0].node_type === "sensor" && <SpecificTempChart temperature = {specificData[0].temperature} status={device[0].status}/>}
+            <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
+          </div>
+      </div>
       {/* <div className='device-table'>
         <table>
             <thead>

@@ -299,12 +299,42 @@ input {
 }
 .specific-header-location{
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: auto;
-    margin-top: -60px;
+    margin-top: -40px;
     height: 100px;
+    width: 99%;
 }
+
+.indication{
+    height: 55px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    margin : -5% 2% 0 auto;
+    font-size: 24px;
+    font-weight: 600;
+    border: 6px solid #ffffff;
+    border-radius: 6px;
+    animation: blink-warning 0.5s infinite;
+}
+
+@keyframes blink-warning {
+    0% {
+      border-color: #ffffff;
+    }
+    50% {
+      border-color: transparent; 
+    }
+    100% {
+      border-color: #ffffff;
+    }
+  }
+
 .specific-device-header{
     display: flex;
     align-items: center;
@@ -352,11 +382,12 @@ input {
 
 .specific-device-charts{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: auto;
     background-color: #ffffff;
-    margin: 40px 0;
+    margin: 10px 0;
 }
 
 .single-alert{
@@ -408,17 +439,17 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 90%;
+    padding: 0 30px;
+    width: 100%;
   }
 
   .card-holder-specificdeck{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 90%;
+    width: 100%;
     height: auto;
-    padding: 20px;
+    padding: 0 30px;
   }
 
   .specific-card{

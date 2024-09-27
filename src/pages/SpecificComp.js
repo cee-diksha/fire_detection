@@ -36,12 +36,14 @@ const SpecificComp = () => {
              style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
       </div>
-      <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
-      <div className='display-specific-comp-card'>
-      {compData?.length !== 0 ? compData.map((item, index) => {
-        console.log(item, "item check")
-        return <Link className='link-style' to={`/info/${item.node_name}`}><Card key={index} item={item} /></Link>
-        }) : <h2>No device installed in this compartment</h2>}
+      <div style={{marginTop: "-16%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
+        <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
+        <div className='display-specific-comp-card'>
+        {compData?.length !== 0 ? compData.map((item, index) => {
+          console.log(item, "item check")
+          return <Link className='link-style' to={`/info/${item.node_name}`}><Card key={index} item={item} /></Link>
+          }) : <h2>No device installed in this compartment</h2>}
+        </div>
       </div>
       <div className="dashboard-sticky">    
       <Footer />

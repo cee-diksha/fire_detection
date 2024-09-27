@@ -13,7 +13,7 @@ export const SpecificBattChart = ({batt, status}) => {
             series={[
                 {
                 data: battery,
-                label: 'Battery',
+                label: 'Battery(%)',
                 color: lineColor
                 },
             ]}
@@ -25,7 +25,7 @@ export const SpecificBattChart = ({batt, status}) => {
             },
             }}
             width={500}
-            height={300}
+            height={200}
         />
     )
 }
@@ -41,7 +41,7 @@ export const SpecificTempChart = ({temperature, status}) => {
             series={[
                 {
                 data: temp,
-                label: 'Temperature',
+                label: 'Temperature(°C)',
                 color : lineColor
                 },
             ]}
@@ -53,7 +53,7 @@ export const SpecificTempChart = ({temperature, status}) => {
             },
             }}
             width={500}
-            height={300}
+            height={200}
       />
     )
 }

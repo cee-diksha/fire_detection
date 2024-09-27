@@ -55,23 +55,26 @@ const SpecificDeck = () => {
              style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
       </div>
+     <div style={{marginTop: "-14%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
       <h4 className="h4">Deck - {deck} </h4>
-      <div className='card-holder-specificdeck'>
-        {deckInfo.map((item, index) => {
-          const details = deviceInfo.filter(data => (data.deck === parseInt(deck) && data.compartment === item.comp))
-          console.log(details, 'detailsdetails', deviceInfo)
-          return(
-            details.map(detail => {
-              return (
-                <div className='specific-card'>
-                <h3>Compartment No. - {item.comp}</h3>
-                <Card item={detail}key={index} />
-              </div>
-              )
-            })
-          )
-        })}
-      </div>
+        <div className='card-holder-specificdeck'>
+          {deckInfo.map((item, index) => {
+            const details = deviceInfo.filter(data => (data.deck === parseInt(deck) && data.compartment === item.comp))
+            console.log(details, 'detailsdetails', deviceInfo)
+            return(
+              details.map(detail => {
+                console.log(item, "item check", detail)
+                return (
+                  <div className='specific-card'>
+                  <h3>Compartment No. - {item.comp}</h3>
+                  <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail}key={index} /></Link>
+                </div>
+                )
+              })
+            )
+          })}
+        </div>
+     </div>
       <div className="dashboard-sticky">    
         <Footer />
       </div>
