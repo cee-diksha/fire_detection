@@ -38,15 +38,15 @@ const SpecificDevice = () => {
       <div className='specific-header-location'>
         <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
           <div className='specific-device-header'>
-              <div id="status-circle" style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`, color: `${device[0].status === "yellow" ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
+              <div id="status-circle" style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  : device[0].status.includes("success") ? "#7BFF6D" : null }`, color: `${device[0].status.includes("yellow") ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>
-      <div className='indication' style={{backgroundColor: `${device[0].status === "success" ? "#7BFF6D" : device[0].status === "yellow" ? "#FFC648" : device[0].status === "orange" ? "#FF6B3B" : "#F84848"}`,
-        color: `${device[0].status === "success" ? "#fffff" : device[0].status === "yellow" ? "#000000" : device[0].status === "orange" ? "#ffffff" : "#ffffff"}`
+      {!device[0].status.includes("success") && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  : null }`,
+        color: `${(device[0].status.includes("yellow") || device[0].isDeleted) ? "#000000" : device[0].status.includes("orange") ? "#ffffff" : "#ffffff"}`
       }}>
-      {device[0].status === "success" ? null : device[0].status === "yellow" ? "Low Battery" : device[0].status === "orange" ? "Temp Rising" : "Fire"}
-      </div>
+      {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  null }
+      </div>}
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
             <h2 style={{color:"#F84848"}}>Alert Logs - Temperature</h2>

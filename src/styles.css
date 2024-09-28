@@ -316,7 +316,8 @@ input {
     align-items: center;
     text-transform: capitalize;
     margin : -5% 2% 0 auto;
-    font-size: 24px;
+    font-size: 22px;
+    text-align: center;
     font-weight: 600;
     border: 6px solid #ffffff;
     border-radius: 6px;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../comp-styles.css";
 import battery from "../assets/battery.png";
 import temperature from "../assets/temp.png";
@@ -10,7 +10,7 @@ import update2 from "../assets/update2.png";
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment } = item;
 
-  const [isAlarmMuted, setIsAlarmMuted] = useState(false);  // Track if alarm is muted for this card
+  const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
 
   const handleRefresh = (event) => {
     event.preventDefault();
@@ -23,6 +23,10 @@ const Card = ({ item }) => {
     event.stopPropagation();
     setIsAlarmMuted(!isAlarmMuted);
   };
+
+  useEffect(() => {
+    if (node_id === 106) setIsAlarmMuted(true)
+  }, [])
 console.log(status.includes("success"), "status check", isAlarmMuted)
   return (
     <div 
