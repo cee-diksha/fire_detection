@@ -29,6 +29,7 @@ export const DeckDashboardPageDiv = ({data, deckNo}) => {
       <div>
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
           <h4>Deck {deckNo}</h4>
+          {console.log(data, deckNo, "deckkkkkk")}
           <Grid data={data} deckNo={deckNo} /> 
         </div>
       </div>

@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 
 const Grid = ({ data, deckNo }) => {
 
-  // Assuming data.danger, data.normal, etc., are arrays of compartment IDs
-  const dangerComp = data.danger;
-  const normalComp = data.normal;
-  const tempriseComp = data.temprise;
-  const lowbatteryComp = data.lowbattery;
+  const dangerComp = data.danger || []; // Ensure it's always an array
+  const normalComp = data.normal || [];
+  const tempriseComp = data.temprise || [];
+  const lowbatteryComp = data.lowbattery || [];
 
-  // no need to wrap these in an object inside useState
   const [highlightedId, setHighlightedId] = useState({
     dangerComp: [],
     normalComp: [],
@@ -19,28 +17,29 @@ const Grid = ({ data, deckNo }) => {
   });
 
   useEffect(() => {
-    setHighlightedId({ dangerComp, normalComp, tempriseComp, lowbatteryComp });
+    setHighlightedId({ 
+      dangerComp: dangerComp || [], 
+      normalComp: normalComp || [], 
+      tempriseComp: tempriseComp || [], 
+      lowbatteryComp: lowbatteryComp || [] 
+    });
   }, [dangerComp, normalComp, tempriseComp, lowbatteryComp]);
 
   const getBoxClass = (boxId) => {
     if (highlightedId.dangerComp.includes(boxId)) return "danger";
-    else if (highlightedId.tempriseComp.includes(boxId)) return "temprise";
-    else if (highlightedId.lowbatteryComp.includes(boxId)) return "lowbattery";
-    else if (highlightedId.normalComp.includes(boxId)) {
-      return "normal"
-    }
-    else return "box"; // default class
+    if (highlightedId.tempriseComp.includes(boxId)) return "temprise";
+    if (highlightedId.lowbatteryComp.includes(boxId)) return "lowbattery";
+    if (highlightedId.normalComp.includes(boxId)) return "normal";
+    return "box"; // default class
   };
 
-  // no. of boxes in each row for the ship-like shape
-  // const rowSizes = [14, 13, 11, 9, 7];
   const boxes = Array.from({ length: 60 }, (_, index) => index + 1); 
 
   return (
     <div style={{ marginRight: "14px" }}>
       <div className="grid-container">
         {boxes.map((boxId) => {
-          const boxClass = getBoxClass(boxId); // Use boxId here instead of currentBoxId
+          const boxClass = getBoxClass(boxId); 
           return (
             <Link
               key={boxId}
@@ -49,7 +48,7 @@ const Grid = ({ data, deckNo }) => {
             >
               <div
                 id={`box-${boxId}`}
-                className={`box ${boxClass}`} // Apply the class dynamically
+                className={`box ${boxClass}`} 
               >
                 {boxId}
               </div>

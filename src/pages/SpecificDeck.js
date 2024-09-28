@@ -8,11 +8,14 @@ import settings from "../assets/settings.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import user from "../assets/user.png"
 import Card from '../components/Card'
+import { reduceDeckData } from '../utils/reduceDeckData'
+import { DeckDashboardPageDiv } from '../components/DeckModal'
 
 const SpecificDeck = () => {
     const {deck} = useParams()
-    const {isLogin, deckData, deviceInfo} = useContext(MainContext)
+    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
+    const [deckGrid, setDeckGrid] = useState([])
 
     useEffect(() => {
       const filtered = deckData.filter(item => item.deck === parseInt(deck)).flatMap(item => {
@@ -39,11 +42,17 @@ const SpecificDeck = () => {
 
       console.log(filtered, "final filtered output", deckData);
       setDeckInfo(filtered)
-    }, [deckData])
+      const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
+      setfilteredDeckInfo(filteredDeckInfo);
+      const data = filteredDeckInfo.filter(item => item.deck === parseInt(deck))
+      setDeckGrid(data[0])
+    }, [deckData, deviceInfo])
+
 
   return (
     <div className='specific-deck-wrapper'>
-    <div className='specific-device-mainheader'>
+  <div style={{width: "100%", justifyContent: "center", alignItems: "center"}}>
+  <div className='specific-device-mainheader'>
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
             <img style={{height: "100px"}} src={shipcrest} alt="ship" />
             <h1 id="dashboard-heading">Ship Name</h1>
@@ -55,26 +64,30 @@ const SpecificDeck = () => {
              style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
         </div>
       </div>
-     <div style={{marginTop: "-14%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
+     <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>
       <h4 className="h4">Deck - {deck} </h4>
-        <div className='card-holder-specificdeck'>
-          {deckInfo.map((item, index) => {
-            const details = deviceInfo.filter(data => (data.deck === parseInt(deck) && data.compartment === item.comp))
-            console.log(details, 'detailsdetails', deviceInfo)
-            return(
-              details.map(detail => {
-                console.log(item, "item check", detail)
-                return (
-                  <div className='specific-card'>
-                  <h3>Compartment No. - {item.comp}</h3>
-                  <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail}key={index} /></Link>
-                </div>
-                )
-              })
-            )
-          })}
-        </div>
+      <div style={{display: "flex", alignItems: "flex-start", justifyContent: "space-evenly", width: "96%"}}>
+        <DeckDashboardPageDiv data={deckGrid} deckNo={deckGrid.deck} />
+          <div className='card-holder-specificdeck'>
+            {deckInfo.map((item, index) => {
+              const details = deviceInfo.filter(data => (data.deck === parseInt(deck) && data.compartment === item.comp))
+              console.log(details, 'detailsdetails', deviceInfo)
+              return(
+                details.map(detail => {
+                  console.log(item, "item check", detail)
+                  return (
+                    <div className='specific-card'>
+                    <h3>Compartment No. - {item.comp}</h3>
+                    <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail}key={index} /></Link>
+                  </div>
+                  )
+                })
+              )
+            })}
+          </div>
+      </div>
      </div>
+  </div>
       <div className="dashboard-sticky">    
         <Footer />
       </div>

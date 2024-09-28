@@ -15,6 +15,7 @@ const DeckCard = () => {
     setDeck(danger);
     setCardData(deviceInfo);
   }, [deviceInfo]);
+  
 
   return (
     <div className='deckcard-container'>

@@ -14,65 +14,17 @@ import DeckCard from '../components/DeckCard'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
 import Footer from '../components/Footer'
 import AlertCard from '../components/AlertCard'
+import { reduceDeckData } from '../utils/reduceDeckData'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo)
+
     useEffect(() => {
-        const reducedData = deckData.reduce((acc, curr) => {
-            const existingDeck = acc.find(item => item.deck === curr.deck);
-          
-           const hasDanger = [];
-            const hasOrange = [];
-            const hasYellow = [];
-            const hasSuccess = [];
-          
-            curr.devices.forEach(device => {
-              const compartments = device.node_info.map(item => ({
-                node: item.node,
-                status: item.status,
-                comp: device.comp 
-              }));
-          
-              compartments.forEach(compartment => {
-                if (compartment.status.includes("danger")) {
-                  hasDanger.push(compartment.comp);
-                } else if (compartment.status.includes("orange")) {
-                  hasOrange.push(compartment.comp);
-                } else if (compartment.status.includes("yellow")) {
-                  hasYellow.push(compartment.comp);
-                } else if (compartment.status.includes("success")) {
-                  hasSuccess.push(compartment.comp);
-                }
-              });
-            });       
-            if (existingDeck) {
-              existingDeck.danger.push(...hasDanger);
-              existingDeck.normal.push(...hasSuccess);
-              existingDeck.temprise.push(...hasOrange);
-              existingDeck.lowbattery.push(...hasYellow);
-            } else {
-                const newDeck = {
-                    deck: curr.deck,
-                    danger: hasDanger,
-                    normal: hasSuccess,
-                    temprise: hasOrange,
-                    lowbattery: hasYellow,
-                };
-            
-                if (hasDanger.length > 0) {
-                    acc.unshift(newDeck);  //to insert the decks having danger at start
-                } else {
-                    acc.push(newDeck);   
-                }
-            }
-          
-            return acc;
-          }, []);
-          
-        setfilteredDeckInfo(reducedData)
-        setCardData(deviceInfo)
-    }, [deviceInfo, deckData])
+        const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
+        setfilteredDeckInfo(filteredDeckInfo);
+        setCardData(cardData);
+      }, [deckData, deviceInfo]);
 
   return (
     <>

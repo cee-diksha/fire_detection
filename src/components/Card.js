@@ -33,7 +33,7 @@ console.log(status.includes("success"), "status check")
     >
        <div className="segment" id="status-text">
         <p>
-        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : null}
+        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : "NORMAL"}
         </p>
       </div>
       <div className="segment" id="node-type-id">
