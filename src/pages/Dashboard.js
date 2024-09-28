@@ -111,21 +111,39 @@ const Dashboard = () => {
             {/* -------------------------------------------------------- */}
                 <div className='main-dashboard-wrapper'>
                 <div className='fixed-content'>
-                    {cardData.map((item) => {
-                        return (
-                            item.status.includes("danger") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
-                        ) 
-                    })}
-                    {cardData.map((item) => {
-                        return (
-                            item.status.includes("orange") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
-                        ) 
-                    })}
-                    {cardData.map((item) => {
-                        return (
-                            item.status.includes("yellow") && <Link className='link-style' to={`info/${item.node_name}`}><Card key={item.id} item={item} /></Link>
-                        ) 
-                    })}
+                {cardData
+                .sort((a, b) => {
+                    const priority = { danger: 1, orange: 2, yellow: 3 };
+                    const statusA = a.status.includes("danger")
+                    ? "danger"
+                    : a.status.includes("orange")
+                    ? "orange"
+                    : "yellow";
+                    const statusB = b.status.includes("danger")
+                    ? "danger"
+                    : b.status.includes("orange")
+                    ? "orange"
+                    : "yellow";
+                    
+                    return priority[statusA] - priority[statusB];
+                })
+                .map((item) => {
+                    let status = "";
+                    if (item.status.includes("danger")) {
+                    status = "danger";
+                    } else if (item.status.includes("orange")) {
+                    status = "orange";
+                    } else if (item.status.includes("yellow")) {
+                    status = "yellow";
+                    }
+
+                    return status && (
+                    <Link className='link-style' to={`info/${item.node_name}`} key={item.id}>
+                        <Card item={item} />
+                    </Link>
+                    );
+                })}
+
                 </div>
                     {filteredDeckInfo !== null && filteredDeckInfo.length > 0 && <div className='deck-display-grid'>
                     {filteredDeckInfo.map((item, index) => {

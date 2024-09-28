@@ -27,13 +27,13 @@ console.log(status.includes("success"), "status check")
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#D0D0D0" : status.includes("success") ? "#7BFF6D" : status.includes("yellow" )? "#FFC648" : status.includes("orange" )? "#FF6B3B" : "#F84848"}`, 
-        color: `${isDeleted ? "#000000" : (status.includes("yellow" )|| status.includes("success")) ? "#000" : "#fff"}`
+        backgroundColor: `${isDeleted ? "#D0D0D0" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : "#FFC648"}`, 
+        color: `${isDeleted ? "#000000" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
       <div className="segment" id="node-type-id">
         <p id="sensor-name">
-          <img src={(status.includes("yellow" )|| status.includes("success")) ? sensor2 : sensor} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
+          <img src={(status.includes("danger") || status.includes("orange")) ? sensor : sensor2} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
         <p>{node_id}</p>
@@ -48,13 +48,13 @@ console.log(status.includes("success"), "status check")
           <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "6px" }} />
           {temp}°C
         </div>
-        <div className= {(status === "yellow") ? "dangertext" : "normaltext"}>
+        <div className= {(status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "6px" }} />
           {battery_percentage}%
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={(status.includes("yellow") || status.includes("success")) ? update2 : update} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <img src={(status.includes("danger") || status.includes("orange")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
