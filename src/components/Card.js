@@ -31,6 +31,11 @@ console.log(status.includes("success"), "status check")
         color: `${isDeleted ? "#000000" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
+       <div className="segment" id="status-text">
+        <p>
+        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : null}
+        </p>
+      </div>
       <div className="segment" id="node-type-id">
         <p id="sensor-name">
           <img src={(status.includes("danger") || status.includes("orange")) ? sensor : sensor2} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />

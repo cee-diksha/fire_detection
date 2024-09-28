@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DeckCard = () => {
   const { deviceInfo } = useContext(MainContext);
   const [cardData, setCardData] = useState(deviceInfo);
-  const danger = cardData.filter(item => item.status === "danger");
+  const danger = cardData.filter(item => item.status.includes("danger"));
   const [deck, setDeck] = useState(danger);
 
   const totalDecks = 6; // Assuming there are 6 decks
