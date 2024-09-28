@@ -18,11 +18,12 @@ const Card = ({ item }) => {
   };
 
   const handleMuteAlarm = (event) => {
+    console.log(isAlarmMuted, "isAlarmMuted")
     event.preventDefault();
     event.stopPropagation();
-    setIsAlarmMuted(!isAlarmMuted);  // Toggle the mute state for this card
+    setIsAlarmMuted(!isAlarmMuted);
   };
-console.log(status.includes("success"), "status check")
+console.log(status.includes("success"), "status check", isAlarmMuted)
   return (
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
@@ -49,10 +50,10 @@ console.log(status.includes("success"), "status check")
         <div><span style={{ fontWeight: "600" }}>Compartment:</span> {compartment}</div>
       </div>
       <div className="segment" id="temp-battery">
-        <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
+        {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "6px" }} />
           {temp}°C
-        </div>
+        </div>}
         <div className= {(status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "6px" }} />
           {battery_percentage}%
@@ -67,13 +68,12 @@ console.log(status.includes("success"), "status check")
       </div>
       <div className="segment" style={{ borderBottom: "none" }} id="refresh-alarm-btn">
         <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>
-        <button 
+        {status.includes("danger") && <button 
           onClick={handleMuteAlarm} 
           id={`${status.includes("danger") && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
-          disabled={status.includes("danger")}
         >
           {isAlarmMuted ? "Unmute Alarm" : "Mute Alarm"}
-        </button>
+        </button>}
       </div>
     </div>
   );
