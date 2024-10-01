@@ -32,13 +32,13 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#D0D0D0" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : "#FFC648"}`, 
-        color: `${isDeleted ? "#000000" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : "#FFC648"}`, 
+        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
        <div className="segment" id="status-text">
         <p>
-        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : "NORMAL"}
+        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : isDeleted ? "NEEDS REPLACEMENT" : "NORMAL"}
         </p>
       </div>
       <div className="segment" id="node-type-id">

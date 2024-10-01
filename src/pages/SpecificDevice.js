@@ -15,7 +15,7 @@ const SpecificDevice = () => {
   const {deviceInfo, isLogin} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
-  console.log(specificData, "specificData", id)
+  console.log(specificData, "specificData", id, device)
 
   const alertlogsInfoTemp = specificData[0].temperature
   console.log(alertlogsInfoTemp, "specificData")
@@ -42,9 +42,10 @@ const SpecificDevice = () => {
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>
-      {!device[0].status.includes("success") && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  : null }`,
-        color: `${(device[0].status.includes("yellow") || device[0].isDeleted) ? "#000000" : device[0].status.includes("orange") ? "#ffffff" : "#ffffff"}`
+      {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  : null }`,
+        color: `${ device[0].status.includes("danger") ? "#ffffff" : (device[0].status.includes("yellow") || device[0].isDeleted) ? "#000000" : "#ffffff"}`
       }}>
+        {console.log(device[0], "device[0].isDeleted")}
       {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  null }
       </div>}
       <div className='alerts-chart-wrapper'>
@@ -67,34 +68,6 @@ const SpecificDevice = () => {
             <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
           </div>
       </div>
-      {/* <div className='device-table'>
-        <table>
-            <thead>
-                <tr>
-                    <th>Node ID</th>
-                    <th>Node Type</th>
-                    <th>3 Axis</th>
-                    <th>Location</th>
-                    <th>Temperature</th>
-                    <th>Battery</th>
-                    <th>Last Update</th>
-                    <th>Smoke Sensor</th>
-                    <th>Triggering Device</th>
-                </tr>
-            </thead>
-            <tbody>
-                <td>{device[0].node_id}</td>
-                <td style={{textTransform: "capitalize"}}>{device[0].node_type}</td>
-                <td>{device[0].axis}</td>
-                <td>{device[0].node_name}</td>
-                <td>{device[0].temp}°C</td>
-                <td>{device[0].battery_percentage}</td>
-                <td>{device[0].last_update}</td>
-                <td>{device[0].smokeSensor ? "True" : "False"}</td>
-                <td>{device[0].triggeringDevice ? "True" : "False"}</td>
-            </tbody>
-        </table>
-      </div> */}
       <div className="dashboard-sticky">    
         <Footer />
       </div>
