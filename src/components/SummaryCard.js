@@ -7,11 +7,11 @@ const SummaryCard = () => {
         <h4>SUMMARY</h4>
         <div className='sum-details-combined' >
             <div id="sum-details-span1">Repeaters</div>
-            <div id="sum-details-span2">10/10</div>
+            <div id="sum-details-span2">9/10</div>
         </div>
         <div className='sum-details-combined' >
             <div id="sum-details-span1">Smoke Sensors</div>
-            <div id="sum-details-span2">11/12</div>
+            <div id="sum-details-span2">12/12</div>
         </div>
         <div className='sum-details-combined' >
             <div id="sum-details-span1">Suppression Units</div>
