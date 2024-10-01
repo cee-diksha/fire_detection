@@ -92,7 +92,6 @@ const SpecificDeck = () => {
                 );
               })
             ) : (
-              // If no issues were found, show "Everything is working fine" once
               <div className='working-fine-div'>Everything is working fine</div>
             )
           }

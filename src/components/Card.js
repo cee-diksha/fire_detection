@@ -4,6 +4,10 @@ import battery from "../assets/battery.png";
 import temperature from "../assets/temp.png";
 import sensor from "../assets/sensor.png";
 import sensor2 from "../assets/sensor2.png";
+import repeater from "../assets/repeater.png";
+import repeater2 from "../assets/repeater2.png";
+import suppression from "../assets/suppression.png";
+import suppression2 from "../assets/suppression2.png";
 import update from "../assets/update.png";
 import update2 from "../assets/update2.png";
 
@@ -43,7 +47,13 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
       </div>
       <div className="segment" id="node-type-id">
         <p id="sensor-name">
-          <img src={(status.includes("danger") || status.includes("orange")) ? sensor : sensor2} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
+          <img src={
+          node_type === "sensor" ? 
+            (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? sensor : sensor2) :
+          node_type === "repeater" ? 
+            (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? repeater : repeater2) :
+          node_type === "suppression" ? 
+      (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? suppression : suppression2) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
         <p>{node_id}</p>
@@ -64,7 +74,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={(status.includes("danger") || status.includes("orange")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <img src={(status.includes("danger") || status.includes("orange") || status.includes("deleted")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
