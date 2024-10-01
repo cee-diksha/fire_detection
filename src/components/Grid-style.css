@@ -38,6 +38,11 @@
     color: #000000;
   }
 
+  .deleted{
+    background-color: #8f8d8d;
+    color: #ffffff;
+  }
+
   .normal {
     background-color: #7BFF6D;
     color: #000000;

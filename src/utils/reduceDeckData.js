@@ -6,6 +6,7 @@ export const reduceDeckData = (deckData, deviceInfo) => {
     const hasOrange = [];
     const hasYellow = [];
     const hasSuccess = [];
+    const hasDeleted = [];
 
     curr.devices.forEach(device => {
       const compartments = device.node_info.map(item => ({
@@ -14,6 +15,8 @@ export const reduceDeckData = (deckData, deviceInfo) => {
         comp: device.comp 
       }));
 
+      console.log(compartments, "compartments")
+
       compartments.forEach(compartment => {
         if (compartment.status.includes("danger")) {
           hasDanger.push(compartment.comp);
@@ -21,17 +24,21 @@ export const reduceDeckData = (deckData, deviceInfo) => {
           hasOrange.push(compartment.comp);
         } else if (compartment.status.includes("yellow")) {
           hasYellow.push(compartment.comp);
+        } else if (compartment.status.includes("deleted")) {
+          hasDeleted.push(compartment.comp);
         } else if (compartment.status.includes("success")) {
           hasSuccess.push(compartment.comp);
-        }
+        } 
       });
     });
 
+    console.log(existingDeck, "existingDeck")
     if (existingDeck) {
       existingDeck.danger = [...(existingDeck.danger || []), ...hasDanger];
       existingDeck.normal = [...(existingDeck.normal || []), ...hasSuccess];
       existingDeck.temprise = [...(existingDeck.temprise || []), ...hasOrange];
       existingDeck.lowbattery = [...(existingDeck.lowbattery || []), ...hasYellow];
+      existingDeck.deleted = [...(existingDeck.deleted || []), ...hasDeleted];
     } else {
       const newDeck = {
         deck: curr.deck,
@@ -39,6 +46,7 @@ export const reduceDeckData = (deckData, deviceInfo) => {
         normal: hasSuccess || [],
         temprise: hasOrange || [],
         lowbattery: hasYellow || [],
+        deleted: hasDeleted || [],
       };
 
       if (hasDanger.length > 0) {

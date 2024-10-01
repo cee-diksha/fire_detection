@@ -1,6 +1,6 @@
 export const info = [
     { id: 1, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engine Room", node_id: 101, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
-    { id: 2, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "GT Room", node_id: 102, battery_percentage: "99", temp: null, last_update: "12/9/24 13:14:18", isDeleted: true, deck: 2, compartment: 1 },
+    { id: 2, status: ["deleted"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "GT Room", node_id: 102, battery_percentage: "99", temp: null, last_update: "12/9/24 13:14:18", isDeleted: true, deck: 2, compartment: 1 },
     { id: 3, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppression", node_name: "Boiler Room", node_id: 103, battery_percentage: "100", temp: null, last_update: "12/9/24 15:24:08", isDeleted: false, deck: 3, compartment: 1 },
     { id: 4, status: ["yellow"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Gallery", node_id: 104, battery_percentage: "30", temp: "47", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
     { id: 5, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppression", node_name: "SS Dining Hall", node_id: 105, battery_percentage: "98", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 7 },
@@ -29,7 +29,7 @@ export const deckInfo = [
     },
     {
         id: "2", deck: 2, devices: [
-            { comp: 1, node_info: [{ node: 102, status: ["success"] }] },
+            { comp: 1, node_info: [{ node: 102, status: ["deleted"] }] },
             { comp: 2, node_info: [{ node: 112, status: ["success"] }] },
             { comp: 6, node_info: [{ node: 107, status: ["success"] }] }
         ]

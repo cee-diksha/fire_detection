@@ -8,12 +8,14 @@ const Grid = ({ data, deckNo }) => {
   const normalComp = data.normal || [];
   const tempriseComp = data.temprise || [];
   const lowbatteryComp = data.lowbattery || [];
+  const deletedComp = data.deleted || [];
 
   const [highlightedId, setHighlightedId] = useState({
     dangerComp: [],
     normalComp: [],
     tempriseComp: [],
-    lowbatteryComp: []
+    lowbatteryComp: [],
+    deletedComp: []
   });
 
   useEffect(() => {
@@ -21,14 +23,16 @@ const Grid = ({ data, deckNo }) => {
       dangerComp: dangerComp || [], 
       normalComp: normalComp || [], 
       tempriseComp: tempriseComp || [], 
-      lowbatteryComp: lowbatteryComp || [] 
+      lowbatteryComp: lowbatteryComp || [],
+      deletedComp: deletedComp || []
     });
-  }, [dangerComp, normalComp, tempriseComp, lowbatteryComp]);
+  }, [dangerComp, normalComp, tempriseComp, lowbatteryComp, deletedComp]);
 
   const getBoxClass = (boxId) => {
     if (highlightedId.dangerComp.includes(boxId)) return "danger";
     if (highlightedId.tempriseComp.includes(boxId)) return "temprise";
     if (highlightedId.lowbatteryComp.includes(boxId)) return "lowbattery";
+    if (highlightedId.deletedComp.includes(boxId)) return "deleted";
     if (highlightedId.normalComp.includes(boxId)) return "normal";
     return "box"; // default class
   };

@@ -68,8 +68,6 @@ const Dashboard = () => {
                     const priority = {danger: 1, orange: 2, yellow: 3, deleted: 4, other: 5 };
                     const statusA = a.status.includes("danger") ? "danger" : a.status.includes("orange") ? "orange" : a.status.includes("yellow") ? "yellow" : a.isDeleted ? "deleted" : "other";
                     const statusB = b.status.includes("danger") ? "danger" : b.status.includes("orange") ? "orange" : b.status.includes("yellow") ? "yellow" : b.isDeleted  ? "deleted" : "other"; 
-                    console.log("Priority A: ", priority[statusA], "Priority B: ", priority[statusB], a);
-
                     return priority[statusA] - priority[statusB];
                 })
                 .map((item) => {
