@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Grid-style.css";
 import { Link } from "react-router-dom";
 
-const Grid = ({ data, deckNo }) => {
+const Grid = ({ data, deckNo, param }) => {
 
   const dangerComp = data.danger || []; // Ensure it's always an array
   const normalComp = data.normal || [];
@@ -48,7 +48,7 @@ const Grid = ({ data, deckNo }) => {
             <Link
               key={boxId}
               style={{ textDecoration: "none" }}
-              to={`deck/${deckNo}/${boxId}`}
+              to={param === "dashboard" ? `deck/${deckNo}/${boxId}` : `/deck/${deckNo}/${boxId}`}
             >
               <div
                 id={`box-${boxId}`}

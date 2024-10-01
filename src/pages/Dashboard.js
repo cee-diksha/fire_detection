@@ -87,7 +87,7 @@ const Dashboard = () => {
                     {filteredDeckInfo !== null && filteredDeckInfo.length > 0 && <div className='deck-display-grid'>
                     {filteredDeckInfo.map((item, index) => {
                     return (
-                        <DeckDashboardPageDiv key={index} data={item} deckNo={item.deck}/>
+                        <DeckDashboardPageDiv key={index} data={item} deckNo={item.deck} param={"dashboard"}/>
                     )
                     })} 
                 </div>}

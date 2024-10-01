@@ -324,6 +324,16 @@ input {
     animation: blink-warning 0.5s infinite;
 }
 
+#download-report{
+    height: 35px;
+    font-size: 18px;
+    width: auto;
+    padding: 0 20px;
+    cursor: pointer;
+    margin : -5% 2% 0 auto;
+    border-radius: 6px;
+}
+
 @keyframes blink-warning {
     0% {
       border-color: #ffffff;

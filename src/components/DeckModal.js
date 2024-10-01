@@ -24,13 +24,13 @@ const alertdeck = deckinfo.filter(item => item.deck === clickedDeck)
   )
 }
 
-export const DeckDashboardPageDiv = ({data, deckNo}) => {
+export const DeckDashboardPageDiv = ({data, deckNo, param}) => {
     return (
       <div>
         <div className='status-grid-modal' style={{cursor: "pointer"}}>
           <h4>Deck {deckNo}</h4>
           {console.log(data, deckNo, "deckkkkkk")}
-          <Grid data={data} deckNo={deckNo} /> 
+          <Grid data={data} deckNo={deckNo} param={param} /> 
         </div>
       </div>
     )

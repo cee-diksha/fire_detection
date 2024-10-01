@@ -10,12 +10,65 @@ import user from "../assets/user.png"
 import Card from '../components/Card'
 import { reduceDeckData } from '../utils/reduceDeckData'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
+import {specificDeviceChartData} from "../assets/info"
+import jsPDF from 'jspdf';
+
 
 const SpecificDeck = () => {
     const {deck} = useParams()
     const {isLogin, deckData, deviceInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
     const [deckGrid, setDeckGrid] = useState([])
+    const [downloadData, setDownloadData] = useState([])
+
+    const handleDownloadData = () => {
+      const details = deckInfo.flatMap((item, index) => {
+        return deviceInfo.filter(
+          data => data.deck === parseInt(deck) && data.compartment === item.comp && !data.status.includes("success")
+        );
+      });
+    
+      const data = details.map(data => {
+        return specificDeviceChartData.filter(item => item.node_name === data.node_name);
+      }).flat(); 
+    
+      setDownloadData(data); 
+      const doc = new jsPDF();
+    
+      data.forEach((deviceData, index) => {
+        const node = deviceData; 
+    
+        doc.setFont('helvetica', 'bold');
+        
+        doc.text(`Node Name: ${node.node_name}`, 10, 10 + (index * 60)); 
+        doc.text(`Deck: ${node.deck}`, 10, 20 + (index * 60)); 
+        doc.text(`Compartment: ${node.comp}`, 10, 30 + (index * 60)); 
+    
+        doc.setFont('helvetica', 'normal');
+        
+        if (node.alertlogstemp && node.alertlogstemp.length > 0) {
+          doc.text('Temperature Alerts:', 10, 40 + (index * 60));
+    
+          node.alertlogstemp.forEach((log, logIndex) => {
+            doc.text(`${log.time}: ${log.message}`, 10, 50 + (index * 60) + (logIndex * 10));
+          });
+        }
+    
+        if (node.alertlogsbattery && node.alertlogsbattery.length > 0) {
+          doc.text('Battery Alerts:', 10, 50 + (index * 60) + (node.alertlogstemp ? node.alertlogstemp.length * 10 : 0));
+    
+          node.alertlogsbattery.forEach((log, logIndex) => {
+            doc.text(`${log.time}: ${log.message}`, 10, 60 + (index * 60) + (logIndex * 10));
+          });
+        }
+    
+        // new node on new page
+        if (index < data.length - 1) {
+          doc.addPage();
+        }
+      });
+      doc.save('downloadData.pdf');
+    };
 
     useEffect(() => {
       const filtered = deckData.filter(item => item.deck === parseInt(deck)).flatMap(item => {
@@ -68,8 +121,9 @@ const SpecificDeck = () => {
       </div>
      <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>
       <h4 className="h4">Deck - {deck} </h4>
+      <button id="download-report" onClick={handleDownloadData}>Download</button>
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-evenly", width: "96%" }}>
-        <DeckDashboardPageDiv data={deckGrid} deckNo={deckGrid.deck} />
+        <DeckDashboardPageDiv data={deckGrid} deckNo={deckGrid.deck} param={"deck"}/>
         <div className='card-holder-specificdeck'>
             {deckInfo.some(item => deviceInfo.some(data => data.deck === parseInt(deck) && data.compartment === item.comp && !data.status.includes("success"))) ? (
               // Map over deckInfo to render compartments with issues
@@ -105,9 +159,9 @@ const SpecificDeck = () => {
             details.map(detail => {
               console.log(item, "item check", detail)
               return (
-                <div className='specific-card'>
+              <div className='specific-card'>
                 <h3>Compartment No. - {item.comp}</h3>
-                <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail}key={index} /></Link>
+                <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail} key={index} /></Link>
               </div>
               )
             })
