@@ -4,7 +4,7 @@ import "../comp-styles.css"
 const SummaryCard = () => {
   return (
     <div className='sum-details'>
-        <h4>SUMMARY</h4>
+        <h4>SYSTEM STATUS</h4>
         <div className='sum-details-combined' >
             <div id="sum-details-span1">Repeaters</div>
             <div id="sum-details-span2">9/10</div>

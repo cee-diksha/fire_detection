@@ -45,9 +45,12 @@ export const BatteryChart = () => {
   const [info, setInfo] = useState(deviceInfo)
   const battery = info.map(item => item.battery_percentage)
   const node = info.map(item => item.node_id)
+  console.log(battery, node, "batterynode", deviceInfo)
 
   useEffect(() => {
-    setInfo(deviceInfo)
+    const sortedData = deviceInfo.sort((a, b) => a.node_id - b.node_id);
+
+    setInfo(sortedData)
   }, [deviceInfo])
     return (
       <>

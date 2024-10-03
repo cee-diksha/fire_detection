@@ -19,7 +19,6 @@ const SpecificDeck = () => {
     const {isLogin, deckData, deviceInfo, setfilteredDeckInfo} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
     const [deckGrid, setDeckGrid] = useState([])
-    const [downloadData, setDownloadData] = useState([])
 
     const handleDownloadData = () => {
       const details = deckInfo.flatMap((item, index) => {
@@ -32,7 +31,6 @@ const SpecificDeck = () => {
         return specificDeviceChartData.filter(item => item.node_name === data.node_name);
       }).flat(); 
     
-      setDownloadData(data); 
       const doc = new jsPDF();
     
       data.forEach((deviceData, index) => {
