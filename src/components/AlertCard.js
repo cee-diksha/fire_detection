@@ -15,15 +15,19 @@ const AlertCard = () => {
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3" style={{backgroundColor: "#8f8d8d"}}></div>
-                <div id="alert-details-span1">Needs Replacement</div>
+                <div id="alert-details-span1">Replacement</div>
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3"style={{backgroundColor: "#FF6B3B"}}></div>
-                <div id="alert-details-span1">Temp Rise</div>
+                <div id="alert-details-span1">Temp ↑</div>
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3" style={{backgroundColor: "#FFC648"}}></div>
-                <div id="alert-details-span1">Low battery</div>
+                <div id="alert-details-span1">Battery ↓</div>
+            </div>
+            <div className='alert-details-combined' >
+                <div id="alert-details-span3" style={{backgroundColor: "#b6d9cc"}}></div>
+                <div id="alert-details-span1">Smoke</div>
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3" style={{backgroundColor: "#7BFF6D"}}></div>

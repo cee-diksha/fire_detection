@@ -123,7 +123,12 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:4, comp:3 , alertlogstemp: [], alertlogsbattery: [
+        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:4, comp:3 , alertlogstemp: [
+            { time: "1300 hrs", message: "Temperature rise detected" },
+            { time: "1320 hrs", message: "Smoke detected" },
+            { time: "1430 hrs", message: "Steady rise in temperature for past 1 hour" },
+            { time: "1440 hrs", message: "Temperature above critical" },
+        ], alertlogsbattery: [
             { time: "0800 hrs", message: "Battery level at 50%" },
             { time: "1000 hrs", message: "Battery level at 40%" },
             { time: "1200 hrs", message: "Battery level at 30%" },
@@ -221,7 +226,9 @@ export const specificDeviceChartData = [
     {
         node_type: "sensor", node_name: "MCO", node_id: 108, deck: 1, comp: 9, alertlogstemp: [
             { time: "1300 hrs", message: "Temperature rise detected" },
-            { time: "1320 hrs", message: "Temperature above critical" }
+            { time: "1320 hrs", message: "Smoke detected" },
+            { time: "1430 hrs", message: "Steady rise in temperature for past 1 hour" },
+            { time: "1440 hrs", message: "Temperature above critical" },
         ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "49", info: "[INFO]", status: "Sensor working fine" },
@@ -276,7 +283,15 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, alertlogstemp: null, alertlogsbattery: [
+            { time: "0800 hrs", message: "Battery level at 50%" },
+            { time: "1000 hrs", message: "Battery level at 40%" },
+            { time: "1200 hrs", message: "Battery level at 30%" },
+            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
+            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
+            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
+            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+        ], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "94", info: "[WARN]", status: "Battery dropping" },
@@ -297,7 +312,15 @@ export const specificDeviceChartData = [
             { time: "1430 hrs", message: "Fire detected" },
             { time: "1440 hrs", message: "Fire extinguishing started" },
             { time: "Afterwards", message: "Temperature reducing" }
-        ], alertlogsbattery: [], temperature: [
+        ], alertlogsbattery: [
+            { time: "0800 hrs", message: "Battery level at 50%" },
+            { time: "1000 hrs", message: "Battery level at 40%" },
+            { time: "1200 hrs", message: "Battery level at 30%" },
+            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
+            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
+            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
+            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+        ], temperature: [
             { info: "[INFO]", time: "11", status: "Sensor initialized", value: "50" },
             { info: "[INFO]", time: "12", status: "Normal operation", value: "50" },
             { info: "[INFO]", time: "13", status: "Normal operation", value: "49" },

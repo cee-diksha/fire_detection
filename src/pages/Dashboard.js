@@ -7,7 +7,7 @@ import user from "../assets/user.png"
 import settings from "../assets/settings.png"
 import { Link } from 'react-router-dom'
 import DropDown from '../components/DropDown'
-import {TempChart, BatteryChart} from '../components/TempChart'
+import {TempChart, BatteryChart, SmokeChart} from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import DeckCard from '../components/DeckCard'
@@ -40,7 +40,7 @@ const Dashboard = () => {
                 <Link to={isLogin ? "/settings" : "#"} 
                 style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
             </div>
-            </div>
+        </div>
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>
@@ -55,6 +55,15 @@ const Dashboard = () => {
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
                     <BatteryChart />
+                </div>
+                <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
+                <div style={{ display: 'flex', width: "auto", marginTop: "4px"}}>
+                    <div style={{ width: '20px', height: '20px', backgroundColor: '#7BFF6D', marginRight: '5px' }} />
+                    <div style={{color: "#000000"}}>Nornal</div>
+                    <div style={{ width: '20px', height: '20px', backgroundColor: 'red', marginRight: '5px', marginLeft: "5px" }} />
+                    <div style={{color: "#000000"}}>Smoke</div>
+                </div>
+                    <SmokeChart />
                 </div>
                 <div className='dashboard-content-comm'>
                     <Communication />

@@ -191,9 +191,10 @@ justify-content:center ;
 }
 
 .alert-label-wrap{
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .alert-details-combined{
