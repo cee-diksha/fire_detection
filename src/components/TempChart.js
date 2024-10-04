@@ -101,7 +101,7 @@ export const SmokeChart = () => {
 console.log(barColors, "barcolors")
   return (
     <BarChart
-    // style={{width: "100%"}}
+    style={{marginTop: "-20px"}}
       xAxis={[{ scaleType: 'band', data: nodeIds, label: 'Node ID', colorMap: {
         type: "ordinal",
         values: nodeIds,

@@ -57,11 +57,11 @@ const Dashboard = () => {
                     <BatteryChart />
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
-                <div style={{ display: 'flex', width: "auto", marginTop: "4px"}}>
-                    <div style={{ width: '20px', height: '20px', backgroundColor: '#7BFF6D', marginRight: '5px' }} />
-                    <div style={{color: "#000000"}}>Nornal</div>
-                    <div style={{ width: '20px', height: '20px', backgroundColor: 'red', marginRight: '5px', marginLeft: "5px" }} />
-                    <div style={{color: "#000000"}}>Smoke</div>
+                <div style={{ display: 'flex', width: "auto", marginTop: "20px"}}>
+                    <div style={{ width: '18px', height: '18px', backgroundColor: '#7BFF6D', marginRight: '5px'}} />
+                    <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px" }}>Nornal</div>
+                    <div style={{ width: '18px', height: '18px', backgroundColor: 'red', marginRight: '5px', marginLeft: "5px" }} />
+                    <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px"}}>Smoke</div>
                 </div>
                     <SmokeChart />
                 </div>
