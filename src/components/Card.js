@@ -10,6 +10,9 @@ import suppression from "../assets/suppression.png";
 import suppression2 from "../assets/suppression2.png";
 import update from "../assets/update.png";
 import update2 from "../assets/update2.png";
+import smoke from "../assets/smoke.png";
+import StatusDisplay from '../utils/StatusDisplay';
+
 
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment } = item;
@@ -36,14 +39,12 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : "#FFC648"}`, 
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : status.includes("yellow") ? "#FFC648" : "#b6d9cc"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
        <div className="segment" id="status-text">
-        <p>
-        {status.includes("danger")? "FIRE" : status.includes("orange") ? "TEMP RISING" : status.includes("yellow") ? "LOW BATTERY" : isDeleted ? "NEEDS REPLACEMENT" : "NORMAL"}
-        </p>
+       <StatusDisplay status={status} />
       </div>
       <div className="segment" id="node-type-id">
         <p id="sensor-name">
@@ -52,7 +53,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
             (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? sensor : sensor2) :
           node_type === "repeater" ? 
             (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? repeater : repeater2) :
-          node_type === "suppression" ? 
+          node_type === "suppressor" ? 
       (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? suppression : suppression2) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
@@ -65,11 +66,12 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
-          <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "6px" }} />
+          <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "4px" }} />
           {temp}°C
         </div>}
+        {status.includes("smoke") && <img src={smoke} alt="smoke" style={{ height: "24px", marginTop: "2px"}} className='smoke-img'/>}
         <div className= {(status.includes("yellow")) ? "dangertext" : "normaltext"}>
-          <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "6px" }} />
+          <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "4px" }} />
           {battery_percentage}%
         </div>
       </div>
@@ -82,9 +84,9 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
       </div>
       <div className="segment" style={{ borderBottom: "none" }} id="refresh-alarm-btn">
         <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>
-        {status.includes("danger") && <button 
+        {(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && <button 
           onClick={handleMuteAlarm} 
-          id={`${status.includes("danger") && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
+          id={`${(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
         >
           {isAlarmMuted ? "Unmute Alarm" : "Mute Alarm"}
         </button>}

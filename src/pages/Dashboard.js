@@ -65,14 +65,16 @@ const Dashboard = () => {
                 <div className='fixed-content'>
                 {cardData
                 .sort((a, b) => {
-                    const priority = {danger: 1, orange: 2, yellow: 3, deleted: 4, other: 5 };
-                    const statusA = a.status.includes("danger") ? "danger" : a.status.includes("orange") ? "orange" : a.status.includes("yellow") ? "yellow" : a.isDeleted ? "deleted" : "other";
-                    const statusB = b.status.includes("danger") ? "danger" : b.status.includes("orange") ? "orange" : b.status.includes("yellow") ? "yellow" : b.isDeleted  ? "deleted" : "other"; 
+                    const priority = {danger: 1, orangeSmoke: 2, smoke: 3, orange: 4, yellow: 5, deleted: 6, other: 7 };
+                    const statusA = a.status.includes("danger") ? "danger" : (a.status.includes("orange") &&  a.status.includes("smoke")) ? "orangeSmoke" : a.status.includes("smoke") ? "smoke" : a.status.includes("orange") ? "orange" : a.status.includes("yellow") ? "yellow" : a.isDeleted ? "deleted" : "other";
+                    const statusB = b.status.includes("danger") ? "danger" : (b.status.includes("orange") &&  b.status.includes("smoke")) ? "orangeSmoke" : b.status.includes("smoke") ? "smoke" : b.status.includes("orange") ? "orange" : b.status.includes("yellow") ? "yellow" : b.isDeleted  ? "deleted" : "other"; 
                     return priority[statusA] - priority[statusB];
                 })
                 .map((item) => {
                     let status = "";
                     if (item.status.includes("danger")) status = "danger";
+                    else if (item.status.includes("orange") && item.status.includes("smoke")) status = "orange";
+                    else if (item.status.includes("smoke")) status = "smoke";
                     else if (item.status.includes("orange")) status = "orange";
                     else if (item.status.includes("yellow")) status = "yellow";
                     else if (item.isDeleted) status = "deleted";

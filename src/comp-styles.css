@@ -10,6 +10,21 @@
     border: 7px solid transparent; 
 }
 
+.smoke-img{
+  animation: blink-img 0.5s infinite;
+}
+
+@keyframes blink-img {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .blinking-border {
     height: auto;
@@ -499,7 +514,7 @@ tbody tr:hover {
     padding: 0 10px;
     display: flex;
     text-transform: capitalize;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 14px;
     background-color: #f4efef;
     color: #000000;

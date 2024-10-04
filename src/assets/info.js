@@ -1,30 +1,30 @@
 export const info = [
     { id: 1, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engine Room", node_id: 101, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
-    { id: 2, status: ["deleted"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "GT Room", node_id: 102, battery_percentage: "99", temp: null, last_update: "12/9/24 13:14:18", isDeleted: true, deck: 2, compartment: 1 },
-    { id: 3, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppression", node_name: "Boiler Room", node_id: 103, battery_percentage: "100", temp: null, last_update: "12/9/24 15:24:08", isDeleted: false, deck: 3, compartment: 1 },
-    { id: 4, status: ["yellow"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Gallery", node_id: 104, battery_percentage: "30", temp: "47", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
-    { id: 5, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppression", node_name: "SS Dining Hall", node_id: 105, battery_percentage: "98", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 7 },
-    { id: 6, status: ["danger"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, battery_percentage: "100", temp: "85", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 5 },
+    { id: 2, status: ["deleted"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "GT Room", node_id: 102, battery_percentage: "0", temp: null, last_update: "12/9/24 13:14:18", isDeleted: true, deck: 2, compartment: 1 },
+    { id: 3, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Boiler Room", node_id: 103, battery_percentage: "100", temp: null, last_update: "12/9/24 15:24:08", isDeleted: false, deck: 3, compartment: 1 },
+    { id: 4, status: ["orange", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Gallery", node_id: 104, battery_percentage: "20", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
+    { id: 5, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "SS Dining Hall", node_id: 105, battery_percentage: "98", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 7 },
+    { id: 6, status: ["danger"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, battery_percentage: "100", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 5 },
     { id: 7, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Main Switch Board", node_id: 107, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 2, compartment: 6 },
-    { id: 8, status: ["orange", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "MCO", node_id: 108, battery_percentage: "100", temp: "65", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
+    { id: 8, status: ["orange", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "MCO", node_id: 108, battery_percentage: "98", temp: "65", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
     { id: 9, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engg JS Mess", node_id: 109, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 2 },
-    { id: 10, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppression", node_name: "Engg SS Mess", node_id: 110, battery_percentage: "94", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
-    { id: 11, status: ["danger", "yellow"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, battery_percentage: "35", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 5 },
+    { id: 10, status: ["yellow"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Engg SS Mess", node_id: 110, battery_percentage: "32", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
+    { id: 11, status: ["danger", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, battery_percentage: "35", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 5 },
     { id: 12, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "CMR", node_id: 112, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 2, compartment: 2 },
-    { id: 13, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppression", node_name: "AC Compartment", node_id: 113, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
-    { id: 14, status: ["danger", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "ASP", node_id: 114, battery_percentage: "99", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 2 },
+    { id: 13, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "AC Compartment", node_id: 113, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
+    { id: 14, status: ["danger", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "ASP", node_id: 114, battery_percentage: "99", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 2 },
     { id: 15, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Pump Room", node_id: 115, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 1 },
-    { id: 16, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Cabin Flat", node_id: 116, battery_percentage: "92", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 8 },
-    { id: 17, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppression", node_name: "Fwd JS Mess", node_id: 117, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
-    { id: 18, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 11 }
+    { id: 16, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Cabin Flat", node_id: 116, battery_percentage: "96", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 8 },
+    { id: 17, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Fwd JS Mess", node_id: 117, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
+    { id: 18, status: ["smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, battery_percentage: "90", temp: "49", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 11 },
 ]
 
 export const deckInfo = [
     {
         id: "1", deck: 1, devices: [
-            { comp: 1, node_info: [{ node: 101, status: ["success"] }, { node: 110, status: ["success"] }] },
+            { comp: 1, node_info: [{ node: 101, status: ["success"] }, { node: 110, status: ["yellow"] }] },
             { comp: 8, node_info: [{ node: 116, status: ["success"] }] },
-            { comp: 9, node_info: [{ node: 108, status: ["orange" ]}, { node: 117, status: ["success"] }] }
+            { comp: 9, node_info: [{ node: 108, status: ["orange", "smoke"]}, { node: 117, status: ["success"] }] }
         ]
     },
     {
@@ -42,15 +42,15 @@ export const deckInfo = [
     },
     {
         id: "4", deck: 4, devices: [
-            { comp: 3, node_info: [{ node: 113, status: ["success"] }, { node: 104, status: ["yellow" ]}] },
-            { comp: 5, node_info: [{ node: 111, status: ["danger" ]}] }
+            { comp: 3, node_info: [{ node: 113, status: ["success"] }, { node: 104, status: ["orange", "yellow"]}] },
+            { comp: 5, node_info: [{ node: 111, status: ["danger", "yellow", "smoke"]}] }
         ]
     },
     {
         id: "5", deck: 5, devices: [
-            { comp: 2, node_info: [{ node: 114, status: ["success"] }] },
+            { comp: 2, node_info: [{ node: 114, status: ["danger, smoke"] }] },
             { comp: 5, node_info: [{ node: 106, status: ["danger" ]}] },
-            { comp: 11, node_info: [{ node: 118, status: ["success"] }] }
+            { comp: 11, node_info: [{ node: 118, status: ["smoke"] }] }
         ]
     },
     {
@@ -93,17 +93,17 @@ export const specificDeviceChartData = [
     {
         node_type: "repeater", node_name: "GT Room", node_id: 102, deck: 2, comp: 1, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
-            { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
-            { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }
+            { time: "12", value: "94", info: "[INFO]", status: "Battery OK" },
+            { time: "13", value: "86", info: "[WARN]", status: "Battery dropping" },
+            { time: "14", value: "77", info: "[WARN]", status: "Battery dropping" },
+            { time: "15", value: "64", info: "[WARN]", status: "Battery dropping" },
+            { time: "16", value: "55", info: "[WARN]", status: "Battery dropping" },
+            { time: "17", value: "42", info: "[WARN]", status: "Battery dropping" },
+            { time: "18", value: "33", info: "[WARN]", status: "Battery dropping" },
+            { time: "19", value: "30", info: "[WARN]", status: "Needs Replacement" },
+            { time: "20", value: "20", info: "[WARN]", status: "Needs Replacement" },
+            { time: "21", value: "15", info: "[WARN]", status: "Needs Replacement" },
+            { time: "22", value: "0", info: "[WARN]", status: "Battery Dead" }
         ]
     },
     {
@@ -137,25 +137,25 @@ export const specificDeviceChartData = [
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
             { time: "14", value: "50", info: "[INFO]", status: "Sensor working fine" },
             { time: "15", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "16", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "17", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "18", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "19", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "20", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "21", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "22", value: "47", info: "[INFO]", status: "Sensor working fine" }
+            { time: "16", value: "54", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "17", value: "55", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "18", value: "58", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "19", value: "60", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "20", value: "60", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "21", value: "65", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "22", value: "75", info: "[INFO]", status: "Temperature rising above critical" }
         ], battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
-            { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "90", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "85", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "80", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "75", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "70", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "60", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "55", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "50", info: "[WARN]", status: "Battery dropping" }]
+            { time: "13", value: "94", info: "[WARN]", status: "Battery dropping" },
+            { time: "14", value: "88", info: "[WARN]", status: "Battery dropping" },
+            { time: "15", value: "80", info: "[WARN]", status: "Battery dropping" },
+            { time: "16", value: "75", info: "[WARN]", status: "Battery dropping" },
+            { time: "17", value: "65", info: "[WARN]", status: "Battery dropping" },
+            { time: "18", value: "60", info: "[WARN]", status: "Battery dropping" },
+            { time: "19", value: "55", info: "[WARN]", status: "Battery dropping" },
+            { time: "20", value: "42", info: "[WARN]", status: "Battery dropping" },
+            { time: "21", value: "35", info: "[WARN]", status: "Battery dropping" },
+            { time: "22", value: "20", info: "[WARN]", status: "Battery dropping" }]
     },
     {
         node_type: "suppression unit", node_name: "SS Dining Hall", node_id: 105, deck:3, comp: 7, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
@@ -175,7 +175,6 @@ export const specificDeviceChartData = [
         node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, deck:5, comp: 5,  alertlogstemp: [
             { time: "1300 hrs", message: "Temperature rise detected" },
             { time: "1320 hrs", message: "Temperature above critical" },
-            { time: "1400 hrs", message: "Smoke detected" },
             { time: "1430 hrs", message: "Fire detected" },
             { time: "1440 hrs", message: "Fire extinguishing started" },
             { time: "Afterwards", message: "Temperature reducing" }
@@ -188,10 +187,10 @@ export const specificDeviceChartData = [
             { info: "[INFO]", time: "16", status: "Normal operation", value: "50" },
             { info: "[WARNING]", time: "17", status: "Temperature rising. Possible fire risk.", value: "54" },
             { info: "[WARNING]", time: "18", status: "Temperature rising. Fire risk increased.", value: "58" },
-            { info: "[ALERT]", time: "19", status: "High temperature detected! Fire may have occurred.", value: "60" },
-            { info: "[ALERT]", time: "20", status: "Critical temperature! Fire confirmed. Immediate action required.", value: "68" },
-            { info: "[ALERT]", time: "21", status: "Critical temperature! Emergency response needed.", value: "74" },
-            { info: "[ALERT]", time: "22", status: "System at maximum alert.", value: "80" }
+            { info: "[ALERT]", time: "19", status: "High temperature detected! Fire may have occurred.", value: "65" },
+            { info: "[ALERT]", time: "20", status: "Critical temperature! Fire confirmed. Immediate action required.", value: "80" },
+            { info: "[INFO]", time: "21", status: "Fire extinguishing started", value: "70" },
+            { info: "[INFO]", time: "22", status: "Temperature reducing", value: "55" }
         ], battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -225,17 +224,17 @@ export const specificDeviceChartData = [
             { time: "1320 hrs", message: "Temperature above critical" }
         ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
-            { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
+            { time: "12", value: "49", info: "[INFO]", status: "Sensor working fine" },
+            { time: "13", value: "53", info: "[INFO]", status: "Sensor working fine" },
             { time: "14", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "15", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "16", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "17", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "18", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "19", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "20", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "21", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "22", value: "47", info: "[INFO]", status: "Sensor working fine" }
+            { time: "15", value: "50", info: "[INFO]", status: "Sensor working fine" },
+            { time: "16", value: "48", info: "[INFO]", status: "Sensor working fine" },
+            { time: "17", value: "52", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "18", value: "56", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "19", value: "59", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "20", value: "60", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "21", value: "62", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "22", value: "65", info: "[INFO]", status: "Temperature rising above critical" }
         ], battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -280,15 +279,15 @@ export const specificDeviceChartData = [
         node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
+            { time: "14", value: "94", info: "[WARN]", status: "Battery dropping" },
+            { time: "15", value: "86", info: "[WARN]", status: "Battery dropping" },
+            { time: "16", value: "78", info: "[WARN]", status: "Battery dropping" },
+            { time: "17", value: "70", info: "[WARN]", status: "Battery dropping" },
+            { time: "18", value: "66", info: "[WARN]", status: "Battery dropping" },
+            { time: "19", value: "60", info: "[WARN]", status: "Battery dropping" },
+            { time: "20", value: "50", info: "[WARN]", status: "Battery dropping" },
+            { time: "21", value: "42", info: "[WARN]", status: "Battery dropping" },
+            { time: "22", value: "32", info: "[WARN]", status: "Needs Replacement" }]
     },
     {
         node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, deck:4, comp: 5, alertlogstemp: [
@@ -308,9 +307,9 @@ export const specificDeviceChartData = [
             { info: "[WARNING]", time: "17", status: "Temperature rising. Possible fire risk.", value: "54" },
             { info: "[WARNING]", time: "18", status: "Temperature rising. Fire risk increased.", value: "58" },
             { info: "[ALERT]", time: "19", status: "High temperature detected! Fire may have occurred.", value: "60" },
-            { info: "[ALERT]", time: "20", status: "Critical temperature! Fire confirmed. Immediate action required.", value: "68" },
-            { info: "[ALERT]", time: "21", status: "Critical temperature! Emergency response needed.", value: "74" },
-            { info: "[ALERT]", time: "22", status: "System at maximum alert.", value: "80" }
+            { info: "[ALERT]", time: "20", status: "Critical temperature! Fire confirmed. Immediate action required.", value: "80" },
+            { info: "[INFO]", time: "21", status: "Fire extinguishing started", value: "70" },
+            { info: "[INFO]", time: "22", status: "Temperature reducing", value: "55" }
         ], battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -353,19 +352,26 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "ASP", node_id: 114, deck:5, comp: 2,  alertlogstemp: [], alertlogsbattery: [], temperature: [
+        node_type: "sensor", node_name: "ASP", node_id: 114, deck:5, comp: 2,  alertlogstemp: [
+            { time: "1300 hrs", message: "Temperature rise detected" },
+            { time: "1320 hrs", message: "Temperature above critical" },
+            { time: "1400 hrs", message: "Smoke detected" },
+            { time: "1430 hrs", message: "Fire detected" },
+            { time: "1440 hrs", message: "Fire extinguishing started" },
+            { time: "Afterwards", message: "Temperature reducing" }
+        ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
-            { time: "14", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "15", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "16", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "17", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "18", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "19", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "20", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "21", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "22", value: "47", info: "[INFO]", status: "Sensor working fine" }
+            { time: "13", value: "40", info: "[INFO]", status: "Sensor working fine" },
+            { time: "14", value: "52", info: "[INFO]", status: "Sensor working fine" },
+            { time: "15", value: "56", info: "[INFO]", status: "Sensor working fine" },
+            { time: "16", value: "60", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "17", value: "65", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "18", value: "66", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "19", value: "70", info: "[INFO]", status: "Temperature rising above critical" },
+            { time: "20", value: "75", info: "[INFO]", status: "Fire"},
+            { time: "21", value: "70", info: "[INFO]", status: "Fire extinguishing started" },
+            { time: "22", value: "60", info: "[INFO]", status: "Temperature reducing" }
         ], battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -395,6 +401,7 @@ export const specificDeviceChartData = [
     },
     {
         node_type: "repeater", node_name: "Cabin Flat", node_id: 116, deck:1, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -422,19 +429,21 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, deck:5, comp: 11,   alertlogstemp: [], alertlogsbattery: [], temperature: [
+        node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, deck:5, comp: 11,   alertlogstemp: [
+            { time: "1800 hrs", message: "Smoke detected" }
+        ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
-            { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
+            { time: "12", value: "49", info: "[INFO]", status: "Sensor working fine" },
+            { time: "13", value: "48", info: "[INFO]", status: "Sensor working fine" },
             { time: "14", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "15", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "16", value: "47", info: "[INFO]", status: "Sensor working fine" },
+            { time: "15", value: "50", info: "[INFO]", status: "Sensor working fine" },
+            { time: "16", value: "50", info: "[INFO]", status: "Sensor working fine" },
             { time: "17", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "18", value: "47", info: "[INFO]", status: "Sensor working fine" },
-            { time: "19", value: "48", info: "[INFO]", status: "Sensor working fine" },
-            { time: "20", value: "47", info: "[INFO]", status: "Sensor working fine" },
+            { time: "18", value: "48", info: "[INFO]", status: "Sensor working fine" },
+            { time: "19", value: "49", info: "[INFO]", status: "Sensor working fine" },
+            { time: "20", value: "50", info: "[INFO]", status: "Sensor working fine" },
             { time: "21", value: "50", info: "[INFO]", status: "Sensor working fine" },
-            { time: "22", value: "47", info: "[INFO]", status: "Sensor working fine" }
+            { time: "22", value: "50", info: "[INFO]", status: "Sensor working fine" }
         ], battery_percentage: [
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },

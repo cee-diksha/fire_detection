@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 
 const Grid = ({ data, deckNo, param }) => {
 
-  const dangerComp = data.danger || []; // Ensure it's always an array
+  const dangerComp = data.danger || []; // to ensure it's always an array
   const normalComp = data.normal || [];
   const tempriseComp = data.temprise || [];
   const lowbatteryComp = data.lowbattery || [];
   const deletedComp = data.deleted || [];
+  const smokeComp = data.smoke || [];
+
 
   const [highlightedId, setHighlightedId] = useState({
     dangerComp: [],
     normalComp: [],
     tempriseComp: [],
     lowbatteryComp: [],
-    deletedComp: []
+    deletedComp: [],
+    smokeComp: []
   });
 
   useEffect(() => {
@@ -24,15 +27,17 @@ const Grid = ({ data, deckNo, param }) => {
       normalComp: normalComp || [], 
       tempriseComp: tempriseComp || [], 
       lowbatteryComp: lowbatteryComp || [],
-      deletedComp: deletedComp || []
+      deletedComp: deletedComp || [],
+      smokeComp: smokeComp || []
     });
-  }, [dangerComp, normalComp, tempriseComp, lowbatteryComp, deletedComp]);
+  }, [dangerComp, normalComp, tempriseComp, lowbatteryComp, deletedComp, smokeComp]);
 
   const getBoxClass = (boxId) => {
     if (highlightedId.dangerComp.includes(boxId)) return "danger";
     if (highlightedId.tempriseComp.includes(boxId)) return "temprise";
     if (highlightedId.lowbatteryComp.includes(boxId)) return "lowbattery";
     if (highlightedId.deletedComp.includes(boxId)) return "deleted";
+    if (highlightedId.smokeComp.includes(boxId)) return "smoke";
     if (highlightedId.normalComp.includes(boxId)) return "normal";
     return "box"; // default class
   };
