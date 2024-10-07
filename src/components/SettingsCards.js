@@ -11,11 +11,11 @@ const totalUnits = (allDevices, unit) => {
 export const TotalSuppressionCard = () => {
     const {deviceInfo} = useContext(MainContext)
     const [data, setData] = useState(deviceInfo)
-    const [count, setCount] = useState(totalUnits(data, "suppression"))
+    const [count, setCount] = useState(totalUnits(data, "suppressor"))
 
     useEffect(() => {
         setData(deviceInfo)
-        setCount(totalUnits(deviceInfo, "suppression"))
+        setCount(totalUnits(deviceInfo, "suppressor"))
     }, [deviceInfo])
     return(
         <div className="total-cards">
