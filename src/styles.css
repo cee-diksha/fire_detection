@@ -326,7 +326,10 @@ input {
 
 #download-report{
     height: 35px;
-    font-size: 18px;
+    font-size: 14px;
+    border: 1px solid #ffffff;
+    background-color: #3F3F3F;
+    color: #ffffff;
     width: auto;
     padding: 0 20px;
     cursor: pointer;

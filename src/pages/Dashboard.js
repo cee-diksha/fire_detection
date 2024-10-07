@@ -15,6 +15,7 @@ import { DeckDashboardPageDiv } from '../components/DeckModal'
 import Footer from '../components/Footer'
 import AlertCard from '../components/AlertCard'
 import { reduceDeckData } from '../utils/reduceDeckData'
+import { ExportPdfButton } from '../utils/ExportPdfButton'
 
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo} = useContext(MainContext)
@@ -23,6 +24,7 @@ const Dashboard = () => {
     useEffect(() => {
         const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
         setfilteredDeckInfo(filteredDeckInfo);
+        console.log("filteredDeckInfo", filteredDeckInfo)
         setCardData(cardData);
       }, [deckData, deviceInfo]);
 
@@ -35,6 +37,7 @@ const Dashboard = () => {
                 <h2 id="dashboard-heading">Ship Name</h2>
             </div>
             <DropDown cardData={cardData} />
+            <ExportPdfButton data={cardData}/>
             <div className='imgWrapper'>
                 {isLogin ? <img src={user} alt="user-img" className='img' style={{marginTop: "3px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
                 <Link to={isLogin ? "/settings" : "#"} 
