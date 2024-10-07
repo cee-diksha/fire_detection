@@ -1,68 +1,75 @@
 export const info = [
-    { id: 1, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engine Room", node_id: 101, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
+    { id: 1, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engine Room", node_id: 101, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 2, compartment: 1 },
     { id: 2, status: ["deleted"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "GT Room", node_id: 102, battery_percentage: "0", temp: null, last_update: "12/9/24 13:14:18", isDeleted: true, deck: 2, compartment: 1 },
-    { id: 3, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Boiler Room", node_id: 103, battery_percentage: "100", temp: null, last_update: "12/9/24 15:24:08", isDeleted: false, deck: 3, compartment: 1 },
-    { id: 4, status: ["orange", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Gallery", node_id: 104, battery_percentage: "20", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
+    { id: 3, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Boiler Room", node_id: 103, battery_percentage: "100", temp: null, last_update: "12/9/24 15:24:08", isDeleted: false, deck: 2, compartment: 1 },
+    { id: 4, status: ["orange", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Gallery", node_id: 104, battery_percentage: "20", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 3 },
     { id: 5, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "SS Dining Hall", node_id: 105, battery_percentage: "98", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 7 },
     { id: 6, status: ["danger"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, battery_percentage: "100", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 5 },
-    { id: 7, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Main Switch Board", node_id: 107, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 2, compartment: 6 },
+    { id: 7, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Main Switch Board", node_id: 107, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 6 },
     { id: 8, status: ["orange", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "MCO", node_id: 108, battery_percentage: "98", temp: "65", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
     { id: 9, status: ["success"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Engg JS Mess", node_id: 109, battery_percentage: "100", temp: "50", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 2 },
     { id: 10, status: ["yellow"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Engg SS Mess", node_id: 110, battery_percentage: "32", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 },
     { id: 11, status: ["danger", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, battery_percentage: "35", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 5 },
-    { id: 12, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "CMR", node_id: 112, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 2, compartment: 2 },
+    { id: 12, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "CMR", node_id: 112, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 2 },
     { id: 13, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "AC Compartment", node_id: 113, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 },
     { id: 14, status: ["danger", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "ASP", node_id: 114, battery_percentage: "99", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 2 },
     { id: 15, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Pump Room", node_id: 115, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 1 },
     { id: 16, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Cabin Flat", node_id: 116, battery_percentage: "96", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 8 },
-    { id: 17, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Fwd JS Mess", node_id: 117, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 9 },
+    { id: 17, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Fwd JS Mess", node_id: 117, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 9 },
     { id: 18, status: ["smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, battery_percentage: "90", temp: "49", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 11 },
+    { id: 19, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "room 0", node_id: 119, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 8 },
+    { id: 20, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: true, axis: 'X-Y-Z', node_type: "suppressor", node_name: "room 1", node_id: 120, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 9},
+
 ]
 
 export const deckInfo = [
     {
         id: "1", deck: 1, devices: [
-            { comp: 1, node_info: [{ node: 101, status: ["success"] }, { node: 110, status: ["yellow"] }] },
+            { comp: 1, node_info: [{ node: 110, status: ["yellow"] }] },
             { comp: 8, node_info: [{ node: 116, status: ["success"] }] },
-            { comp: 9, node_info: [{ node: 108, status: ["orange", "smoke"]}, { node: 117, status: ["success"] }] }
+            { comp: 9, node_info: [{ node: 108, status: ["orange", "smoke"]}]}
         ]
     },
     {
         id: "2", deck: 2, devices: [
-            { comp: 1, node_info: [{ node: 102, status: ["deleted"] }] },
-            { comp: 2, node_info: [{ node: 112, status: ["success"] }] },
-            { comp: 6, node_info: [{ node: 107, status: ["success"] }] }
+            { comp: 1, node_info: [{ node: 102, status: ["deleted"] }, { node: 101, status: ["success"] }, { node: 103, status: ["success"] }] }
         ]
     },
     {
         id: "3", deck: 3, devices: [
-            { comp: 1, node_info: [{ node: 103, status: ["success"] }, { node: 115, status: ["success"] }] },
-            { comp: 7, node_info: [{ node: 105, status: ["success"] }] }
+            { comp: 1, node_info: [{ node: 115, status: ["success"] }] },
+            { comp: 7, node_info: [{ node: 105, status: ["success"] }] },
+            { comp: 3, node_info: [{ node: 104, status: ["orange", "yellow"]}] },
         ]
     },
     {
         id: "4", deck: 4, devices: [
-            { comp: 3, node_info: [{ node: 113, status: ["success"] }, { node: 104, status: ["orange", "yellow"]}] },
-            { comp: 5, node_info: [{ node: 111, status: ["danger", "yellow", "smoke"]}] }
+            { comp: 3, node_info: [{ node: 113, status: ["success"] }] },
+            { comp: 5, node_info: [{ node: 111, status: ["danger", "yellow", "smoke"]}] },
+            { comp: 6, node_info: [{ node: 107, status: ["success"] }] }
         ]
     },
     {
         id: "5", deck: 5, devices: [
-            { comp: 2, node_info: [{ node: 114, status: ["danger, smoke"] }] },
+            { comp: 2, node_info: [{ node: 114, status: ["danger", "smoke"] }] },
             { comp: 5, node_info: [{ node: 106, status: ["danger" ]}] },
-            { comp: 11, node_info: [{ node: 118, status: ["smoke"] }] }
+            { comp: 11, node_info: [{ node: 118, status: ["smoke"] }] },
+            { comp: 8, node_info: [{ node: 119, status: ["success"] }] },
+            { comp: 9, node_info: [{ node: 120, status: ["success"] }] }
+
         ]
     },
     {
         id: "6", deck: 6, devices: [
-            { comp: 2, node_info: [{ node: 109, status: ["success"] }] }
+            { comp: 2, node_info: [{ node: 109, status: ["success"] }, { node: 112, status: ["success"] }] },
+            { comp: 9, node_info: [{ node: 117, status: ["success"] }] },
         ]
     }
 ];
 
 export const specificDeviceChartData = [
     {
-        node_type: "sensor", node_name: "Engine Room", node_id: 101, deck: 1, comp: 1,  alertlogstemp: [], alertlogsbattery: [], temperature: [
+        node_type: "sensor", node_name: "Engine Room", node_id: 101, deck: 2, comp: 1,  alertlogstemp: [], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "49", info: "[INFO]", status: "Sensor working fine" },
             { time: "13", value: "45", info: "[INFO]", status: "Sensor working fine" },
@@ -107,7 +114,7 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "suppression unit", node_name: "Boiler Room", node_id: 103, deck:3, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [
+        node_type: "suppression unit", node_name: "Boiler Room", node_id: 103, deck:2, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -123,7 +130,7 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:4, comp:3 , alertlogstemp: [
+        node_type: "sensor", node_name: "Gallery", node_id: 104, deck:3, comp:3 , alertlogstemp: [
             { time: "1300 hrs", message: "Temperature rise detected" },
             { time: "1320 hrs", message: "Smoke detected" },
             { time: "1430 hrs", message: "Steady rise in temperature for past 1 hour" },
@@ -165,16 +172,16 @@ export const specificDeviceChartData = [
     {
         node_type: "suppression unit", node_name: "SS Dining Hall", node_id: 105, deck:3, comp: 7, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
-            { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
+            { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "15", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "16", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "17", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "18", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "19", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "20", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "21", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "22", value: "94", info: "[INFO]", status: "Battery dropping" }]
     },
     {
         node_type: "sensor", node_name: "VS Dining Hall", node_id: 106, deck:5, comp: 5,  alertlogstemp: [
@@ -210,7 +217,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "Main Switch Board", node_id: 107, deck:2, comp: 6, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "Main Switch Board", node_id: 107, deck:4, comp: 6, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -347,7 +354,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "repeater", node_name: "CMR", node_id: 112, deck: 2, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "CMR", node_id: 112, deck: 6, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -426,19 +433,19 @@ export const specificDeviceChartData = [
         node_type: "repeater", node_name: "Cabin Flat", node_id: 116, deck:1, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
-            { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
-            { time: "15", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "96", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
+            { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "15", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "16", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "17", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "18", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "19", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "20", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "21", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "22", value: "94", info: "[INFO]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "Fwd JS Mess", node_id: 117, deck: 1, comp: 9, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "Fwd JS Mess", node_id: 117, deck: 6, comp: 9, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -481,7 +488,36 @@ export const specificDeviceChartData = [
             { time: "21", value: "95", info: "[WARN]", status: "Battery dropping" },
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }
         ]
-    }
+    },
+    {
+        node_type: "repeater", node_name: "room 0", node_id: 119, deck:5, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "15", value: "98", info: "[INFO]", status: "Battery dropping" },
+            { time: "16", value: "97", info: "[INFO]", status: "Battery dropping" },
+            { time: "17", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "18", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "19", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "20", value: "94", info: "[INFO]", status: "Battery dropping" },
+            { time: "21", value: "91", info: "[INFO]", status: "Battery dropping" },
+            { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
+    },
+    {
+        node_type: "suppression unit", node_name: "room 1", node_id: 120, deck:5, comp: 9, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "15", value: "97", info: "[INFO]", status: "Battery dropping" },
+            { time: "16", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "17", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "18", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "19", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "20", value: "94", info: "[INFO]", status: "Battery dropping" },
+            { time: "21", value: "92", info: "[INFO]", status: "Battery dropping" },
+            { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
+    },
 ];
 
 export const alertLogs = [

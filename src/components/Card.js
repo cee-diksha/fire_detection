@@ -61,8 +61,9 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
       </div>
       <div className="segment" id="node-location">
         <div style={{ fontWeight: "600" }}>{node_name}</div>
-        <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}</div>
-        <div><span style={{ fontWeight: "600" }}>Compartment:</span> {compartment}</div>
+        <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}
+        <span style={{ fontWeight: "600", marginLeft: '18px' }}>Compartment:</span> {compartment}</div>
+        
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
