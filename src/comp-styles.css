@@ -177,7 +177,7 @@ justify-content:center ;
 
 .alert-wrapper{
     border-radius: 6px;
-    width: 500px;
+    width: 100%;
     background-color: #393939;
     color: #ffffff;
     height: 46px;

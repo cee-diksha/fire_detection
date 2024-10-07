@@ -8,6 +8,7 @@ import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { specificDeviceChartData } from '../assets/info'
 import Footer from '../components/Footer'
 import user from "../assets/user.png"
+import { downloadSpecificReport } from '../utils/ExportPdfButton'
 
 
 const SpecificDevice = () => {
@@ -18,7 +19,7 @@ const SpecificDevice = () => {
   console.log(specificData, "specificData", id, device)
 
   const alertlogsInfoTemp = specificData[0].temperature
-  console.log(alertlogsInfoTemp, "specificData")
+  console.log(alertlogsInfoTemp, "specificData", specificData)
 
 
   return (
@@ -29,6 +30,9 @@ const SpecificDevice = () => {
             <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
+            <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "#ffffff", backgroundColor: "#3f3f3f", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
+                Generate Report
+            </button>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
             {isLogin ? <img src={user} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
             <Link to={isLogin ? "/settings" : "#"} 
@@ -45,9 +49,8 @@ const SpecificDevice = () => {
       {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  :  device[0].status.includes("smoke") ? "#b6d9cc" : null }`,
         color: `${ (device[0].status.includes("danger") ||  device[0].status.includes("orange")) ? "#ffffff" : (device[0].status.includes("yellow") || device[0].status.includes("smoke") || device[0].isDeleted) ? "#000000" : "#ffffff"}`
       }}>
-        {console.log(device[0], "device[0].isDeleted")}
       {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  null }
-      </div>}
+      </div>}    
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
             <h2 style={{color:"#F84848"}}>Alert Logs - Temperature</h2>
