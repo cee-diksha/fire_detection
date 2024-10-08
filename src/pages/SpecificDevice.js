@@ -11,11 +11,8 @@ import user from "../assets/user.png"
 import { downloadSpecificReport } from '../utils/ExportPdfButton'
 import Card from '../components/Card'
 import sensor from "../assets/sensor.png";
-import sensor2 from "../assets/sensor2.png";
 import repeater from "../assets/repeater.png";
-import repeater2 from "../assets/repeater2.png";
 import suppression from "../assets/suppression.png";
-import suppression2 from "../assets/suppression2.png";
 
 
 const SpecificDevice = () => {
