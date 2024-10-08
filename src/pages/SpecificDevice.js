@@ -25,11 +25,13 @@ const SpecificDevice = () => {
   console.log(alertlogsInfoTemp, "specificData", specificData)
 
   const [affectedDevices, setAffectedDevices] = useState([])
+  console.log("affectedDevices", specificData[0].node_id)
+
   useEffect(() => {
     const filtered = deviceInfo.filter(item => item.connectedTo.includes(specificData[0].node_id))
     setAffectedDevices(filtered)
     console.log(filtered, "affectedDevices", specificData[0].node_id)
-  }, [])
+  }, [deviceInfo, id])
 
   return (
     <div className='specific-device-wrapper'>
@@ -58,10 +60,10 @@ const SpecificDevice = () => {
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>
-      {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  :  device[0].status.includes("smoke") ? "#b6d9cc" : null }`,
+      {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  :  device[0].status.includes("smoke") ? "#b6d9cc" : "#a391b8" }`,
         color: `${ (device[0].status.includes("danger") ||  device[0].status.includes("orange")) ? "#ffffff" : (device[0].status.includes("yellow") || device[0].status.includes("smoke") || device[0].isDeleted) ? "#000000" : "#ffffff"}`
       }}>
-      {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  null }
+      {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  "Not Responding" }
       </div>}    
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
@@ -83,16 +85,19 @@ const SpecificDevice = () => {
             <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
           </div>   
       </div>
-      <div className='affected-devices'>
+      {console.log(affectedDevices.length, "affectedDevices.length")}
+      {affectedDevices.length > 0  && <div className='affected-devices'>
         <h4>Affected Devices</h4>
         <div className='cards'>
           {affectedDevices.length > 0 && affectedDevices.map(item => {
             return (
-              <Card item={item}/>
+              <Link className='link-style' to={`/info/${item.node_name}`} key={item.id}>
+                <Card item={item} />
+              </Link>
             )
           })}
         </div>
-      </div>
+      </div>}
       <div className="dashboard-sticky">    
         <Footer />
       </div>

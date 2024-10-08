@@ -31,6 +31,10 @@ const Card = ({ item }) => {
     setIsAlarmMuted(!isAlarmMuted);
   };
 
+  const showConnectedDevices = () => {
+
+  }
+
   useEffect(() => {
     if (node_id === 106) setIsAlarmMuted(true)
   }, [])
@@ -84,7 +88,12 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         </div>
       </div>
       <div className="segment" style={{ borderBottom: "none" }} id="refresh-alarm-btn">
-        <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>
+      {status.includes("deleted") ? <button 
+          onClick={showConnectedDevices} 
+          id="refresh-alarm-btn-alert"  
+        >
+          Show Connected devices
+        </button> : <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>}
         {(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && <button 
           onClick={handleMuteAlarm} 
           id={`${(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 
