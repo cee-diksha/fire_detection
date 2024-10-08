@@ -31,6 +31,8 @@ const StatusDisplay = ({ status }) => {
     displayStatus = 'normal';
   }else if (status.includes('deleted')) {
     displayStatus = 'needs replacement';
+  } else if (status.includes('not responding')) {
+    displayStatus = 'not responding';
   }
 
   return (

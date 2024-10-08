@@ -39,7 +39,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : status.includes("yellow") ? "#FFC648" : "#b6d9cc"}`, 
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6d9cc" : "#a391b8"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >

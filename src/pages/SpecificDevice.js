@@ -10,6 +10,12 @@ import Footer from '../components/Footer'
 import user from "../assets/user.png"
 import { downloadSpecificReport } from '../utils/ExportPdfButton'
 import Card from '../components/Card'
+import sensor from "../assets/sensor.png";
+import sensor2 from "../assets/sensor2.png";
+import repeater from "../assets/repeater.png";
+import repeater2 from "../assets/repeater2.png";
+import suppression from "../assets/suppression.png";
+import suppression2 from "../assets/suppression2.png";
 
 
 const SpecificDevice = () => {
@@ -48,7 +54,10 @@ const SpecificDevice = () => {
       <div className='specific-header-location'>
         <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
           <div className='specific-device-header'>
-              <div id="status-circle" style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  : device[0].status.includes("success") ? "#7BFF6D" : null }`, color: `${device[0].status.includes("yellow") ? "#000" : "#fff"}`, opacity: device[0].isDeleted ? 0.5 : 1  }}></div>
+          <img src={
+          device[0].node_type === "sensor" ? sensor :
+            device[0].node_type === "repeater" ? repeater :
+            device[0].node_type === "suppressor" ? suppression : null} alt="sensor-logo" style={{ height: "30px", marginTop: "-26px", marginRight: "10px" }} />
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>

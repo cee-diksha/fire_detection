@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { info, deckInfo} from "../assets/info";
 
 const MainContext = createContext()
@@ -8,6 +8,20 @@ const MainContextProvider = (props) => {
     const [deckData, setDeckData] = useState(deckInfo)
     const [isLogin, setIsLogin] = useState(false)
     const [filteredDeckInfo, setfilteredDeckInfo] = useState(null)
+    const [deletedDevices, setDeletedDevices] = useState([])
+
+    useEffect(() => {
+        const deletedDevice = 102
+        const data = [...deletedDevices, deletedDevice]
+        setDeletedDevices(data)
+        const filteredDevices = deviceInfo.filter(item => data.some(value => item.connectedTo.includes(value)))
+        filteredDevices.map(item => item.status = ["not responding"])
+        const updatedDeviceInfo = deviceInfo.map(item => {
+            const matchedDevice = filteredDevices.find(device => device.node_id === item.node_id); 
+            return matchedDevice ? matchedDevice : item;
+          });
+          console.log(filteredDevices, "filtered devices", data, updatedDeviceInfo)
+    }, [])
 
     return (
         <MainContext.Provider
@@ -19,7 +33,9 @@ const MainContextProvider = (props) => {
             isLogin,
             setIsLogin,
             filteredDeckInfo,
-            setfilteredDeckInfo
+            setfilteredDeckInfo,
+            deletedDevices,
+            setDeletedDevices
         }}>
             {props.children}
         </MainContext.Provider>
