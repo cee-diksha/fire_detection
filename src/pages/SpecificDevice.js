@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import "../styles.css"
 import { MainContext } from '../context/MainContext'
@@ -9,6 +9,7 @@ import { specificDeviceChartData } from '../assets/info'
 import Footer from '../components/Footer'
 import user from "../assets/user.png"
 import { downloadSpecificReport } from '../utils/ExportPdfButton'
+import Card from '../components/Card'
 
 
 const SpecificDevice = () => {
@@ -16,11 +17,16 @@ const SpecificDevice = () => {
   const {deviceInfo, isLogin} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
-  console.log(specificData, "specificData", id, device)
 
   const alertlogsInfoTemp = specificData[0].temperature
   console.log(alertlogsInfoTemp, "specificData", specificData)
 
+  const [affectedDevices, setAffectedDevices] = useState([])
+  useEffect(() => {
+    const filtered = deviceInfo.filter(item => item.connectedTo.includes(specificData[0].node_id))
+    setAffectedDevices(filtered)
+    console.log(filtered, "affectedDevices", specificData[0].node_id)
+  }, [])
 
   return (
     <div className='specific-device-wrapper'>
@@ -69,7 +75,17 @@ const SpecificDevice = () => {
           <div className='specific-device-charts'>
             {specificData[0].node_type === "sensor" && <SpecificTempChart temperature = {specificData[0].temperature} status={device[0].status}/>}
             <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
-          </div>
+          </div>   
+      </div>
+      <div className='affected-devices'>
+        <h4>Affected Devices</h4>
+        <div className='cards'>
+          {affectedDevices.length > 0 && affectedDevices.map(item => {
+            return (
+              <Card item={item}/>
+            )
+          })}
+        </div>
       </div>
       <div className="dashboard-sticky">    
         <Footer />

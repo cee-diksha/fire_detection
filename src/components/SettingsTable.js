@@ -61,10 +61,11 @@ const SettingsTable = () => {
                             <th>3 Axis</th>
                             <th>Location</th>
                             <th>Temp Setpoint</th>
-                            <th>Smoke Sensor</th>
+                            <th>Sensor</th>
                             <th>Triggering Device</th>
                             <th>Deck No.</th>
                             <th>Compartment No.</th>
+                            <th>Connected to</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -153,6 +154,15 @@ const SettingsTable = () => {
                                         onChange={(e) => handleFieldChange(item.node_id, 'compartment', e.target.value)}
                                         disabled={item.isDeleted}
                                     />
+                            </td>
+                            <td>
+                                <input
+                                    type="text"
+                                    style={{ width: "60%" }}
+                                    defaultValue={item.connectedTo.length > 0 ? item.connectedTo.map(item => item) : null}
+                                    onChange={(e) => handleFieldChange(item.node_id, 'compartment', e.target.value)}
+                                    disabled={item.isDeleted}
+                                />
                             </td>
                             <td>
                                 <button onClick={() => handleDeleteRow(item.node_id)}>

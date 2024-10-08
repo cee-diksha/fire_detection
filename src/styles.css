@@ -474,3 +474,22 @@ input {
     align-items: center;
     width: 220px;
   }
+
+  .affected-devices{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .affected-devices h4 {
+    font-size: 18px;
+  }
+
+  .affected-devices .cards{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
