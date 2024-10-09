@@ -9,7 +9,7 @@ export const SpecificBattChart = ({batt, status}) => {
 
  return(
         <LineChart
-            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)"}]}
+            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)", valueFormatter: (value, context) => context.location === "tick" ? value : `${value}00 hours`}]}
             yAxis={[{
                 min: 0,
                 label: 'Battery(%)',
@@ -41,7 +41,7 @@ export const SpecificTempChart = ({temperature, status}) => {
     const lineColor = status.includes("danger") ? "#F84848" : status.includes("orange") ? "#FF6B3B" : status.includes("not responding") ? "#a391b8" : "#05abf9"
     return(
         <LineChart
-            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)" }]}
+            xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)", valueFormatter: (value, context) => context.location === "tick" ? value : `${value}00 hours`}]}
             yAxis={[{
                 min: 0, // Ensure y-axis starts from 0
                 label: 'Temperature(°C)',
