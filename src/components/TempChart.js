@@ -106,6 +106,18 @@ export const SmokeChart = () => {
   const nodeIds = smokearr.map((item) => item.nodeId);
   const barColors = smokearr.map((item) => item.smoke);
   const yAxisData = Array(nodeIds.length).fill(1); 
+
+  const valueFormatter = (nodeId, context) => {
+    const nodeItem = info.find((item) => item.node_id === nodeId);
+    if (context.location === "tick") {
+      return String(nodeId);  // ensure nodeId is always a string
+    } else if (nodeItem && nodeItem.node_name) {
+      return `${nodeItem.node_name} (ID: ${nodeItem.node_id})`;
+    } else {
+      return String(nodeId);  // fallback to nodeId if no node_name is found
+    }
+  };
+  
   return (
     <BarChart
     style={{marginTop: "-20px"}}
@@ -113,7 +125,7 @@ export const SmokeChart = () => {
         type: "ordinal",
         values: nodeIds,
         colors: barColors,
-      }, }]} 
+      },  valueFormatter: (nodeId, context) => valueFormatter(nodeId, context)}]} 
       series={[
         {
           data: yAxisData,
