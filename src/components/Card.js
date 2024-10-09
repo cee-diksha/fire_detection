@@ -43,7 +43,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#7BFF6D" : status.includes("danger" )? "#F84848" : status.includes("orange" )? "#FF6B3B" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6d9cc" : "#a391b8"}`, 
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b" : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6d9cc" : "#a391b8"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
@@ -81,7 +81,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={(status.includes("danger") || status.includes("orange") || status.includes("deleted")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <img src={(status.includes("deleted") || status.includes("danger") || status.includes("orange")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>

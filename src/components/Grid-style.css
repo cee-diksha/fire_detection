@@ -23,7 +23,7 @@
   }
   
   .danger {
-    background-color: #F84848;
+    background-color: #ff7b7b;
     color: #ffffff;
     animation: blinking 1s infinite;
   }
@@ -49,20 +49,20 @@
   }
 
   .normal {
-    background-color: #7BFF6D;
+    background-color: #9dff80;
     color: #000000;
   }
   
   @keyframes blinking {
     0% {
-      background-color: #F84848;
+      background-color: #ff7b7b;
     }
     50% {
       color: #000000;
       background-color: rgb(255, 255, 255);
     }
     100% {
-      background-color: #F84848;
+      background-color: #ff7b7b;
     }
   }
   
@@ -134,16 +134,16 @@
 
 @keyframes blinkingDeck {
   0% {
-    background-color: red;
-    color: #ffffff;
+    background-color: #ff7b7b;
+    color: #000000;
   }
   50% {
     background-color: rgb(255, 255, 255);
     color: #000000;
   }
   100% {
-    background-color: red;
-    color: #ffffff;
+    background-color: #ff7b7b;
+    color: #000000;
   }
 }
 

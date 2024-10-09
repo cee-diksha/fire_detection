@@ -137,18 +137,20 @@ export const specificDeviceChartData = [
     },
     {
         node_type: "sensor", node_name: "Gallery", node_id: 104, deck:3, comp:3 , alertlogstemp: [
-            { time: "1300 hrs", message: "Temperature rise detected" },
-            { time: "1320 hrs", message: "Smoke detected" },
-            { time: "1430 hrs", message: "Steady rise in temperature for past 1 hour" },
-            { time: "1440 hrs", message: "Temperature above critical" },
+            { time: "1700 hrs", message: "Temperature rise detected" },
+            { time: "1800 hrs", message: "Temperature above critical" },
+            { time: "1600 hrs", message: "Smoke detected" },
+            { time: "2000 hrs", message: "Fire detected" },
+            { time: "2100 hrs", message: "Fire extinguishing started" },
+            { time: "2200 hrs", message: "Temperature reducing" }
         ], alertlogsbattery: [
-            { time: "0800 hrs", message: "Battery level at 50%" },
-            { time: "1000 hrs", message: "Battery level at 40%" },
-            { time: "1200 hrs", message: "Battery level at 30%" },
-            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
-            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
-            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
-            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+            { time: "1600 hrs", message: "Battery level at 50%" },
+            { time: "1700 hrs", message: "Battery level at 43%" },
+            { time: "1800 hrs", message: "Battery level at 33%" },
+            { time: "1900 hrs", message: "Battery level at 30% — warning: battery low" },
+            { time: "2000 hrs", message: "Battery level at 20% — critical battery level" },
+            { time: "2100 hrs", message: "Battery level at 15% — urgent replacement required" },
+            { time: "2200 hrs", message: "Battery level at 15% — urgent replacement required"  }
         ], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },
@@ -195,7 +197,7 @@ export const specificDeviceChartData = [
             { time: "1320 hrs", message: "Temperature above critical" },
             { time: "1430 hrs", message: "Fire detected" },
             { time: "1440 hrs", message: "Fire extinguishing started" },
-            { time: "Afterwards", message: "Temperature reducing" }
+            { time: "Currently", message: "Temperature reducing" }
         ], alertlogsbattery: [], temperature: [
             { info: "[INFO]", time: "11", status: "Sensor initialized", value: "50" },
             { info: "[INFO]", time: "12", status: "Normal operation", value: "50" },
@@ -319,20 +321,20 @@ export const specificDeviceChartData = [
     },
     {
         node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, deck:4, comp: 5, alertlogstemp: [
-            { time: "1300 hrs", message: "Temperature rise detected" },
-            { time: "1320 hrs", message: "Temperature above critical" },
-            { time: "1400 hrs", message: "Smoke detected" },
-            { time: "1430 hrs", message: "Fire detected" },
-            { time: "1440 hrs", message: "Fire extinguishing started" },
-            { time: "Afterwards", message: "Temperature reducing" }
+            { time: "1700 hrs", message: "Temperature rise detected" },
+            { time: "1800 hrs", message: "Temperature above critical" },
+            { time: "1600 hrs", message: "Smoke detected" },
+            { time: "2000 hrs", message: "Fire detected" },
+            { time: "2100 hrs", message: "Fire extinguishing started" },
+            { time: "2200 hrs", message: "Temperature reducing" }
         ], alertlogsbattery: [
-            { time: "0800 hrs", message: "Battery level at 50%" },
-            { time: "1000 hrs", message: "Battery level at 40%" },
-            { time: "1200 hrs", message: "Battery level at 30%" },
-            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
-            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
-            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
-            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+            { time: "1600 hrs", message: "Battery level at 50%" },
+            { time: "1700 hrs", message: "Battery level at 43%" },
+            { time: "1800 hrs", message: "Battery level at 33%" },
+            { time: "1900 hrs", message: "Battery level at 30% — warning: battery low" },
+            { time: "2000 hrs", message: "Battery level at 20% — critical battery level" },
+            { time: "2100 hrs", message: "Battery level at 15% — urgent replacement required" },
+            { time: "2200 hrs", message: "Battery level at 15% — urgent replacement required"  }
         ], temperature: [
             { info: "[INFO]", time: "11", status: "Sensor initialized", value: "50" },
             { info: "[INFO]", time: "12", status: "Normal operation", value: "50" },
@@ -351,12 +353,12 @@ export const specificDeviceChartData = [
             { time: "13", value: "86", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "77", info: "[WARN]", status: "Battery dropping" },
             { time: "15", value: "64", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "55", info: "[WARN]", status: "Battery dropping" },
+            { time: "16", value: "50", info: "[WARN]", status: "Battery dropping" },
             { time: "17", value: "42", info: "[WARN]", status: "Battery dropping" },
             { time: "18", value: "33", info: "[WARN]", status: "Battery dropping" },
             { time: "19", value: "30", info: "[WARN]", status: "Needs Replacement" },
             { time: "20", value: "20", info: "[WARN]", status: "Needs Replacement" },
-            { time: "21", value: "18", info: "[WARN]", status: "Needs Replacement" },
+            { time: "21", value: "15", info: "[WARN]", status: "Needs Replacement" },
             { time: "22", value: "15", info: "[WARN]", status: "Needs Replacement" }]
     },
     {
@@ -394,7 +396,7 @@ export const specificDeviceChartData = [
             { time: "1400 hrs", message: "Smoke detected" },
             { time: "1430 hrs", message: "Fire detected" },
             { time: "1440 hrs", message: "Fire extinguishing started" },
-            { time: "Afterwards", message: "Temperature reducing" }
+            { time: "Currently", message: "Temperature reducing" }
         ], alertlogsbattery: [], temperature: [
             { time: "11", value: "50", info: "[INFO]", status: "Sensor initialized" },
             { time: "12", value: "48", info: "[INFO]", status: "Sensor working fine" },

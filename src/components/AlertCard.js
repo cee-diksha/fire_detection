@@ -10,7 +10,7 @@ const AlertCard = () => {
         {/* </div> */}
         <div className='alert-label-wrap'>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#F84848"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "#ff7b7b"}}></div>
                 <div id="alert-details-span1">Fire</div>
             </div>
             <div className='alert-details-combined' >
@@ -18,7 +18,7 @@ const AlertCard = () => {
                 <div id="alert-details-span1">Replacement</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3"style={{backgroundColor: "#FF6B3B"}}></div>
+                <div id="alert-details-span3"style={{backgroundColor: "#ff9863"}}></div>
                 <div id="alert-details-span1">Temp ↑</div>
             </div>
             <div className='alert-details-combined' >
@@ -30,7 +30,7 @@ const AlertCard = () => {
                 <div id="alert-details-span1">Smoke</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#7BFF6D"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "#9dff80"}}></div>
                 <div id="alert-details-span1">Normal</div>
             </div>
         </div>

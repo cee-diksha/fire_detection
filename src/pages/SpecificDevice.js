@@ -60,14 +60,14 @@ const SpecificDevice = () => {
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>
-      {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#F84848" : device[0].status.includes("orange") ? "#FF6B3B" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  :  device[0].status.includes("smoke") ? "#b6d9cc" : "#a391b8" }`,
+      {(!device[0].status.includes("success") || device[0].isDeleted !== false) && <div className='indication' style={{backgroundColor: `${device[0].status.includes("danger") ? "#ff7b7b" : device[0].status.includes("orange") ? "#ff9863" : device[0].status.includes("yellow") ? "#FFC648" : device[0].isDeleted ? "#D0D0D0"  :  device[0].status.includes("smoke") ? "#b6d9cc" : "#a391b8" }`,
         color: `${ (device[0].status.includes("danger") ||  device[0].status.includes("orange")) ? "#ffffff" : (device[0].status.includes("yellow") || device[0].status.includes("smoke") || device[0].isDeleted) ? "#000000" : "#ffffff"}`
       }}>
       {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  "Not Responding" }
       </div>}    
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
-            <h2 style={{color:"#F84848"}}>Alert Logs - Temperature</h2>
+            <h2 style={{color:"#ff7b7b"}}>Alert Logs - Temperature</h2>
           {specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.map(item => <div className='single-alert'>
             <span className='alert-span'style={{fontWeight: "600"}}>{item.time} - </span>
             <span className='alert-span'>{item.message}</span>
