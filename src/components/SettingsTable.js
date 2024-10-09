@@ -8,6 +8,7 @@ const SettingsTable = () => {
     const [showModal, setShowModal] = useState(false);
     const { setDeviceInfo, deviceInfo } = useContext(MainContext);
     const [data, setData] = useState(deviceInfo);
+    const [replaced, setReplaced] = useState({})
 
     const handleSwitchChange = (node_id, field) => {
         setData((prevData) =>
@@ -35,8 +36,23 @@ const SettingsTable = () => {
         setDeviceInfo(updated)
     };
 
+    const handleReplace = () => {
+        const {node_id, value} = replaced
+        const updated =  data.map(item =>
+            item.node_id === node_id ? { ...item, node_id: value } : item
+        )
+
+        setData(prevData =>
+            prevData.map(item =>
+                item.node_id === node_id ? { ...item, node_id: value } : item
+            )
+        );
+        setDeviceInfo(updated)
+    }
+
     const saveChanges = () => {
         console.log(data, "checking dataa");
+        handleReplace()
         setDeviceInfo(data);
     };
 
@@ -169,8 +185,8 @@ const SettingsTable = () => {
                                 <input
                                     type="text"
                                     style={{ width: "60%" }}
-                                    // defaultValue={item.connectedTo.length > 0 ? item.connectedTo.map(item => item) : null}
-                                    // onChange={(e) => handleFieldChange(item.node_id, 'compartment', e.target.value)}
+                                    defaultValue={null}
+                                    onChange={(e) => setReplaced({node_id: item.node_id, value: e.target.value})}
                                     disabled={item.isDeleted}
                                 />
                             </td>
