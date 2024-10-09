@@ -81,7 +81,7 @@ const SettingsTable = () => {
                             <th>Suppressor</th>
                             <th>Deck No.</th>
                             <th>Comp. No.</th>
-                            <th>Connected to</th>
+                            <th>Connected to Repeater no.</th>
                             <th>Replaced by</th>
                             <th>Action</th>
                         </tr>
@@ -116,7 +116,7 @@ const SettingsTable = () => {
                                         type="number"
                                         id="tempInput"
                                         placeholder="Enter a number"
-                                        value={item.temp}
+                                        value={item.tempSetpoint}
                                         style={{ width: "40%" }}
                                         onChange={(e) => handleFieldChange(item.node_id, 'temp', e.target.value)}
                                         disabled={item.isDeleted}

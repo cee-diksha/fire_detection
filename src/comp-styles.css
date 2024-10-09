@@ -295,6 +295,12 @@ table {
     color: #333;
 }
 
+thead{
+  position: sticky;
+  z-index: 999;
+  top: 0;
+}
+
 th, td {
     padding: 12px 15px;
     text-align: center;

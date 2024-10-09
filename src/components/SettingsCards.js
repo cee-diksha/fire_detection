@@ -1,12 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import "../comp-styles.css"
 import { MainContext } from "../context/MainContext"
-
-const totalUnits = (allDevices, unit) => {
-    console.log(allDevices, "devices")
-    const result = allDevices.filter(item => item.node_type === unit && item.isDeleted === false)
-    return result.length
-}
+import { totalUnits } from "../utils/TotalDevices"
 
 export const TotalSuppressionCard = () => {
     const {deviceInfo} = useContext(MainContext)
