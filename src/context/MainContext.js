@@ -11,6 +11,7 @@ const MainContextProvider = (props) => {
     const [deletedDevices, setDeletedDevices] = useState([])
     const [suppressorStatus, setSuppressorStatus] = useState(false)
     const [activeSuppressors, setActiveSuppressors] = useState([])
+    const [suppressionNode, setSuppressionNode] = useState(false)
 
     useEffect(() => {
         const deletedDevice = 102
@@ -41,7 +42,9 @@ const MainContextProvider = (props) => {
             suppressorStatus,
             setSuppressorStatus,
             activeSuppressors,
-            setActiveSuppressors
+            setActiveSuppressors,
+            suppressionNode,
+            setSuppressionNode
         }}>
             {props.children}
         </MainContext.Provider>

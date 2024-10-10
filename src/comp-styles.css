@@ -391,32 +391,46 @@ tbody tr:hover {
     font-size: 16px;
 }
 
-.confimation-modal{
+.confimation-modal, .confimation-modal2{
     height: 200px;
     width: 250px;
     padding: 10px;
     border-radius: 6px;
-    background-color: #3F3F3F;
+    background-color: #000000;
     margin: auto;
 }
 
-.confimation-modal-div{
+.confimation-modal-div, .confimation-modal2-div{
     display: flex;
     height: 100%;
     width: 100%;
-    background-color: #fff;
+    color: #fff;
+    background-color: #3F3F3F;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
+}
+
+.confimation-modal2-div input{
+  width: 80%;
+  height: 10px;
 }
 
 .confimation-modal-div h6{
     font-size: 16px;
     text-align: center;
+    font-weight: 500;
 }
 
-.confimation-modal-btn-wrapper {
+.confimation-modal2-div h6{
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.confimation-modal-btn-wrapper ,
+.confimation-modal2-btn-wrapper {
     display: flex;
     width: 100%;
     align-items: center;
@@ -427,10 +441,24 @@ tbody tr:hover {
     height: 30px;
     width:80px;
     border-radius: 6px;
-    border: none;
+    border: 1px solid #ffffff;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     cursor: pointer;
+    color: #fff;
+    background-color: #3F3F3F;
+}
+
+.confimation-modal2-btn-wrapper button{
+  height: 24px;
+  width:80px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  background-color: #3F3F3F;
 }
 
 .activate-suppressor{

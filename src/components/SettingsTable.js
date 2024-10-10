@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Switch from '@mui/material/Switch'; 
 import '../comp-styles.css';
-import ConfimationModal from './ConfimationModal';
+import {ConfimationModal} from './ConfimationModal';
 import { MainContext } from '../context/MainContext';
 
 const SettingsTable = () => {

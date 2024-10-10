@@ -11,15 +11,15 @@ export const info = [
     { id: 10, status: ["yellow"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Engg SS Mess", node_id: 110, battery_percentage: "32", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 1 , status_log: "low battery" , connectedTo: [116]},
     { id: 11, status: ["danger", "yellow", "smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, battery_percentage: "35", temp: "80", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 5 , status_log: "fire and smoke detected, low battery" , connectedTo: [107]},
     { id: 12, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "CMR", node_id: 112, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 2 , status_log: "" , connectedTo: []},
-    { id: 13, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "AC Compartment", node_id: 113, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 3 , status_log: "" , connectedTo: [107]},
+    { id: 13, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "AC Compartment", node_id: 113, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 4, compartment: 5 , status_log: "" , connectedTo: [107]},
     { id: 14, status: ["danger", "smoke"], tempSetpoint: 50, smokeSensor: false, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "ASP", node_id: 114, battery_percentage: "99", temp: "75", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 2 , status_log: "fire and smoke detected" , connectedTo: [119]},
     { id: 15, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Pump Room", node_id: 115, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 3, compartment: 1 , status_log: "" , connectedTo: []},
     { id: 16, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "Cabin Flat", node_id: 116, battery_percentage: "96", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 1, compartment: 8 , status_log: "" , connectedTo: []},
     { id: 17, status: ["success"], tempSetpoint: 50, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "Fwd JS Mess", node_id: 117, battery_percentage: "100", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 6, compartment: 9 , status_log: "" , connectedTo: [112]},
     { id: 18, status: ["smoke"], tempSetpoint: 50, smokeSensor: true, triggeringDevice: null, axis: 'X-Y-Z', node_type: "sensor", node_name: "Fwd SS Mess", node_id: 118, battery_percentage: "90", temp: "49", last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 11 , status_log: "smoke detected" , connectedTo: [119]},
-    { id: 19, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "room 0", node_id: 119, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 8 , status_log: "" , connectedTo: []},
-    { id: 20, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "room 1", node_id: 120, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 5, status_log: "" , connectedTo: [119]},
-
+    { id: 19, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: null, axis: 'X-Y-Z', node_type: "repeater", node_name: "compartment 0", node_id: 119, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 8 , status_log: "" , connectedTo: []},
+    { id: 20, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "compartment 1", node_id: 120, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 5, status_log: "" , connectedTo: [119]},
+    { id: 21, status: ["success"], tempSetpoint: null, smokeSensor: null, triggeringDevice: false, axis: 'X-Y-Z', node_type: "suppressor", node_name: "compartment 1", node_id: 121, battery_percentage: "90", temp: null, last_update: "12/9/24 11:54:58", isDeleted: false, deck: 5, compartment: 2, status_log: "" , connectedTo: [119]},
 ]
 
 export const deckInfo = [
@@ -44,14 +44,13 @@ export const deckInfo = [
     },
     {
         id: "4", deck: 4, devices: [
-            { comp: 3, node_info: [{ node: 113, status: ["success"] }] },
-            { comp: 5, node_info: [{ node: 111, status: ["danger", "yellow", "smoke"]}] },
+            { comp: 5, node_info: [{ node: 111, status: ["danger", "yellow", "smoke"]}, { node: 113, status: ["success"] }] },
             { comp: 6, node_info: [{ node: 107, status: ["success"] }] }
         ]
     },
     {
         id: "5", deck: 5, devices: [
-            { comp: 2, node_info: [{ node: 114, status: ["danger", "smoke"] }] },
+            { comp: 2, node_info: [{ node: 114, status: ["danger", "smoke"] }, { node: 121, status: ["success"] }] },
             { comp: 5, node_info: [{ node: 106, status: ["danger" ]}, { node: 120, status: ["success"] }] },
             { comp: 11, node_info: [{ node: 118, status: ["smoke"] }] },
             { comp: 8, node_info: [{ node: 119, status: ["success"] }] },
@@ -374,7 +373,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "94", info: "[WARN]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "AC Compartment", node_id: 113, deck: 4, comp: 3, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "AC Compartment", node_id: 113, deck: 4, comp: 5, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[WARN]", status: "Battery dropping" },
@@ -496,7 +495,7 @@ export const specificDeviceChartData = [
         ]
     },
     {
-        node_type: "repeater", node_name: "room 0", node_id: 119, deck:5, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "repeater", node_name: "compartment 0", node_id: 119, deck:5, comp: 8, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [ { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
@@ -511,7 +510,21 @@ export const specificDeviceChartData = [
             { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "room 1", node_id: 120, deck:5, comp: 5, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "compartment 1", node_id: 120, deck:5, comp: 5, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
+            { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
+            { time: "15", value: "97", info: "[INFO]", status: "Battery dropping" },
+            { time: "16", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "17", value: "96", info: "[INFO]", status: "Battery dropping" },
+            { time: "18", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "19", value: "95", info: "[INFO]", status: "Battery dropping" },
+            { time: "20", value: "94", info: "[INFO]", status: "Battery dropping" },
+            { time: "21", value: "92", info: "[INFO]", status: "Battery dropping" },
+            { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
+    },
+    {
+        node_type: "suppression unit", node_name: "compartment 2", node_id: 121, deck:5, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },

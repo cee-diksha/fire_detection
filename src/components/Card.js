@@ -14,41 +14,43 @@ import smoke from "../assets/smoke.png";
 import StatusDisplay from '../utils/StatusDisplay';
 import stop from "../assets/stop.png"
 import {MainContext} from "../context/MainContext"
+import ReactSwitch from 'react-switch';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { GetCodeForTrigger } from './ConfimationModal';
+
 
 const handleRefresh = (event) => {
   event.preventDefault();
   event.stopPropagation();
 };
 
-const activateSuppressor = (event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo) => {
+const handleShowModal = (event, setShowModal) => {
   handleRefresh(event)
-  setSuppressorStatus(true)
-  const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === nodeData.deck && item.compartment === nodeData.compartment)))
-  console.log(filteredSuppressor, "filteredSuppressor", nodeData, deviceInfo)
-   if (filteredSuppressor.length > 0) {
-    setDeviceInfo(prev => 
-      prev.map(item => {
-        if (item.node_id === filteredSuppressor[0].node_id) {
-          return { ...item, triggeringDevice: true };
-        }
-        return item; 
-      })
-    );
-  }
-};
+  setShowModal(true)
+}
 
-const SuppressorBtn = ({nodeData}) => {
-  const {setSuppressorStatus, setDeviceInfo, deviceInfo} = useContext(MainContext)
-
+const SuppressorBtn = ({nodeData, setShowModal}) => {
+  const {setSuppressionNode} = useContext(MainContext)
+  setSuppressionNode(nodeData)
   return(
-    <img src={stop} alt="stop" style={{height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px"}} onClick={(event) => activateSuppressor(event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo)}/>
+    <img src={stop} alt="stop" style={{height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px"}} onClick={(event) => handleShowModal(event, setShowModal)}/>
+    // onClick={(event) => activateSuppressor(event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo)}
   )
 }
 
+const toggleSwitch = (trigger, setTrigger) => {
+  if (trigger) setTrigger(false)
+  else setTrigger(true)
+}
+
 const Card = ({ item }) => {
-  const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment } = item;
+  const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice } = item;
 
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
+  const [trigger, setTrigger] = useState(triggeringDevice)
+  const [showModal, setShowModal] = useState(false);
+
   const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
 
   const handleMuteAlarm = (event) => {
@@ -65,6 +67,7 @@ const Card = ({ item }) => {
   useEffect(() => {
     if (node_id === 106) setIsAlarmMuted(true)
   }, [])
+
 console.log(status.includes("success"), "status check", isAlarmMuted)
   return (
     <div 
@@ -74,6 +77,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
       }}
     >
+      {showModal && <GetCodeForTrigger open={true} handleClose={setShowModal} />}
        <div className="segment" id="status-text">
        <StatusDisplay status={status} />
       </div>
@@ -96,7 +100,8 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
           <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}</div>
           <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
         </div>
-        {node_type === "sensor" && <SuppressorBtn nodeData = {item} />}
+        {(node_type === "sensor" && status.includes("danger")) && <SuppressorBtn nodeData = {item} setShowModal={setShowModal} />}
+        {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger)} checked={trigger} />}
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
