@@ -18,14 +18,16 @@ import { reduceDeckData } from '../utils/reduceDeckData'
 import { ExportPdfButton } from '../utils/ExportPdfButton'
 
 const Dashboard = () => {
-    const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo} = useContext(MainContext)
-    const [cardData, setCardData] = useState(deviceInfo)
+    const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors} = useContext(MainContext)
+    const [cardData, setCardData] = useState(deviceInfo) 
 
     useEffect(() => {
         const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
         setfilteredDeckInfo(filteredDeckInfo);
         console.log("filteredDeckInfo", filteredDeckInfo)
         setCardData(cardData);
+        setActiveSuppressors(deviceInfo.filter(item => item.triggeringDevice === true))
+
       }, [deckData, deviceInfo]);
 
   return (
@@ -96,8 +98,14 @@ const Dashboard = () => {
                     </Link>
                     );
                 })}
-
                 </div>
+                    {suppressorStatus && <div className='suppressor-status'>
+                        {activeSuppressors.map(item => {
+                            return (
+                               <></>
+                            )
+                        })}
+                    </div>}
                     {filteredDeckInfo !== null && filteredDeckInfo.length > 0 && <div className='deck-display-grid'>
                     {filteredDeckInfo.map((item, index) => {
                     return (

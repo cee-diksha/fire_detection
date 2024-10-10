@@ -77,7 +77,7 @@ const SettingsTable = () => {
                             <th>3 Axis</th>
                             <th>Location</th>
                             <th>Temp Setpoint</th>
-                            <th>Sensor</th>
+                            <th>Fire/Smoke Sensor</th>
                             <th>Suppressor</th>
                             <th>Deck No.</th>
                             <th>Comp. No.</th>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import "../comp-styles.css";
 import battery from "../assets/battery.png";
 import temperature from "../assets/temp.png";
@@ -12,17 +12,44 @@ import update from "../assets/update.png";
 import update2 from "../assets/update2.png";
 import smoke from "../assets/smoke.png";
 import StatusDisplay from '../utils/StatusDisplay';
+import stop from "../assets/stop.png"
+import {MainContext} from "../context/MainContext"
 
+const handleRefresh = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
+
+const activateSuppressor = (event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo) => {
+  handleRefresh(event)
+  setSuppressorStatus(true)
+  const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === nodeData.deck && item.compartment === nodeData.compartment)))
+  console.log(filteredSuppressor, "filteredSuppressor", nodeData, deviceInfo)
+   if (filteredSuppressor.length > 0) {
+    setDeviceInfo(prev => 
+      prev.map(item => {
+        if (item.node_id === filteredSuppressor[0].node_id) {
+          return { ...item, triggeringDevice: true };
+        }
+        return item; 
+      })
+    );
+  }
+};
+
+const SuppressorBtn = ({nodeData}) => {
+  const {setSuppressorStatus, setDeviceInfo, deviceInfo} = useContext(MainContext)
+
+  return(
+    <img src={stop} alt="stop" style={{height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px"}} onClick={(event) => activateSuppressor(event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo)}/>
+  )
+}
 
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment } = item;
 
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
-
-  const handleRefresh = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-  };
+  const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
 
   const handleMuteAlarm = (event) => {
     console.log(isAlarmMuted, "isAlarmMuted")
@@ -54,27 +81,29 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         <p id="sensor-name">
           <img src={
           node_type === "sensor" ? 
-            (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? sensor : sensor2) :
+            (whiteLogo ? sensor : sensor2) :
           node_type === "repeater" ? 
-            (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? repeater : repeater2) :
+            (whiteLogo ? repeater : repeater2) :
           node_type === "suppressor" ? 
-      (status.includes("danger") || status.includes("orange") || status.includes("deleted") ? suppression : suppression2) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
+            (whiteLogo ? suppression : suppression2) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
         <p>{node_id}</p>
       </div>
-      <div className="segment" id="node-location">
-        <div style={{ fontWeight: "600" }}>{node_name}</div>
-        <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}</div>
-        <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
-        
+      <div style={{display: 'flex', justifyContent: "space-between", alignItems: "center"}}>
+        <div className="segment" id="node-location">
+          <div style={{ fontWeight: "600" }}>{node_name}</div>
+          <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}</div>
+          <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
+        </div>
+        {node_type === "sensor" && <SuppressorBtn nodeData = {item} />}
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={temperature} alt="temperature-logo" style={{ height: "20px", marginRight: "4px" }} />
           {temp}°C
         </div>}
-        {status.includes("smoke") && <img src={smoke} alt="smoke" style={{ height: "24px", marginTop: "2px"}} className='smoke-img'/>}
+        {node_type === "sensor" ? status.includes("smoke") ? <img src={smoke} alt="smoke" style={{ height: "24px", marginTop: "2px"}} className='smoke-img'/> : <img src={smoke} alt="smoke" style={{ height: "24px", marginTop: "2px"}} /> : null}
         <div className= {(status.includes("yellow")) ? "dangertext" : "normaltext"}>
           <img src={battery} alt="battery-logo" style={{ height: "20px", marginRight: "4px" }} />
           {battery_percentage}%

@@ -1,6 +1,6 @@
 .card-wrapper{
     height: auto;
-    width: 200px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     background-color: #3F3F3F;
@@ -27,7 +27,7 @@
 
 .blinking-border {
     height: auto;
-    width: 200px;
+    width: 220px;
     display: flex;
     flex-direction: column;
     background-color: #3F3F3F;
@@ -431,6 +431,22 @@ tbody tr:hover {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
+}
+
+.activate-suppressor{
+  animation: blink-suppressor-border 0.5s infinite;
+}
+
+@keyframes blink-suppressor-border {
+  0% {
+    border-color: red;
+  }
+  50% {
+    border-color: transparent; 
+  }
+  100% {
+    border-color: red;
+  }
 }
   
   @keyframes blink-border {

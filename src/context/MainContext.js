@@ -9,6 +9,8 @@ const MainContextProvider = (props) => {
     const [isLogin, setIsLogin] = useState(false)
     const [filteredDeckInfo, setfilteredDeckInfo] = useState(null)
     const [deletedDevices, setDeletedDevices] = useState([])
+    const [suppressorStatus, setSuppressorStatus] = useState(false)
+    const [activeSuppressors, setActiveSuppressors] = useState([])
 
     useEffect(() => {
         const deletedDevice = 102
@@ -35,7 +37,11 @@ const MainContextProvider = (props) => {
             filteredDeckInfo,
             setfilteredDeckInfo,
             deletedDevices,
-            setDeletedDevices
+            setDeletedDevices,
+            suppressorStatus,
+            setSuppressorStatus,
+            activeSuppressors,
+            setActiveSuppressors
         }}>
             {props.children}
         </MainContext.Provider>
