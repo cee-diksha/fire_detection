@@ -508,7 +508,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "compartment 1", node_id: 120, deck:5, comp: 5, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "comp 1", node_id: 120, deck:5, comp: 5, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },
@@ -522,7 +522,7 @@ export const specificDeviceChartData = [
             { time: "22", value: "90", info: "[INFO]", status: "Battery dropping" }]
     },
     {
-        node_type: "suppression unit", node_name: "compartment 2", node_id: 121, deck:5, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
+        node_type: "suppression unit", node_name: "comp 2", node_id: 121, deck:5, comp: 2, alertlogstemp: null, alertlogsbattery: [], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[INFO]", status: "Battery dropping" },
             { time: "14", value: "99", info: "[INFO]", status: "Battery dropping" },

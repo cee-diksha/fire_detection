@@ -103,7 +103,9 @@ const Dashboard = () => {
                     {suppressorStatus && <div className='suppressor-status'>
                         {activeSuppressors.map(item => {
                             return (
-                                <Card item={item} />
+                                <Link className='link-style' to={`info/${item.node_name}`} key={item.id}>
+                                    <Card item={item} />
+                                </Link>
                             )
                         })}
                     </div>}
