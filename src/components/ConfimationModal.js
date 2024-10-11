@@ -35,7 +35,7 @@ const handleRefresh = (event) => {
 };
 
 export const WarningModal = ({open, handleClose, handleCloseMain}) => {
-  const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo} = useContext(MainContext)
+  const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
 
   const activateSuppressor = (setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo) => {
     setSuppressorStatus(true)
@@ -51,6 +51,8 @@ export const WarningModal = ({open, handleClose, handleCloseMain}) => {
         })
       );
     }
+    const isActivated = {node_id: suppressionNode.node_id, status: true}
+    setIsActivated(prev => [...prev, isActivated])
   };
 
   const handleProceed = (event) => {
@@ -101,8 +103,6 @@ export const GetCodeForTrigger = ({open, handleClose}) => {
       );
     }
     const isActivated = {node_id: suppressionNode.node_id, status: true}
-    console.log(isActivated, "node: suppressionNode.node_id")
-
     setIsActivated(prev => [...prev, isActivated])
   };
 

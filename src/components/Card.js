@@ -25,6 +25,16 @@ const handleRefresh = (event) => {
   event.stopPropagation();
 };
 
+const toggleSwitch = (trigger, setTrigger, isActivated, suppressionNode, setIsActivated) => {
+  if (trigger) {
+    setTrigger(false)
+    setIsActivated(isActivated.filter(item => item.node_id !== suppressionNode.node_id))
+  } else setTrigger(true)
+
+  console.log(isActivated, suppressionNode, isActivated.filter(item => item.node_id !== suppressionNode.node_id), "filtering")
+}
+
+
 const SuppressorBtn = ({nodeData, setShowModal}) => {
   const {setSuppressionNode, isActivated} = useContext(MainContext)
   const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState([])
@@ -45,10 +55,7 @@ const SuppressorBtn = ({nodeData, setShowModal}) => {
   )
 }
 
-const toggleSwitch = (trigger, setTrigger) => {
-  if (trigger) setTrigger(false)
-  else setTrigger(true)
-}
+// --------------------------------------------------------------------------------------------------------
 
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice } = item;
@@ -56,8 +63,9 @@ const Card = ({ item }) => {
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
   const [trigger, setTrigger] = useState(triggeringDevice)
   const [showModal, setShowModal] = useState(false);
+  const {isActivated, suppressionNode, setIsActivated} = useContext(MainContext)
 
-  const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
+  const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted") || status.includes("smoke")
 
   const handleMuteAlarm = (event) => {
     console.log(isAlarmMuted, "isAlarmMuted")
@@ -79,8 +87,8 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b" : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6d9cc" : "#a391b8"}`, 
-        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange")) ? "#fff" : "#000"}`
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#ff7b7b " : "#a391b8"}`, 
+        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") || status.includes("smoke")) ? "#fff" : "#000"}`
       }}
     >
       {showModal && <GetCodeForTrigger open={true} handleClose={setShowModal} />}
@@ -107,7 +115,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
           <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
         </div>
         {(node_type === "sensor" && status.includes("danger")) && <SuppressorBtn nodeData = {item} setShowModal={setShowModal} />}
-        {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger)} checked={trigger} />}
+        {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger, isActivated, suppressionNode, setIsActivated)} checked={trigger} />}
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
@@ -121,7 +129,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={(status.includes("deleted") || status.includes("danger") || status.includes("orange")) ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
