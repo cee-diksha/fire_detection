@@ -62,7 +62,7 @@ const DropDown = ({cardData}) => {
           color: '#ffffff',
         }),
         }}/>
-        {showModal && <Link className='link-style' to={`info/${option}`}><CardModal open={true} handleClose={setShowModal} option={option} /></Link>}
+        {showModal && <CardModal open={true} handleClose={setShowModal} option={option} />}
     </div>
   )
 }
