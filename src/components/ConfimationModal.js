@@ -29,30 +29,13 @@ export const ConfimationModal = ({open, handleClose}) => {
   )
 }
 
+const handleRefresh = (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+};
 
-export const WarningModal = ({open, handleClose}) => {
-  return (
-    <>
-      <Modal
-          className='confimation-modal2'
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          >
-          <div className='confimation-modal2-div'>
-             <h6>Warning</h6>
-          </div>
-      </Modal>
-    </>
-  )
-}
-
-export const GetCodeForTrigger = ({open, handleClose}) => {
+export const WarningModal = ({open, handleClose, handleCloseMain}) => {
   const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo} = useContext(MainContext)
-  const [showWarningModal, setShowWarningModal] = useState(false);
-  const [accessCode, setAccessCode] = useState("")
-
 
   const activateSuppressor = (setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo) => {
     setSuppressorStatus(true)
@@ -70,9 +53,57 @@ export const GetCodeForTrigger = ({open, handleClose}) => {
     }
   };
 
-  const handleRefresh = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+  const handleProceed = (event) => {
+    handleRefresh(event)
+    activateSuppressor(setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo)
+    handleClose(false)
+    handleCloseMain(false)
+  }
+
+  return (
+    <>
+      <Modal
+          className='warning-modal'
+          onClick = {(event) => handleRefresh(event)}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          >
+          <div className='warning-modal-div'>
+             <h6>Wrong access code entered. Do you still wish to activate suppressor ?</h6>
+             <h6><span>Warning:</span>
+             This option is to be exercised only in case of dire emergency under the authorization of OOD/ WICO.</h6>
+             <button onClick={handleProceed}>Activate</button>
+          </div>
+      </Modal>
+    </>
+  )
+}
+
+export const GetCodeForTrigger = ({open, handleClose}) => {
+  const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
+  const [showWarningModal, setShowWarningModal] = useState(false);
+  const [accessCode, setAccessCode] = useState("")
+
+
+  const activateSuppressor = (setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo) => {
+    setSuppressorStatus(true)
+    const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === suppressionNode.deck && item.compartment === suppressionNode.compartment)))
+     if (filteredSuppressor.length > 0) {
+      setDeviceInfo(prev => 
+        prev.map(item => {
+          if (item.node_id === filteredSuppressor[0].node_id) {
+            return { ...item, triggeringDevice: true };
+          }
+          return item; 
+        })
+      );
+    }
+    const isActivated = {node_id: suppressionNode.node_id, status: true}
+    console.log(isActivated, "node: suppressionNode.node_id")
+
+    setIsActivated(prev => [...prev, isActivated])
   };
 
   const handleProceed = (event) => {
@@ -81,7 +112,6 @@ export const GetCodeForTrigger = ({open, handleClose}) => {
       activateSuppressor(setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo)
       handleClose(false)
     } else {
-      // handleClose(false)
       setShowWarningModal(true)
     }
   }
@@ -100,6 +130,7 @@ return (
   <>
       <Modal
           className='confimation-modal2'
+          onClick = {(event) => handleRefresh(event)}
           open={open}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
@@ -109,13 +140,13 @@ return (
              <h6>Enter access code</h6>
              <input type="text" onClick={(event) => handleRefresh(event)} onChange={(event) => enterAccessCode(event)}/>
              <div className='confimation-modal2-btn-wrapper'>
-              <button onClick={(event) => handleProceed(event)}>Proceed</button>
+              <button onClick={(event) => handleProceed(event)}>Activate</button>
               <button onClick={(event) => closeModal(event)}>Cancel</button>
              </div>
           </div>
       </Modal>
       {console.log(showWarningModal, "showWarningModal")}
-      {showWarningModal && <WarningModal open={true} handleClose={setShowWarningModal} />}
+      {showWarningModal && <WarningModal open={true} handleClose={setShowWarningModal}  handleCloseMain = {handleClose} />}
   </>
 )
 }

@@ -25,17 +25,24 @@ const handleRefresh = (event) => {
   event.stopPropagation();
 };
 
-const handleShowModal = (event, setShowModal) => {
-  handleRefresh(event)
-  setShowModal(true)
-}
-
 const SuppressorBtn = ({nodeData, setShowModal}) => {
-  const {setSuppressionNode} = useContext(MainContext)
-  setSuppressionNode(nodeData)
+  const {setSuppressionNode, isActivated, suppressionNode} = useContext(MainContext)
+  const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState(null)
+
+  const handleShowModal = (event, setShowModal) => {
+    handleRefresh(event)
+    setShowModal(true)
+    setSuppressionNode(nodeData)
+
+  }
+  useEffect(() => {
+    const nodeSuppressorActivated = isActivated.filter(item => item.node_id === suppressionNode.node_id)
+    console.log(nodeSuppressorActivated, "nodeSuppressorActivated", suppressionNode, isActivated)
+    setNodeSuppressorActivated(nodeSuppressorActivated)
+  }, [isActivated])
+
   return(
     <img src={stop} alt="stop" style={{height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px"}} onClick={(event) => handleShowModal(event, setShowModal)}/>
-    // onClick={(event) => activateSuppressor(event, setSuppressorStatus, nodeData, setDeviceInfo, deviceInfo)}
   )
 }
 
