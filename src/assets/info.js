@@ -296,25 +296,23 @@ export const specificDeviceChartData = [
     },
     {
         node_type: "suppression unit", node_name: "Engg SS Mess", node_id: 110, deck: 1, comp: 1, alertlogstemp: null, alertlogsbattery: [
-            { time: "0800 hrs", message: "Battery level at 50%" },
-            { time: "1000 hrs", message: "Battery level at 40%" },
-            { time: "1200 hrs", message: "Battery level at 30%" },
-            { time: "1300 hrs", message: "Battery level at 20% — warning: battery low" },
-            { time: "1400 hrs", message: "Battery level at 10% — critical battery level" },
-            { time: "1500 hrs", message: "Battery level at 5% — urgent replacement required" },
-            { time: "1600 hrs", message: "Device shutdown — battery depleted" }
+            { time: "1800 hrs", message: "Battery level at 58%" },
+            { time: "1900 hrs", message: "Battery level at 46%" },
+            { time: "2020 hrs", message: "Battery level at 38%" },
+            { time: "2100 hrs", message: "Battery level at 30% — warning: battery low" },
+            { time: "2200 hrs", message: "Battery level at 20% — critical battery level" },
         ], temperature: null, battery_percentage: [{ time: "11", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "12", value: "100", info: "[INFO]", status: "Battery OK" },
             { time: "13", value: "99", info: "[WARN]", status: "Battery dropping" },
             { time: "14", value: "94", info: "[WARN]", status: "Battery dropping" },
             { time: "15", value: "86", info: "[WARN]", status: "Battery dropping" },
-            { time: "16", value: "78", info: "[WARN]", status: "Battery dropping" },
-            { time: "17", value: "70", info: "[WARN]", status: "Battery dropping" },
-            { time: "18", value: "66", info: "[WARN]", status: "Battery dropping" },
-            { time: "19", value: "60", info: "[WARN]", status: "Battery dropping" },
-            { time: "20", value: "50", info: "[WARN]", status: "Battery dropping" },
-            { time: "21", value: "42", info: "[WARN]", status: "Battery dropping" },
-            { time: "22", value: "32", info: "[WARN]", status: "Needs Replacement" }]
+            { time: "16", value: "74", info: "[WARN]", status: "Battery dropping" },
+            { time: "17", value: "66", info: "[WARN]", status: "Battery dropping" },
+            { time: "18", value: "58", info: "[WARN]", status: "Battery dropping" },
+            { time: "19", value: "46", info: "[WARN]", status: "Battery dropping" },
+            { time: "20", value: "38", info: "[WARN]", status: "Battery dropping" },
+            { time: "21", value: "30", info: "[WARN]", status: "Battery dropping" },
+            { time: "22", value: "20", info: "[WARN]", status: "Needs Replacement" }]
     },
     {
         node_type: "sensor", node_name: "Spare Gear Store", node_id: 111, deck:4, comp: 5, alertlogstemp: [

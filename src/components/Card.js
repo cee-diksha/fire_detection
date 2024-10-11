@@ -65,7 +65,7 @@ const Card = ({ item }) => {
   const [showModal, setShowModal] = useState(false);
   const {isActivated, suppressionNode, setIsActivated} = useContext(MainContext)
 
-  const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted") || status.includes("smoke")
+  const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
 
   const handleMuteAlarm = (event) => {
     console.log(isAlarmMuted, "isAlarmMuted")
@@ -87,8 +87,8 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#ff7b7b " : "#a391b8"}`, 
-        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") || status.includes("smoke")) ? "#fff" : "#000"}`
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
+        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#000"}`
       }}
     >
       {showModal && <GetCodeForTrigger open={true} handleClose={setShowModal} />}
@@ -115,7 +115,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
           <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
         </div>
         {(node_type === "sensor" && status.includes("danger")) && <SuppressorBtn nodeData = {item} setShowModal={setShowModal} />}
-        {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger, isActivated, suppressionNode, setIsActivated)} checked={trigger} />}
+        {/* {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger, isActivated, suppressionNode, setIsActivated)} checked={trigger} />} */}
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>
