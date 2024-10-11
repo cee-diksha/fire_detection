@@ -26,8 +26,8 @@ const handleRefresh = (event) => {
 };
 
 const SuppressorBtn = ({nodeData, setShowModal}) => {
-  const {setSuppressionNode, isActivated, suppressionNode} = useContext(MainContext)
-  const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState(null)
+  const {setSuppressionNode, isActivated} = useContext(MainContext)
+  const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState([])
 
   const handleShowModal = (event, setShowModal) => {
     handleRefresh(event)
@@ -36,13 +36,12 @@ const SuppressorBtn = ({nodeData, setShowModal}) => {
 
   }
   useEffect(() => {
-    const nodeSuppressorActivated = isActivated.filter(item => item.node_id === suppressionNode.node_id)
-    console.log(nodeSuppressorActivated, "nodeSuppressorActivated", suppressionNode, isActivated)
+    const nodeSuppressorActivated = isActivated.filter(item => item.node_id === nodeData.node_id)
     setNodeSuppressorActivated(nodeSuppressorActivated)
   }, [isActivated])
 
   return(
-    <img src={stop} alt="stop" style={{height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px"}} onClick={(event) => handleShowModal(event, setShowModal)}/>
+    <img src={stop} alt="stop" style={{cursor: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? 'not-allowed' : 'pointer', height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px", filter: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) && "grayscale(100%)"}} onClick={(event) => (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? handleRefresh(event) : handleShowModal(event, setShowModal)}/>
   )
 }
 
