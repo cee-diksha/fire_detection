@@ -380,6 +380,17 @@ tbody tr:hover {
   flex-direction: column;
 }
 
+.samplingtime button {
+  border-radius: 6px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  margin-left: 20px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
 .samplingtime-input{
   width: 40px;
   height: 4px;
