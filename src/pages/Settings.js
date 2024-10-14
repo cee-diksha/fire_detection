@@ -8,13 +8,25 @@ import LiveClock from '../components/LiveClock'
 import { MainContext } from '../context/MainContext'
 import Footer from '../components/Footer'
 
+const SetSamplingTime = () => {
+  return (
+    <div className='samplingtime'>
+      <span style={{marginTop: "-8px", fontWeight: "500"}}>Set Sampling Time</span>
+      <span style={{marginTop: "8px"}}><input className='samplingtime-input' type="text" /> min</span>
+    </div>
+  )
+}
+
 const Settings = () => {
   const {isLogin} = useContext(MainContext)
 
   return (
     <div className='dashboard-wrapper'>
       <div className='header-settings'>
-        <LiveClock />
+        <div style={{display: "flex"}}>
+          <LiveClock />
+          <SetSamplingTime />
+        </div>
         <div className='settings-imgWrapper'>
           {isLogin ? <img src={user} alt="user-img" className='settings-img'/> : <Link to="/login" className='link'><h6 className='settings-login'>Login</h6></Link>}
           <Link to="/" className='link'><h6 className='settings-dashboard'>Dashboard</h6></Link>

@@ -367,9 +367,27 @@ tbody tr:hover {
     color: #fff;
     border-radius: 6px;
 }
+.samplingtime{
+  margin-left: 14px;
+  height: 40px;
+  width: auto;
+  background-color: #3F3F3F;
+  padding: 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.samplingtime-input{
+  width: 40px;
+  height: 4px;
+}
 
 .live-clock{
     height: 40px;
+    width: auto;
     background-color: #9dff80;
     padding: 14px;
     border-radius: 6px;
@@ -387,8 +405,24 @@ tbody tr:hover {
 }
 
 .live-clock-date{
+  margin-left: 6px;
     color: #2f2e2e;
     font-size: 16px;
+}
+
+.live-clock button {
+  margin-top: 6px;
+  height: 28px;
+  padding: 4px;
+  width:80px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  margin-left: auto;
+  background-color: #3F3F3F;
 }
 
 .warning-modal{
