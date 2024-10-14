@@ -85,6 +85,8 @@ const SpecificDevice = () => {
             <SpecificBattChart batt = {specificData[0].battery_percentage} status={device[0].status}/>
           </div>   
       </div>
+      {affectedDevices.length > 0  && <hr style={{color: "white", width: "96%"}}></hr>}
+
       {console.log(affectedDevices.length, "affectedDevices.length")}
       {affectedDevices.length > 0  && <div className='affected-devices'>
         <h4>Affected Devices</h4>
@@ -98,6 +100,57 @@ const SpecificDevice = () => {
           })}
         </div>
       </div>}
+      {isLogin && <hr style={{color: "white", width: "96%"}}></hr>}
+          {isLogin && <div style={{margin: "0 0 20px 0", width: "80%"}}>
+            <h4 style={{fontSize: "24px", textAlign: "center"}}>Past 12 hour Alert Logs</h4>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
+           {specificData[0].temperature && <div>
+            <h4 style={{fontSize: "20px"}}>Temperature Logs</h4>
+           {specificData[0].temperature.map(item => {
+               let statusColor;
+               switch (item.info) {
+                 case "[INFO]":
+                   statusColor = "#0096FF";
+                   break;
+                 case "[WARNING]":
+                   statusColor = "#FFC300";
+                   break;
+                 case "[ALERT]":
+                   statusColor = "red";
+                   break;
+                 default:
+                   statusColor = "white";
+               }
+              return(
+              <div style={{marginBottom: "10px"}}><span style={{width: "100px", color: statusColor}}>{item.info} - {item.time}00 hrs - </span> <span style={{fontWeight: "600"}}>temperature: {item.value} °C</span> - {item.status} </div>
+              )
+            })}
+           </div>}
+            {/* --------------------------------------------------------------------------------------------------------------------- */}
+            {specificData[0].battery_percentage && <div>
+              <h4 style={{fontSize: "20px"}}>Battery Logs</h4>
+            {specificData[0].battery_percentage.map(item => {
+               let statusColor;
+               switch (item.info) {
+                 case "[INFO]":
+                   statusColor = "#0096FF";
+                   break;
+                 case "[WARNING]":
+                   statusColor = "#FFC300";
+                   break;
+                 case "[ALERT]":
+                   statusColor = "red";
+                   break;
+                 default:
+                   statusColor = "white";
+               }
+              return(
+              <div style={{marginBottom: "10px"}}><span style={{width: "100px", color: statusColor}}>{item.info} - {item.time}00 hrs - </span> <span style={{fontWeight: "600"}}>battery: {item.value}% </span> - {item.status} </div>
+              )
+            })}
+            </div>}
+            </div>
+          </div>}
       <div className="dashboard-sticky">    
         <Footer />
       </div>
