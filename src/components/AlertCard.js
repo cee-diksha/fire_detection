@@ -19,11 +19,11 @@ const AlertCard = () => {
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3"style={{backgroundColor: "#ff9863"}}></div>
-                <div id="alert-details-span1">Temp ↑</div>
+                <div id="alert-details-span1">Temp Rise</div>
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3" style={{backgroundColor: "#FFC648"}}></div>
-                <div id="alert-details-span1">Battery ↓</div>
+                <div id="alert-details-span1">Low Battery</div>
             </div>
             <div className='alert-details-combined' >
                 <div id="alert-details-span3" style={{backgroundColor: "#b6d9cc"}}></div>

@@ -17,7 +17,7 @@ const DropDown = ({cardData}) => {
       setShowModal(true)
     }
   return (
-    <div style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+    <div style={{width: "auto", display: "flex", alignItems: "center", justifyContent: "center", margin: "22px 10px 0 0"}}>
         {/* <select style={{height: "40px", width: "50%",borderRadius: "10px", marginBottom: "18px", padding: "0 4px", backgroundColor: "#3F3F3F", color: "#ffffff", borderColor: "transparent"}} onChange={(e) => handleClick(e)}>
             {optionsData.map((item, index) => {
               console.log(item, item, "item.isDeleted")
@@ -33,11 +33,12 @@ const DropDown = ({cardData}) => {
         control: (baseStyles) => ({
           ...baseStyles,
           height: '40px',
-          width: '400px',
+          width: '240px',
           borderRadius: '10px',
           backgroundColor: '#3F3F3F',
           color: '#ffffff',
           marginBottom: "20px",
+          fontSize: "14px",
           borderColor: 'transparent',
         }),
         placeholder: (defaultStyles) => ({

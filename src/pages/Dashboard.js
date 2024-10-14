@@ -34,13 +34,15 @@ const Dashboard = () => {
     <>
         <div  className='dashboard-wrapper'>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%", width: "96%"}}>
-            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "300px"}}>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto", marginRight: "20px"}}>
                 <img style={{height: "100px"}} src={shipcrest} alt="ship" />
                 <h2 id="dashboard-heading">Ship Name</h2>
             </div>
             <DropDown cardData={cardData} />
-            <ExportPdfButton data={cardData}/>
+            <AlertCard />
+            
             <div className='imgWrapper'>
+                <ExportPdfButton data={cardData}/>
                 {isLogin ? <img src={user} alt="user-img" className='img' style={{marginTop: "3px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
                 <Link to={isLogin ? "/settings" : "#"} 
                 style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
@@ -49,11 +51,8 @@ const Dashboard = () => {
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>
-                    <AlertCard />
-                    <div className='div-nested'>
-                        <SummaryCard />
-                        <DeckCard />
-                    </div>
+                    <SummaryCard />
+                    <DeckCard />
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
                     <TempChart />
