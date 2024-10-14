@@ -436,7 +436,38 @@ tbody tr:hover {
   background-color: #3F3F3F;
 }
 
+.conn-modal{
+  height: 40%;
+  width: 40%;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #000000;
+  margin: auto;
+}
 
+.conn-modal-div{
+  display: flex;
+  flex-direction: column;
+}
+
+.conn-cards{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.conn-btn{
+  margin-left: auto;
+  height: 24px;
+  width:80px;
+  border-radius: 6px;
+  border: 1px solid #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  background-color: #3F3F3F;
+}
 .confimation-modal, .confimation-modal2{
     height: 200px;
     width: 250px;

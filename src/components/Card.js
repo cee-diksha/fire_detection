@@ -17,7 +17,7 @@ import {MainContext} from "../context/MainContext"
 import ReactSwitch from 'react-switch';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GetCodeForTrigger } from './ConfimationModal';
+import { ConnectedDevicesModal, GetCodeForTrigger } from './ConfimationModal';
 
 
 const handleRefresh = (event) => {
@@ -59,7 +59,8 @@ const SuppressorBtn = ({nodeData, setShowModal}) => {
 
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice } = item;
-
+ 
+  const [showConn, setShowConn] = useState(false);
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
   const [trigger, setTrigger] = useState(triggeringDevice)
   const [showModal, setShowModal] = useState(false);
@@ -74,8 +75,10 @@ const Card = ({ item }) => {
     setIsAlarmMuted(!isAlarmMuted);
   };
 
-  const showConnectedDevices = () => {
-
+  const showConnectedDevices = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setShowConn(true)
   }
 
   useEffect(() => {
@@ -137,11 +140,12 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
       </div>
       <div className="segment" style={{ borderBottom: "none" }} id="refresh-alarm-btn">
       {status.includes("deleted") ? <button 
-          onClick={showConnectedDevices} 
+          onClick={(event) => showConnectedDevices(event)} 
           id="refresh-alarm-btn-alert"  
         >
           Show Connected devices
         </button> : <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>}
+        {showConn && <ConnectedDevicesModal open={true} handleClose={setShowConn} node_id={node_id} />}
         {(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && <button 
           onClick={handleMuteAlarm} 
           id={`${(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && !isAlarmMuted? "refresh-alarm-btn-alert" : "refresh-alarm-btn-both"}`} 

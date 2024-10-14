@@ -1,7 +1,9 @@
 import { Modal } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../comp-styles.css"
 import { MainContext } from '../context/MainContext'
+import { Link } from 'react-router-dom'
+import Card from './Card'
 
 export const ConfimationModal = ({open, handleClose}) => {
     const handleResetDatabase = () => {
@@ -147,6 +149,47 @@ return (
       </Modal>
       {console.log(showWarningModal, "showWarningModal")}
       {showWarningModal && <WarningModal open={true} handleClose={setShowWarningModal}  handleCloseMain = {handleClose} />}
+  </>
+)
+}
+
+export const ConnectedDevicesModal = ({open, handleClose, node_id}) => {
+  const {deviceInfo} = useContext(MainContext)
+
+  const closeModal = (event) => {
+    handleClose(false)
+    handleRefresh(event)
+  }
+  const [affectedDevices, setAffectedDevices] = useState([])
+
+  useEffect(() => {
+    const filtered = deviceInfo.filter(item => item.connectedTo.includes(node_id))
+    setAffectedDevices(filtered)
+    console.log(filtered, "affectedDevices", node_id)
+  }, [deviceInfo, node_id])
+
+return (
+  <>
+      <Modal
+          className='conn-modal'
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          >
+          <div className='conn-modal-div'>
+          <div className='conn-cards'>
+          {affectedDevices.length > 0 && affectedDevices.map(item => {
+            return (
+              <Link className='link-style' to={`/info/${item.node_name}`} key={item.id}>
+                <Card item={item} />
+              </Link>
+            )
+            })}
+          </div>
+             <button className="conn-btn" onClick={(event) => closeModal(event)}>Close</button>
+          </div>
+      </Modal>
   </>
 )
 }
