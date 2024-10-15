@@ -24,15 +24,13 @@ const DeckCard = () => {
         const dangerDeckNos = deck.map(item => item.deck);
 
         return (
+          <Link to={`/deck/${deckNo}`}  className={`${dangerDeckNos.includes(deckNo) ? "alert" : "btnstyle"}`} style={{textDecoration: "none", color: `${dangerDeckNos.includes(deckNo) ? "#ffffff" : "#000000"}`, width: `${130 - index * 16}%`, height: "16px", fontWeight: "400", cursor: "pointer"}}>
             <div
               key={deckNo}
-              className={`${dangerDeckNos.includes(deckNo) ? "alert" : "btnstyle"}`}
-              style={{ width: `${130 - index * 16}%`, height: "16px",}}
             >
-              <Link to={`/deck/${deckNo}`} style={{textDecoration: "none", color: `${dangerDeckNos.includes(deckNo) ? "#ffffff" : "#000000"}`, fontWeight: "400", cursor: "pointer"}}>
-                Deck {deckNo}
-              </Link>
+             Deck {deckNo}
             </div>
+          </Link>
         );
       })}
     </div>
