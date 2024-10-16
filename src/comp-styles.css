@@ -729,9 +729,9 @@ tbody tr:hover {
   #last-update{
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 12px;
     justify-content: space-between;
-    font-size: 14px
+    font-size: 14px;
   }
 
   #last-update div {

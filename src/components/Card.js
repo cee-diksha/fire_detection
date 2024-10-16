@@ -80,6 +80,7 @@ const Card = ({ item }) => {
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
   const [trigger, setTrigger] = useState(triggeringDevice)
   const [showModal, setShowModal] = useState(false);
+  const [isFault, setIsFault] = useState(false)
   const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
 
   const handleMuteAlarm = (event) => {
@@ -93,6 +94,11 @@ const Card = ({ item }) => {
     event.preventDefault();
     event.stopPropagation();
     setShowConn(true)
+  }
+
+  const markFault = (event) => {
+    handleRefresh(event)
+    setIsFault(true)
   }
 
   useEffect(() => {
@@ -145,7 +151,8 @@ const Card = ({ item }) => {
         </div>
       </div>
       <div className="segment" id="last-update">
-        <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />
+        <button onClick={markFault} style={{backgroundColor: isFault ?'#bfbfbf' : '#393939', borderRadius: '6px', height: "24px", width: "90px", fontSize: "12px", cursor: isFault ? "not-allowed" :"pointer", color: isFault ? "#000000" : "#ffffff"}}>Mark Faulty</button>
+        {/* <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} /> */}
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
