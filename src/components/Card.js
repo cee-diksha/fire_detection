@@ -14,10 +14,8 @@ import smoke from "../assets/smoke.png";
 import StatusDisplay from '../utils/StatusDisplay';
 import stop from "../assets/stop.png"
 import {MainContext} from "../context/MainContext"
-import ReactSwitch from 'react-switch';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { ConnectedDevicesModal, GetCodeForTrigger } from './ConfimationModal';
+import ReactSwitch from 'react-switch';
 
 
 const handleRefresh = (event) => {
@@ -25,33 +23,51 @@ const handleRefresh = (event) => {
   event.stopPropagation();
 };
 
-const toggleSwitch = (trigger, setTrigger, isActivated, suppressionNode, setIsActivated) => {
-  if (trigger) {
-    setTrigger(false)
-    setIsActivated(isActivated.filter(item => item.node_id !== suppressionNode.node_id))
-  } else setTrigger(true)
+const toggleSwitch = (trigger, setTrigger, isActivated, node_id, setTargetNode, setIsActivated, targetNode) => {
+  const target = isActivated.filter(item => item.suppressor_id === node_id)
+  target.length > 0 ? setTargetNode(target[0]) :  setTargetNode(targetNode)
 
-  console.log(isActivated, suppressionNode, isActivated.filter(item => item.node_id !== suppressionNode.node_id), "filtering")
+  console.log(isActivated, "isActivated switch", node_id, target, trigger, targetNode)
+
+  if(trigger) {
+    console.log(isActivated.filter(item => item.node_id !== target[0].node_id), "isActivated --1") 
+    setIsActivated(isActivated.filter(item => item.node_id !== target[0].node_id))
+    setTrigger(false)
+  } else {
+    const active = target.length > 0 ? {node_id: target[0].node_id, suppressor_id: node_id, status: true} : {node_id: targetNode.node_id, suppressor_id: node_id, status: true}
+    setIsActivated(prev => [...prev, active])
+    setTrigger(true)
+  }
 }
 
 
-const SuppressorBtn = ({nodeData, setShowModal}) => {
-  const {setSuppressionNode, isActivated} = useContext(MainContext)
+const SuppressorBtn = ({nodeData, id, setShowModal, trigger}) => {
+  const {setTargetNode, isActivated, targetNode} = useContext(MainContext)
   const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState([])
 
   const handleShowModal = (event, setShowModal) => {
     handleRefresh(event)
     setShowModal(true)
-    setSuppressionNode(nodeData)
-
+    console.log(nodeData, "line2222")
+    setTargetNode(nodeData)
   }
+
   useEffect(() => {
-    const nodeSuppressorActivated = isActivated.filter(item => item.node_id === nodeData.node_id)
-    setNodeSuppressorActivated(nodeSuppressorActivated)
+    const filtered = isActivated.filter(item => item.node_id === nodeData.node_id)
+    setNodeSuppressorActivated(filtered)
+    console.log(isActivated, "isActivated", nodeData, filtered)
+
   }, [isActivated])
 
   return(
-    <img src={stop} alt="stop" style={{cursor: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? 'not-allowed' : 'pointer', height: '40px', width: '40px', marginTop: "-12px", marginRight: "10px", filter: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) && "grayscale(100%)"}} onClick={(event) => (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? handleRefresh(event) : handleShowModal(event, setShowModal)}/>
+    <div style={{cursor: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? 'not-allowed' : 'pointer', 
+      height: '56px', width: '56px', marginTop: "-15px", marginRight: "10px", background: "linear-gradient(145deg, #b7ff86, #94ffa6)", borderRadius: "100%", 
+      boxShadow: "0.3px 0.3px 15px #ff5555", color: "#000000", fontWeight: "500", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center',
+      filter: (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) && "grayscale(100%)", fontSize: "12px"}} 
+      onClick={(event) => (nodeSuppressorActivated.length > 0 && nodeSuppressorActivated[0].node_id === nodeData.node_id) ? handleRefresh(event) : handleShowModal(event, setShowModal)}>
+      Activate
+      <img src = {suppression2} alt="img" style={{height: "26px", width: "26px"}} />
+    </div>
   )
 }
 
@@ -59,13 +75,11 @@ const SuppressorBtn = ({nodeData, setShowModal}) => {
 
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice } = item;
- 
+  const {isActivated, setTargetNode, setIsActivated, targetNode} = useContext(MainContext)
   const [showConn, setShowConn] = useState(false);
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
   const [trigger, setTrigger] = useState(triggeringDevice)
   const [showModal, setShowModal] = useState(false);
-  const {isActivated, suppressionNode, setIsActivated} = useContext(MainContext)
-
   const whiteLogo = status.includes("danger") || status.includes("orange") || status.includes("deleted")
 
   const handleMuteAlarm = (event) => {
@@ -90,7 +104,7 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
     <div 
       className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#9dff80" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
+        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#000"}`
       }}
     >
@@ -117,8 +131,8 @@ console.log(status.includes("success"), "status check", isAlarmMuted)
           <div><span style={{ fontWeight: "600" }}>Deck: </span>{deck}</div>
           <div><span style={{ fontWeight: "600"}}>Compartment:</span> {compartment}</div>
         </div>
-        {(node_type === "sensor" && status.includes("danger")) && <SuppressorBtn nodeData = {item} setShowModal={setShowModal} />}
-        {/* {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger, isActivated, suppressionNode, setIsActivated)} checked={trigger} />} */}
+        {(node_type === "sensor" && status.includes("danger")) && <SuppressorBtn nodeData = {item} id={node_id} setShowModal={setShowModal} trigger={trigger} />}
+        {node_type === "suppressor" && <ReactSwitch onChange={() => toggleSwitch(trigger, setTrigger, isActivated, node_id, setTargetNode, setIsActivated,targetNode)} checked={trigger} />}
       </div>
       <div className="segment" id="temp-battery">
         {temp && <div className= {(status.includes("danger") || status.includes("orange")) ? "dangertext" : ((status.includes("danger") || status.includes("orange")) && status.includes("yellow")) ? "dangertext" : "normaltext"}>

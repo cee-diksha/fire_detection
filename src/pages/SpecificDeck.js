@@ -47,7 +47,7 @@ const SpecificDeck = () => {
 
       console.log(filtered, "final filtered output", deckData);
       setDeckInfo(filtered)
-      const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
+      const { filteredDeckInfo } = reduceDeckData(deckData, deviceInfo);
       setfilteredDeckInfo(filteredDeckInfo);
       const data = filteredDeckInfo.filter(item => item.deck === parseInt(deck))
       setDeckGrid(data[0])
@@ -86,11 +86,13 @@ const SpecificDeck = () => {
                   details.length > 0 && (
                     <div className='specific-card' key={index}>
                       <h3>Compartment No. - {item.comp}</h3>
-                      {details.map(detail => (
-                        <Link className='link-style' to={`/info/${detail.node_name}`} key={detail.id}>
+                      <div className='specific-card-div'>
+                      {details.map(detail => (                     
+                         <Link className='link-style' to={`/info/${detail.node_name}`} key={detail.id}>
                           <Card item={detail} />
                         </Link>
                       ))}
+                      </div>
                     </div>
                   )
                 );
@@ -111,7 +113,7 @@ const SpecificDeck = () => {
               return (
               <div className='specific-card'>
                 <h3>Compartment No. - {item.comp}</h3>
-                <Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail} key={index} /></Link>
+                <div className='specific-card-div'><Link className='link-style' to={`/info/${detail.node_name}`}><Card item={detail} key={index} /></Link></div>
               </div>
               )
             })

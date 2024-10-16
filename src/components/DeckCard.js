@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import { MainContext } from "../context/MainContext"; // Adjust the path as necessary
-import "./Grid-style.css"; // Include your styles
+import { MainContext } from "../context/MainContext"; 
+import "./Grid-style.css"; 
 import { Link } from "react-router-dom";
 
 const DeckCard = () => {
@@ -9,7 +9,7 @@ const DeckCard = () => {
   const danger = cardData.filter(item => item.status.includes("danger"));
   const [deck, setDeck] = useState(danger);
 
-  const totalDecks = 6; // Assuming there are 6 decks
+  const totalDecks = 6; 
 
   useEffect(() => {
     setDeck(danger);

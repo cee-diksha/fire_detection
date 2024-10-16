@@ -99,7 +99,7 @@ export const SmokeChart = () => {
   }, [deviceInfo]);
 
   const smokearr = info.map((item) => ({
-    smoke: item.status.includes('smoke') ? '#ff7b7b' : '#9dff80', 
+    smoke: item.status.includes('smoke') ? '#ff7b7b' : '#b7ff86', 
     nodeId: item.node_id,
   }));
 

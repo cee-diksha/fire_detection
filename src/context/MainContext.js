@@ -11,7 +11,7 @@ const MainContextProvider = (props) => {
     const [deletedDevices, setDeletedDevices] = useState([])
     const [suppressorStatus, setSuppressorStatus] = useState(false)
     const [activeSuppressors, setActiveSuppressors] = useState([])
-    const [suppressionNode, setSuppressionNode] = useState(false)
+    const [targetNode, setTargetNode] = useState([])
     const [isActivated, setIsActivated] = useState([])
     const [samplingTime, setSamplingTime] = useState(null)
 
@@ -45,8 +45,8 @@ const MainContextProvider = (props) => {
             setSuppressorStatus,
             activeSuppressors,
             setActiveSuppressors,
-            suppressionNode,
-            setSuppressionNode,
+            targetNode,
+            setTargetNode,
             isActivated,
             setIsActivated,
             samplingTime,

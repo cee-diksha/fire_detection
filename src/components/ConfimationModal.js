@@ -37,12 +37,12 @@ const handleRefresh = (event) => {
 };
 
 export const WarningModal = ({open, handleClose, handleCloseMain}) => {
-  const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
+  const {targetNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
 
-  const activateSuppressor = (setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo) => {
+  const activateSuppressor = (setSuppressorStatus, targetNode, setDeviceInfo, deviceInfo) => {
     setSuppressorStatus(true)
-    const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === suppressionNode.deck && item.compartment === suppressionNode.compartment)))
-    console.log(filteredSuppressor, "filteredSuppressor", suppressionNode, deviceInfo)
+    const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === targetNode.deck && item.compartment === targetNode.compartment)))
+    console.log(filteredSuppressor, "filteredSuppressor", targetNode, deviceInfo)
      if (filteredSuppressor.length > 0) {
       setDeviceInfo(prev => 
         prev.map(item => {
@@ -53,13 +53,13 @@ export const WarningModal = ({open, handleClose, handleCloseMain}) => {
         })
       );
     }
-    const isActivated = {node_id: suppressionNode.node_id, status: true}
+    const isActivated = {node_id: targetNode.node_id, suppressor_id: filteredSuppressor[0].node_id, status: true}
     setIsActivated(prev => [...prev, isActivated])
   };
 
   const handleProceed = (event) => {
     handleRefresh(event)
-    activateSuppressor(setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo)
+    activateSuppressor(setSuppressorStatus, targetNode, setDeviceInfo, deviceInfo)
     handleClose(false)
     handleCloseMain(false)
   }
@@ -86,14 +86,14 @@ export const WarningModal = ({open, handleClose, handleCloseMain}) => {
 }
 
 export const GetCodeForTrigger = ({open, handleClose}) => {
-  const {suppressionNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
+  const {targetNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [accessCode, setAccessCode] = useState("")
 
 
-  const activateSuppressor = (setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo) => {
+  const activateSuppressor = (setSuppressorStatus, targetNode, setDeviceInfo, deviceInfo) => {
     setSuppressorStatus(true)
-    const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === suppressionNode.deck && item.compartment === suppressionNode.compartment)))
+    const filteredSuppressor = deviceInfo.filter(item => (item.node_type === "suppressor" && (item.deck === targetNode.deck && item.compartment === targetNode.compartment)))
      if (filteredSuppressor.length > 0) {
       setDeviceInfo(prev => 
         prev.map(item => {
@@ -104,14 +104,14 @@ export const GetCodeForTrigger = ({open, handleClose}) => {
         })
       );
     }
-    const isActivated = {node_id: suppressionNode.node_id, status: true}
+    const isActivated = {node_id: targetNode.node_id, suppressor_id: filteredSuppressor[0].node_id, status: true}
     setIsActivated(prev => [...prev, isActivated])
   };
 
   const handleProceed = (event) => {
     handleRefresh(event)
     if (accessCode === "1234") {
-      activateSuppressor(setSuppressorStatus, suppressionNode, setDeviceInfo, deviceInfo)
+      activateSuppressor(setSuppressorStatus, targetNode, setDeviceInfo, deviceInfo)
       handleClose(false)
     } else {
       setShowWarningModal(true)

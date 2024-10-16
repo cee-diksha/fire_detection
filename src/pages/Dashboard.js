@@ -17,6 +17,69 @@ import AlertCard from '../components/AlertCard'
 import { reduceDeckData } from '../utils/reduceDeckData'
 import { ExportPdfButton } from '../utils/ExportPdfButton'
 
+// Sample array of objects representing cards
+const cardData = [
+  { id: 1, name: 'Card 1' },
+  { id: 2, name: 'Card 2' },
+  // Add more cards if needed
+];
+
+const App = () => {
+    // State to track the visibility of green cards
+    const [visibleGreenCards, setVisibleGreenCards] = useState({});
+    // State to track the toggle state of green cards
+    const [toggleStates, setToggleStates] = useState({});
+  
+    // Handler to show the green card when button is clicked
+    const handleButtonClick = (id) => {
+      setVisibleGreenCards((prevState) => ({
+        ...prevState,
+        [id]: true, // Show the green card for the corresponding red card
+      }));
+    };
+  
+    // Handler to update the toggle state
+    const handleToggleChange = (id, checked) => {
+      setToggleStates((prevState) => ({
+        ...prevState,
+        [id]: checked, // Update the toggle state for the specific card
+      }));
+    };
+  
+    return (
+      <div>
+        {cardData.map((card) => (
+          <div key={card.id} style={{ marginBottom: '20px' }}>
+            {/* Red Card */}
+            <div style={{ backgroundColor: 'red', padding: '10px' }}>
+              <h3>{card.name}</h3>
+              <button
+                onClick={() => handleButtonClick(card.id)}
+                disabled={visibleGreenCards[card.id] && toggleStates[card.id] !== false} // Disable button based on toggle state
+              >
+                Click Me
+              </button>
+            </div>
+  
+            {/* Green Card - only show if the button is clicked */}
+            {visibleGreenCards[card.id] && (
+              <div style={{ backgroundColor: 'green', padding: '10px', marginTop: '10px' }}>
+                <label>
+                  Toggle Switch for {card.name}:
+                  <input
+                    type="checkbox"
+                    checked={toggleStates[card.id] || false}
+                    onChange={(e) => handleToggleChange(card.id, e.target.checked)}
+                  />
+                </label>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+  
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo) 
@@ -62,7 +125,7 @@ const Dashboard = () => {
                 </div>
                 <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
                 <div style={{ display: 'flex', width: "auto", marginTop: "20px"}}>
-                    <div style={{ width: '18px', height: '18px', backgroundColor: '#9dff80', marginRight: '5px'}} />
+                    <div style={{ width: '18px', height: '18px', backgroundColor: '#b7ff86', marginRight: '5px'}} />
                     <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px" }}>Nornal</div>
                     <div style={{ width: '18px', height: '18px', backgroundColor: '#ff7b7b', marginRight: '5px', marginLeft: "5px" }} />
                     <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px"}}>Smoke</div>
