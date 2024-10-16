@@ -16,69 +16,6 @@ import Footer from '../components/Footer'
 import AlertCard from '../components/AlertCard'
 import { reduceDeckData } from '../utils/reduceDeckData'
 import { ExportPdfButton } from '../utils/ExportPdfButton'
-
-// Sample array of objects representing cards
-const cardData = [
-  { id: 1, name: 'Card 1' },
-  { id: 2, name: 'Card 2' },
-  // Add more cards if needed
-];
-
-const App = () => {
-    // State to track the visibility of green cards
-    const [visibleGreenCards, setVisibleGreenCards] = useState({});
-    // State to track the toggle state of green cards
-    const [toggleStates, setToggleStates] = useState({});
-  
-    // Handler to show the green card when button is clicked
-    const handleButtonClick = (id) => {
-      setVisibleGreenCards((prevState) => ({
-        ...prevState,
-        [id]: true, // Show the green card for the corresponding red card
-      }));
-    };
-  
-    // Handler to update the toggle state
-    const handleToggleChange = (id, checked) => {
-      setToggleStates((prevState) => ({
-        ...prevState,
-        [id]: checked, // Update the toggle state for the specific card
-      }));
-    };
-  
-    return (
-      <div>
-        {cardData.map((card) => (
-          <div key={card.id} style={{ marginBottom: '20px' }}>
-            {/* Red Card */}
-            <div style={{ backgroundColor: 'red', padding: '10px' }}>
-              <h3>{card.name}</h3>
-              <button
-                onClick={() => handleButtonClick(card.id)}
-                disabled={visibleGreenCards[card.id] && toggleStates[card.id] !== false} // Disable button based on toggle state
-              >
-                Click Me
-              </button>
-            </div>
-  
-            {/* Green Card - only show if the button is clicked */}
-            {visibleGreenCards[card.id] && (
-              <div style={{ backgroundColor: 'green', padding: '10px', marginTop: '10px' }}>
-                <label>
-                  Toggle Switch for {card.name}:
-                  <input
-                    type="checkbox"
-                    checked={toggleStates[card.id] || false}
-                    onChange={(e) => handleToggleChange(card.id, e.target.checked)}
-                  />
-                </label>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    );
-  };
   
 const Dashboard = () => {
     const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors} = useContext(MainContext)
@@ -106,7 +43,7 @@ const Dashboard = () => {
             
             <div className='imgWrapper'>
                 <ExportPdfButton data={cardData}/>
-                {isLogin ? <img src={user} alt="user-img" className='img' style={{marginTop: "3px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+                {isLogin ? <img src={user} alt="user-img" className='img' style={{marginTop: "3px", marginRight: "14px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
                 <Link to={isLogin ? "/settings" : "#"} 
                 style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
             </div>

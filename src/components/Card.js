@@ -42,7 +42,7 @@ const toggleSwitch = (trigger, setTrigger, isActivated, node_id, setTargetNode, 
 
 
 const SuppressorBtn = ({nodeData, id, setShowModal, trigger}) => {
-  const {setTargetNode, isActivated, targetNode} = useContext(MainContext)
+  const {setTargetNode, isActivated} = useContext(MainContext)
   const [nodeSuppressorActivated, setNodeSuppressorActivated] = useState([])
 
   const handleShowModal = (event, setShowModal) => {
@@ -99,10 +99,9 @@ const Card = ({ item }) => {
     if (node_id === 106) setIsAlarmMuted(true)
   }, [])
 
-console.log(status.includes("success"), "status check", isAlarmMuted)
   return (
     <div 
-      className={`${isAlarmMuted ? "blinking-border" : "card-wrapper"}`} 
+      className={`${node_type === "sensor" ? isAlarmMuted ? "blinking-border" : "card-wrapper" : triggeringDevice ? "blinking-activesupp"  : "card-wrapper" }`} 
       style={{ 
         backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#000"}`

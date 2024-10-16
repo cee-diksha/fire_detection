@@ -20,7 +20,8 @@ export const ConfimationModal = ({open, handleClose}) => {
             aria-describedby="modal-modal-description"
             >
             <div className='confimation-modal-div'>
-               <h6>Are you sure you want to reset database?</h6>
+               <h6>Are you sure you want to reset database? <br></br> <span style={{color: "#FFC300"}}>This will erase the full configuration</span></h6>
+              
                <div className='confimation-modal-btn-wrapper'>
                 <button onClick={handleResetDatabase}>Yes</button>
                 <button onClick={() => handleClose(false)}>Cancel</button>

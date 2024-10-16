@@ -9,6 +9,18 @@
     border: 7px solid transparent; 
 }
 
+.blinking-activesupp {
+  height: auto;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  background-color: #3F3F3F;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 7px solid #13741e; 
+  animation: blink-activesupp 0.5s infinite;
+}
+
 .smoke-img{
   animation: blink-img 0.5s infinite;
 }
@@ -557,6 +569,7 @@ tbody tr:hover {
 .confimation-modal2-btn-wrapper {
     display: flex;
     width: 100%;
+    margin-top: -4px;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -610,6 +623,18 @@ tbody tr:hover {
     }
     100% {
       border-color: #e4ff4b;
+    }
+  }
+
+  @keyframes blink-activesupp {
+    0% {
+      border-color: #13741e;
+    }
+    50% {
+      border-color: transparent; 
+    }
+    100% {
+      border-color: #13741e;
     }
   }
 
