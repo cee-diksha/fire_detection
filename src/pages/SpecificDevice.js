@@ -65,6 +65,8 @@ const SpecificDevice = () => {
       }}>
       {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  "Not Responding" }
       </div>}    
+      {device[0].faultReason !== "" && <div style={{fontSize: "18px"}}><span style={{color: "#ff5a5a"}}>Fault Reason: </span>{device[0].faultReason}</div>}
+
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>
             <h2 style={{color:"#ff7b7b"}}>Alert Logs - Temperature</h2>

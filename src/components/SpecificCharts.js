@@ -38,7 +38,7 @@ export const SpecificTempChart = ({temperature, status}) => {
     console.log(temperature, status, "speciifc temp chart")
     const time = temperature.map(item => item.time)
     const temp = temperature.map(item => item.value)
-    const lineColor = status.includes("danger") ? "#ff7b7b" : status.includes("orange") ? "#FF6B3B" : status.includes("not responding") ? "#a391b8" : "#05abf9"
+    const lineColor = status.includes("danger") ? "#ff7b7b" : status.includes("orange") ? "#FF6B3B" : status.includes("deleted") ? "#b0acac" : status.includes("not responding") ? "#a391b8" : "#05abf9"
     return(
         <LineChart
             xAxis={[{ data: time, scaleType: 'band', label: "Time(hrs)", valueFormatter: (value, context) => context.location === "tick" ? value : `${value}00 hours`}]}

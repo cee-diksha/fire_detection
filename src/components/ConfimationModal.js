@@ -38,11 +38,13 @@ const handleRefresh = (event) => {
 };
 
 export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
+  const [reason, setReason] = useState("")
+
   const submit = (event) => {
     handleRefresh(event)
     handleClose(false)
     setDeviceInfo(prev => prev.map(device => {
-      if (device.node_id === item.node_id) return {...device, status: ["deleted"], isDeleted: true, faultReason: "Device triggered a smoke alarm, but upon inspection, no signs of smoke or fire were found."}
+      if (device.node_id === item.node_id) return {...device, status: ["deleted"], isDeleted: true, faultReason: reason}
       return device
     }))
   }
@@ -50,6 +52,11 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
   const cancel = (event) => {
     handleRefresh(event)
     handleClose(false)
+  }
+
+  const handleInput = (event) => {
+    handleRefresh(event)
+    setReason(event.target.value)
   }
 
   return (
@@ -63,7 +70,7 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
       >
       <div className='confimation-modal-div'>
           <h6 style={{fontSize: "14px"}}>Provide a reason for the fault in the selected device. <br></br> This information will help in troubleshooting and resolving the issue more effectively.</h6>
-          <input style={{marginTop: "-14px", height: "10px", width: "240px"}} type="text" />
+          <input style={{marginTop: "-14px", height: "10px", width: "240px"}} type="text" onChange={handleInput} onClick={handleRefresh} />
           <div className='confimation-modal-btn-wrapper' style={{marginTop: "4px"}}>
           <button style={{fontSize: "12px"}} onClick={submit}>Submit</button>
           <button style={{fontSize: "12px"}} onClick={cancel}>Cancel</button>
