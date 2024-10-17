@@ -209,7 +209,7 @@ export const ConnectedDevicesModal = ({open, handleClose, node_id}) => {
   const [affectedDevices, setAffectedDevices] = useState([])
 
   useEffect(() => {
-    const filtered = deviceInfo.filter(item => item.connectedTo.includes(node_id))
+    const filtered = deviceInfo.filter(item => item.connectedTo === node_id)
     setAffectedDevices(filtered)
     console.log(filtered, "affectedDevices", node_id)
   }, [deviceInfo, node_id])

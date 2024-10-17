@@ -20,7 +20,7 @@ const MainContextProvider = (props) => {
         const deletedDevice = 102
         const data = [...deletedDevices, deletedDevice]
         setDeletedDevices(data)
-        const filteredDevices = deviceInfo.filter(item => data.some(value => item.connectedTo.includes(value)))
+        const filteredDevices = deviceInfo.filter(item => data.some(value => item.connectedTo === value))
         filteredDevices.map(item => item.status = ["not responding"])
         const updatedDeviceInfo = deviceInfo.map(item => {
             const matchedDevice = filteredDevices.find(device => device.node_id === item.node_id); 

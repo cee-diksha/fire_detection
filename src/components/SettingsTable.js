@@ -176,7 +176,7 @@ const SettingsTable = () => {
                                 <input
                                     type="text"
                                     style={{ width: "60%" }}
-                                    defaultValue={item.connectedTo.length > 0 ? item.connectedTo.map(item => item) : null}
+                                    defaultValue={item.connectedTo !== null ? item.connectedTo : null}
                                     onChange={(e) => handleFieldChange(item.node_id, 'connectedTo', e.target.value)}
                                     disabled={item.isDeleted}
                                 />

@@ -28,7 +28,7 @@ const SpecificDevice = () => {
   console.log("affectedDevices", specificData[0].node_id)
 
   useEffect(() => {
-    const filtered = deviceInfo.filter(item => item.connectedTo.includes(specificData[0].node_id))
+    const filtered = deviceInfo.filter(item => item.connectedTo === specificData[0].node_id)
     setAffectedDevices(filtered)
     console.log(filtered, "affectedDevices", specificData[0].node_id)
   }, [deviceInfo, id])
