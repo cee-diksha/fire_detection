@@ -14,7 +14,7 @@ import smoke from "../assets/smoke.png";
 import StatusDisplay from '../utils/StatusDisplay';
 import stop from "../assets/stop.png"
 import {MainContext} from "../context/MainContext"
-import { ConnectedDevicesModal, GetCodeForTrigger } from './ConfimationModal';
+import { ConnectedDevicesModal, GetCodeForTrigger, MarkFault } from './ConfimationModal';
 import ReactSwitch from 'react-switch';
 
 
@@ -74,8 +74,8 @@ const SuppressorBtn = ({nodeData, id, setShowModal, trigger}) => {
 // --------------------------------------------------------------------------------------------------------
 
 const Card = ({ item }) => {
-  const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice } = item;
-  const {isActivated, setTargetNode, setIsActivated, targetNode} = useContext(MainContext)
+  const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice, faultReason } = item;
+  const {isActivated, setTargetNode, setIsActivated, targetNode, setDeviceInfo} = useContext(MainContext)
   const [showConn, setShowConn] = useState(false);
   const [isAlarmMuted, setIsAlarmMuted] = useState(false); 
   const [trigger, setTrigger] = useState(triggeringDevice)
@@ -107,7 +107,7 @@ const Card = ({ item }) => {
 
   return (
     <div 
-      className={`${node_type === "sensor" ? isAlarmMuted ? "blinking-border" : "card-wrapper" : triggeringDevice ? "blinking-activesupp"  : "card-wrapper" }`} 
+      className={`${(node_type === "sensor" && !status.includes("deleted")) ? isAlarmMuted ? "blinking-border" : "card-wrapper" : triggeringDevice ? "blinking-activesupp"  : "card-wrapper" }`} 
       style={{ 
         backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#000"}`
@@ -150,21 +150,21 @@ const Card = ({ item }) => {
           {battery_percentage}%
         </div>
       </div>
+      {isFault && <MarkFault open={true} handleClose={setIsFault} setDeviceInfo ={setDeviceInfo} item= {item} />}
       <div className="segment" id="last-update">
-        <button onClick={markFault} style={{backgroundColor: isFault ?'#bfbfbf' : '#393939', borderRadius: '6px', height: "24px", width: "90px", fontSize: "12px", cursor: isFault ? "not-allowed" :"pointer", color: isFault ? "#000000" : "#ffffff"}}>Mark Faulty</button>
-        {/* <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} /> */}
+        {!status.includes("deleted") ? <button onClick={markFault} style={{backgroundColor: faultReason!=="" ?'#bfbfbf' : '#393939', borderRadius: '6px', height: "24px", width: "90px", fontSize: "12px", cursor: faultReason!=="" ? "not-allowed" :"pointer", color: isFault ? "#000000" : "#ffffff"}}>Mark Faulty</button> : <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />}
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>
         </div>
       </div>
       <div className="segment" style={{ borderBottom: "none" }} id="refresh-alarm-btn">
-      {status.includes("deleted") ? <button 
+      {status.includes("deleted") ? node_type === "repeater" ? <button 
           onClick={(event) => showConnectedDevices(event)} 
           id="refresh-alarm-btn-alert"  
         >
           Show Connected devices
-        </button> : <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>}
+        </button> : <button id="faultReason">Show fault reason</button> : <button onClick={handleRefresh} id="refresh-alarm-btn-both">Refresh</button>}
         {showConn && <ConnectedDevicesModal open={true} handleClose={setShowConn} node_id={node_id} />}
         {(status.includes("danger") || status.includes("orange") || status.includes("smoke")) && <button 
           onClick={handleMuteAlarm} 

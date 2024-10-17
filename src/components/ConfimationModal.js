@@ -37,6 +37,43 @@ const handleRefresh = (event) => {
   event.stopPropagation();
 };
 
+export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
+  const submit = (event) => {
+    handleRefresh(event)
+    handleClose(false)
+    setDeviceInfo(prev => prev.map(device => {
+      if (device.node_id === item.node_id) return {...device, status: ["deleted"], isDeleted: true, faultReason: "Device triggered a smoke alarm, but upon inspection, no signs of smoke or fire were found."}
+      return device
+    }))
+  }
+
+  const cancel = (event) => {
+    handleRefresh(event)
+    handleClose(false)
+  }
+
+  return (
+   <>
+   <Modal
+      className='fault-modal'
+      open={open}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+      >
+      <div className='confimation-modal-div'>
+          <h6 style={{fontSize: "14px"}}>Provide a reason for the fault in the selected device. <br></br> This information will help in troubleshooting and resolving the issue more effectively.</h6>
+          <input style={{marginTop: "-14px", height: "10px", width: "240px"}} type="text" />
+          <div className='confimation-modal-btn-wrapper' style={{marginTop: "4px"}}>
+          <button style={{fontSize: "12px"}} onClick={submit}>Submit</button>
+          <button style={{fontSize: "12px"}} onClick={cancel}>Cancel</button>
+          </div>
+      </div>
+    </Modal>
+   </>
+  )
+}
+
 export const WarningModal = ({open, handleClose, handleCloseMain}) => {
   const {targetNode, setSuppressorStatus, setDeviceInfo, deviceInfo, setIsActivated} = useContext(MainContext)
 

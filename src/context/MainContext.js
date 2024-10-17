@@ -14,6 +14,7 @@ const MainContextProvider = (props) => {
     const [targetNode, setTargetNode] = useState([])
     const [isActivated, setIsActivated] = useState([])
     const [samplingTime, setSamplingTime] = useState(null)
+    const [faultReasonSubmiited, setFaultReasonSubmiited] = useState(false)
 
     useEffect(() => {
         const deletedDevice = 102
@@ -50,7 +51,9 @@ const MainContextProvider = (props) => {
             isActivated,
             setIsActivated,
             samplingTime,
-            setSamplingTime
+            setSamplingTime,
+            faultReasonSubmiited,
+            setFaultReasonSubmiited
         }}>
             {props.children}
         </MainContext.Provider>

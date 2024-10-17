@@ -526,6 +526,15 @@ tbody tr:hover {
   color: #fff;
   background-color: #3F3F3F;
 }
+.fault-modal{
+  height: 240px;
+  width: 280px;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #000000;
+  margin: auto;
+}
+
 .confimation-modal, .confimation-modal2{
     height: 200px;
     width: 250px;
@@ -729,7 +738,7 @@ tbody tr:hover {
   #last-update{
     display: flex;
     align-items: center;
-    padding: 0 12px;
+    padding: 0 16px;
     justify-content: space-between;
     font-size: 14px;
   }
@@ -748,7 +757,7 @@ tbody tr:hover {
     font-size: 16px;
   }
 
-  #refresh-alarm-btn-both {
+  #refresh-alarm-btn-both,  #faultReason {
     width: auto;
     border: none;
     border: 4px solid transparent;
