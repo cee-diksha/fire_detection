@@ -42,11 +42,12 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
 
   const submit = (event) => {
     handleRefresh(event)
-    handleClose(false)
-    setDeviceInfo(prev => prev.map(device => {
+    if(reason!=="") {
+      handleClose(false)
+      setDeviceInfo(prev => prev.map(device => {
       if (device.node_id === item.node_id) return {...device, status: ["deleted"], isDeleted: true, faultReason: reason}
       return device
-    }))
+    }))}
   }
 
   const cancel = (event) => {
