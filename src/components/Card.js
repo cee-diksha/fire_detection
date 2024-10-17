@@ -152,7 +152,7 @@ const Card = ({ item }) => {
       </div>
       {isFault && <MarkFault open={true} handleClose={setIsFault} setDeviceInfo ={setDeviceInfo} item= {item} />}
       <div className="segment" id="last-update">
-        {!status.includes("deleted") ? <button onClick={markFault} style={{backgroundColor: faultReason!=="" ?'#bfbfbf' : '#393939', borderRadius: '6px', height: "24px", width: "90px", fontSize: "12px", cursor: faultReason!=="" ? "not-allowed" :"pointer", color: isFault ? "#000000" : "#ffffff"}}>Mark Faulty</button> : <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />}
+        {!status.includes("deleted") ? <button onClick={markFault} style={{backgroundColor: faultReason!=="" ?'#bfbfbf' : 'var(--bg-color-secondary)', borderRadius: '6px', height: "24px", width: "90px", fontSize: "12px", cursor: faultReason!=="" ? "not-allowed" :"pointer", color: isFault ? "#000000" : "var(--text-color)"}}>Mark Faulty</button> : <img src={whiteLogo ? update : update2} alt="update-logo" style={{ height: "20px", marginRight: "6px" }} />}
         <div>
           <span style={{ fontWeight: "600" }}>Last update</span>
           <span style={{ fontSize: "12px" }}>{last_update}</span>

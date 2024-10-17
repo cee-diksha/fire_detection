@@ -71,7 +71,7 @@ export const ExportPdfButton = ({ data }) => {
   };
 
   return (
-    <button onClick={handleExport} style={{width: "140px", cursor: "pointer", borderRadius: "6px", color: "#ffffff", backgroundColor: "#3f3f3f", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", margin: "0 20px 0 20px"}}>
+    <button onClick={handleExport} style={{width: "140px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", margin: "0 20px 0 20px"}}>
       Generate Report
     </button>
   );

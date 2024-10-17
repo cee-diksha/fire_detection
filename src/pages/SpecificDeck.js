@@ -5,8 +5,10 @@ import Footer from '../components/Footer'
 import "../comp-styles.css"
 import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
+import settingsLight from "../assets/settingsLight.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import user from "../assets/user.png"
+import userLight from "../assets/userLight.png"
 import Card from '../components/Card'
 import { reduceDeckData } from '../utils/reduceDeckData'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
@@ -16,7 +18,7 @@ import { handleDownloadData } from '../utils/ExportPdfButton'
 
 const SpecificDeck = () => {
     const {deck} = useParams()
-    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo} = useContext(MainContext)
+    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo, theme} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
     const [deckGrid, setDeckGrid] = useState([])
 
@@ -64,9 +66,9 @@ const SpecificDeck = () => {
         </div>
         <div className='specific-device-imgWrapper'>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            {isLogin ? <img src={user} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+            {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
             <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
+             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={theme === "dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
         </div>
       </div>
      <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>

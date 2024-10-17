@@ -3,11 +3,13 @@ import { Link, useParams } from 'react-router-dom'
 import "../styles.css"
 import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
+import settingsLight from "../assets/settingsLight.png"
 import { SpecificBattChart, SpecificTempChart } from '../components/SpecificCharts'
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { specificDeviceChartData } from '../assets/info'
 import Footer from '../components/Footer'
 import user from "../assets/user.png"
+import userLight from "../assets/userLight.png"
 import { downloadSpecificReport } from '../utils/ExportPdfButton'
 import Card from '../components/Card'
 import sensor from "../assets/sensor.png";
@@ -17,7 +19,7 @@ import suppression from "../assets/suppression.png";
 
 const SpecificDevice = () => {
   const {id} = useParams()
-  const {deviceInfo, isLogin} = useContext(MainContext)
+  const {deviceInfo, isLogin, theme} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
 
@@ -41,13 +43,13 @@ const SpecificDevice = () => {
             <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
-            <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "#ffffff", backgroundColor: "#3f3f3f", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
+            <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
                 Generate Report
             </button>
             <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            {isLogin ? <img src={user} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+            {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
             <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
+             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
         </div>
       </div>
       <div className='specific-header-location'>
@@ -56,7 +58,7 @@ const SpecificDevice = () => {
           <img src={
           device[0].node_type === "sensor" ? sensor :
             device[0].node_type === "repeater" ? repeater :
-            device[0].node_type === "suppressor" ? suppression : null} alt="sensor-logo" style={{ height: "30px", marginTop: "-26px", marginRight: "10px" }} />
+            device[0].node_type === "suppressor" ? suppression : null} alt="sensor-logo" style={{ height: "30px", marginTop: "-26px", marginRight: "10px", filter: `${theme === "dark" ? "brightness(0) invert(1)":"grayscale(1) invert(1)"}` }} />
               <h4 className="h4">{device[0].node_name}</h4> 
           </div>
        </div>

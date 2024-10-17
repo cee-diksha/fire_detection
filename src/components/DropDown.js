@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CardModal from './CardModal'
-import { Link } from 'react-router-dom'
 import Select from 'react-select'
+import { MainContext } from '../context/MainContext'
 
 
 const DropDown = ({cardData}) => {
   const [showModal, setShowModal] = useState(false)
   const [option, setOption] = useState(null)
+  const {theme} = useContext(MainContext)
 
     const optionsData = cardData.map(item => {
         return {value: item.node_name, label: item.node_name, disabled: item.isDeleted}
@@ -35,7 +36,7 @@ const DropDown = ({cardData}) => {
           height: '40px',
           width: '240px',
           borderRadius: '10px',
-          backgroundColor: '#3F3F3F',
+          backgroundColor: "var(--bg-color-secondary)",
           color: '#ffffff',
           marginBottom: "20px",
           fontSize: "14px",
@@ -43,24 +44,24 @@ const DropDown = ({cardData}) => {
         }),
         placeholder: (defaultStyles) => ({
           ...defaultStyles,
-          color: '#ffffff',
+          color: 'var(--text-color)',
         }),
         singleValue: (defaultStyles) => ({
           ...defaultStyles,
-          color: '#ffffff',
+          color: 'var(--text-color)',
         }),
         input: (defaultStyles) => ({
           ...defaultStyles,
-          color: '#ffffff',
+          color: 'var(--text-color)',
         }),
         menu: (defaultStyles) => ({
           ...defaultStyles,
-          backgroundColor: '#3F3F3F',
+          backgroundColor: "var(--bg-color-secondary)",
         }),
         option: (defaultStyles, { isFocused }) => ({
           ...defaultStyles,
-          backgroundColor: isFocused ? '#505050' : '#3F3F3F',
-          color: '#ffffff',
+          backgroundColor: isFocused ? "var(--dropdown-focused)" : "var(--color-secondary)",
+          color: 'var(--text-color)',
         }),
         }}/>
         {showModal && <CardModal open={true} handleClose={setShowModal} option={option} />}

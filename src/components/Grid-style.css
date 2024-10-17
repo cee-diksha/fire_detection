@@ -122,7 +122,7 @@
 }
 
 .status-grid-modal h4{
-  color: #ffffff;
+  color: var(---text-color-secondary);
   font-size: 18px;
 }
 

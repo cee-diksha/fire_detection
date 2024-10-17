@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import user from "../assets/user.png"
+import userLight from "../assets/userLight.png"
 import "../styles.css"
 import SettingsTable from '../components/SettingsTable'
 import { TotalRepeaterCard, TotalSmokeCard, TotalSuppressionCard } from '../components/SettingsCards'
@@ -29,7 +30,7 @@ const SetSamplingTime = () => {
 }
 
 const Settings = () => {
-  const {isLogin} = useContext(MainContext)
+  const {isLogin, theme} = useContext(MainContext)
 
   return (
     <div className='dashboard-wrapper'>
@@ -39,7 +40,7 @@ const Settings = () => {
           <SetSamplingTime />
         </div>
         <div className='settings-imgWrapper'>
-          {isLogin ? <img src={user} alt="user-img" className='settings-img'/> : <Link to="/login" className='link'><h6 className='settings-login'>Login</h6></Link>}
+          {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='settings-img'/> : <Link to="/login" className='link'><h6 className='settings-login'>Login</h6></Link>}
           <Link to="/" className='link'><h6 className='settings-dashboard'>Dashboard</h6></Link>
         </div>
       </div>
