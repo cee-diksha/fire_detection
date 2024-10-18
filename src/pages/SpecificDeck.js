@@ -7,8 +7,8 @@ import { MainContext } from '../context/MainContext'
 import settings from "../assets/settings.png"
 import settingsLight from "../assets/settingsLight.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
-import user from "../assets/user.png"
-import userLight from "../assets/userLight.png"
+import sun from "../assets/sun.png"
+import moon from "../assets/moon.png"
 import Card from '../components/Card'
 import { reduceDeckData } from '../utils/reduceDeckData'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
@@ -19,9 +19,19 @@ import UserDowndown from '../components/UserDowndown'
 
 const SpecificDeck = () => {
     const {deck} = useParams()
-    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo, theme, setIsLogin} = useContext(MainContext)
+    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo, theme, setIsLogin, setTheme} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
     const [deckGrid, setDeckGrid] = useState([])
+
+    const handleThemeChange =  () => {
+      if(theme==="dark") {
+          setTheme("light")
+          document.body.classList.add('light');
+      } else {
+          setTheme("dark")
+          document.body.classList.remove('light');
+      }
+    }
 
     useEffect(() => {
       const filtered = deckData.filter(item => item.deck === parseInt(deck)).flatMap(item => {
@@ -72,6 +82,7 @@ const SpecificDeck = () => {
             <UserDowndown theme={theme} setIsLogin = {setIsLogin} />
            
         </div>
+        <div className="theme" style={{ position: 'absolute', top: "6px", right: "30px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
       </div>
      <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>
       <h4 className="h4">Deck - {deck} </h4>

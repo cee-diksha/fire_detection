@@ -7,13 +7,25 @@ import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { info } from '../assets/info'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
-import user from "../assets/user.png"
 import UserDowndown from '../components/UserDowndown'
+import sun from "../assets/sun.png"
+import moon from "../assets/moon.png"
 
 const SpecificComp = () => {
     const {deck, comp} = useParams()
-    const {isLogin,theme, setIsLogin} = useContext(MainContext)
+    const {isLogin,theme, setIsLogin, setTheme} = useContext(MainContext)
     const [compData, setCompData] = useState([])
+
+    const handleThemeChange =  () => {
+      if(theme==="dark") {
+          setTheme("light")
+          document.body.classList.add('light');
+      } else {
+          setTheme("dark")
+          document.body.classList.remove('light');
+      }
+    }
+
     useEffect(() => {
       const compdata = info.filter(item => (item.deck === parseInt(deck) && item.compartment === parseInt(comp)))
       // const compdata = deckdata[0].devices.filter(item => item.comp === parseInt(comp))
@@ -34,6 +46,7 @@ const SpecificComp = () => {
           <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
           <UserDowndown theme={theme} setIsLogin = {setIsLogin}/>      
         </div>
+        <div className="theme" style={{ position: 'absolute', top: "6px", right: "30px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
       </div>
       <div style={{marginTop: "-16%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
         <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>

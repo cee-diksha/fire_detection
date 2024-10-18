@@ -8,19 +8,18 @@ import { SpecificBattChart, SpecificTempChart } from '../components/SpecificChar
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { specificDeviceChartData } from '../assets/info'
 import Footer from '../components/Footer'
-import user from "../assets/user.png"
-import userLight from "../assets/userLight.png"
 import { downloadSpecificReport } from '../utils/ExportPdfButton'
 import Card from '../components/Card'
 import sensor from "../assets/sensor.png";
 import repeater from "../assets/repeater.png";
 import suppression from "../assets/suppression.png";
 import UserDowndown from '../components/UserDowndown'
-
+import sun from "../assets/sun.png"
+import moon from "../assets/moon.png"
 
 const SpecificDevice = () => {
   const {id} = useParams()
-  const {deviceInfo, isLogin, theme, setIsLogin} = useContext(MainContext)
+  const {deviceInfo, isLogin, theme, setIsLogin, setTheme} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
 
@@ -30,6 +29,16 @@ const SpecificDevice = () => {
   const [affectedDevices, setAffectedDevices] = useState([])
   console.log("affectedDevices", specificData[0].node_id)
 
+  const handleThemeChange =  () => {
+    if(theme==="dark") {
+        setTheme("light")
+        document.body.classList.add('light');
+    } else {
+        setTheme("dark")
+        document.body.classList.remove('light');
+    }
+  }
+
   useEffect(() => {
     const filtered = deviceInfo.filter(item => item.connectedTo === specificData[0].node_id)
     setAffectedDevices(filtered)
@@ -38,7 +47,8 @@ const SpecificDevice = () => {
 
   return (
     <div className='specific-device-wrapper'>
-      <div className='specific-device-mainheader'>
+      <div className="theme" style={{ marginRight: "10px", marginTop: "4px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
+      <div className='specific-device-mainheader' style={{marginTop: "-32px"}}>
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
             <img style={{height: "100px"}} src={shipcrest} alt="ship" />
             <h1 id="dashboard-heading">Ship Name</h1>
