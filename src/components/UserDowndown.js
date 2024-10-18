@@ -2,6 +2,7 @@ import { Box, ClickAwayListener } from '@mui/material'
 import React from 'react'
 import user from "../assets/user.png"
 import userLight from "../assets/userLight.png"
+import { Link } from 'react-router-dom'
 
 const UserDowndown = ({theme, setIsLogin}) => {
     const [open, setOpen] = React.useState(false);
@@ -35,7 +36,7 @@ const UserDowndown = ({theme, setIsLogin}) => {
             <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginTop: "6px", marginRight: "14px"}} onClick={handleClick}/>
             {open ? (
             <Box sx={styles}>
-                <span style={{cursor: "pointer"}}>User Management</span> <br></br>
+                <Link style={{textDecoration: "none", color: "var(--text-color)"}} to ="/user-management"><span style={{cursor: "pointer"}}>User Management</span></Link> <br></br>
                 <span style={{cursor: "pointer"}} onClick={() =>setIsLogin(false)}>Logout</span>
             </Box>
             ) : null}

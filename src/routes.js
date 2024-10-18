@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import SpecificDevice from "./pages/SpecificDevice";
 import SpecificComp from "./pages/SpecificComp";
 import SpecificDeck from "./pages/SpecificDeck";
+import UserMangement from "./pages/UserMangement";
 
 
 export const routes = createBrowserRouter([
@@ -31,5 +32,9 @@ export const routes = createBrowserRouter([
     {
         path: "/deck/:deck/:comp",
         element: <SpecificComp />
+    },
+    {
+        path: "/user-management",
+        element: <UserMangement />
     }
 ])

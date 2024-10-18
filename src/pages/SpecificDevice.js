@@ -15,11 +15,12 @@ import Card from '../components/Card'
 import sensor from "../assets/sensor.png";
 import repeater from "../assets/repeater.png";
 import suppression from "../assets/suppression.png";
+import UserDowndown from '../components/UserDowndown'
 
 
 const SpecificDevice = () => {
   const {id} = useParams()
-  const {deviceInfo, isLogin, theme} = useContext(MainContext)
+  const {deviceInfo, isLogin, theme, setIsLogin} = useContext(MainContext)
   const device = deviceInfo.filter(item => item.node_name === id)
   const specificData = specificDeviceChartData.filter(item => item.node_name === id)
 
@@ -46,10 +47,10 @@ const SpecificDevice = () => {
             <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
                 Generate Report
             </button>
-            <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+            <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
             <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
+             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "10px" }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
+            <UserDowndown theme={theme} setIsLogin = {setIsLogin}/>
         </div>
       </div>
       <div className='specific-header-location'>

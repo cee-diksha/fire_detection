@@ -3,39 +3,21 @@ import "../styles.css"
 import Card from '../components/Card'
 import SummaryCard from '../components/SummaryCard'
 import Communication from '../components/Communication'
-import user from "../assets/user.png"
-import userLight from "../assets/userLight.png"
-import settings from "../assets/settings.png"
-import settingsLight from "../assets/settingsLight.png"
+
 import { Link } from 'react-router-dom'
-import DropDown from '../components/DropDown'
 import {TempChart, BatteryChart, SmokeChart} from '../components/TempChart'
 import { MainContext } from '../context/MainContext'
-import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import DeckCard from '../components/DeckCard'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
 import Footer from '../components/Footer'
-import AlertCard from '../components/AlertCard'
 import { reduceDeckData } from '../utils/reduceDeckData'
-import { ExportPdfButton } from '../utils/ExportPdfButton'
-import sun from "../assets/sun.png"
-import moon from "../assets/moon.png"
-import UserDowndown from '../components/UserDowndown'
+
+import Header from '../components/Header'
 
   
 const Dashboard = () => {
-    const {deviceInfo, isLogin, setIsLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors, setTheme, theme} = useContext(MainContext)
+    const {deviceInfo, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo) 
-
-    const handleThemeChange =  () => {
-        if(theme==="dark") {
-            setTheme("light")
-            document.body.classList.add('light');
-        } else {
-            setTheme("dark")
-            document.body.classList.remove('light');
-        }
-    }
 
     useEffect(() => {
         const { filteredDeckInfo, cardData } = reduceDeckData(deckData, deviceInfo);
@@ -49,24 +31,7 @@ const Dashboard = () => {
   return (
     <>
         <div className='dashboard-wrapper'>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%", width: "96%"}}>
-            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto", marginRight: "20px"}}>
-                <img style={{height: "100px"}} src={shipcrest} alt="ship" />
-                <h2 id="dashboard-heading">Ship Name</h2>
-            </div>
-            <DropDown cardData={cardData} />
-            <AlertCard />
-            
-            <div className='imgWrapper-main'>
-                <div className="theme"><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
-                <div className='imgWrapper'>
-                    <Link to={isLogin ? "/settings" : "#"} 
-                    style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>
-                    {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
-                    
-                </div>
-            </div>
-        </div>
+            <Header cardData={cardData} />
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>

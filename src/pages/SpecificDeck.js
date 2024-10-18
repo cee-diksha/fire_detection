@@ -14,11 +14,12 @@ import { reduceDeckData } from '../utils/reduceDeckData'
 import { DeckDashboardPageDiv } from '../components/DeckModal'
 import {specificDeviceChartData} from "../assets/info"
 import { handleDownloadData } from '../utils/ExportPdfButton'
+import UserDowndown from '../components/UserDowndown'
 
 
 const SpecificDeck = () => {
     const {deck} = useParams()
-    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo, theme} = useContext(MainContext)
+    const {isLogin, deckData, deviceInfo, setfilteredDeckInfo, theme, setIsLogin} = useContext(MainContext)
     const [deckInfo, setDeckInfo] = useState([])
     const [deckGrid, setDeckGrid] = useState([])
 
@@ -58,17 +59,18 @@ const SpecificDeck = () => {
 
   return (
     <div className='specific-deck-wrapper'>
-  <div style={{width: "100%", justifyContent: "center", alignItems: "center"}}>
-  <div className='specific-device-mainheader'>
+    <div style={{width: "100%", justifyContent: "center", alignItems: "center"}}>
+      <div className='specific-device-mainheader'>
         <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
             <img style={{height: "100px"}} src={shipcrest} alt="ship" />
             <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
-            <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
-            <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={theme === "dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
+        <Link to={isLogin ? "/settings" : "#"} 
+             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "10px" }}><img src={theme === "dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
+            <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
+            <UserDowndown theme={theme} setIsLogin = {setIsLogin} />
+           
         </div>
       </div>
      <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>

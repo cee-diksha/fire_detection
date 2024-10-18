@@ -1,4 +1,4 @@
-.dashboard-wrapper{
+.dashboard-wrapper, .userManagement{
     min-height: 100vh;
     height: auto; 
     display: flex;
@@ -8,6 +8,10 @@
     flex-direction: column;
     background-color: var(--bg-color);
     color: var(--text-color);
+}
+
+.userManagement h4{
+    font-size: 26px;
 }
 
 
@@ -28,6 +32,7 @@
 #dashboard-heading{
     font-size: 26px;
     margin-left: 10px;
+    color: var(--text-color)
 }
 
 .dashboard-main-wrapper {
@@ -446,6 +451,7 @@ input {
 
 .specific-device-mainheader{
     width: 98%;
+    margin: 0 auto;
     display: flex;
 }
 
@@ -531,3 +537,59 @@ input {
     flex-direction: row-reverse;
     justify-content: space-evenly;
   }
+
+
+  .access-code , .add-new-user, .reset-password{
+    height: auto;
+    width: 70%;
+    font-size: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 40px;
+  }
+
+  .access-code p, .add-new-user p, .reset-password p {
+    font-size: 16px;
+  }
+
+  .access-code input {
+    width: 132px;
+    margin-bottom: 10px;
+  }
+
+  .access-code button {
+    background-color: var(--bg-color-secondary);
+    color: var(--text-color);
+    width: 140px;
+    cursor: pointer;
+    height: 34px;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+  }
+
+  .access-code div {
+    display: flex;
+    align-items: center;
+    width: 280px;
+    justify-content: space-between;
+  }
+
+  .add-new-user input, .reset-password input {
+    width: 240px;
+    margin-bottom: 10px;
+  }
+
+  .add-new-user button, .reset-password button {
+    background-color: var(--bg-color-secondary);
+    color: var(--text-color);
+    width: 140px;
+    cursor: pointer;
+    height: 34px;
+    border: 1px solid var(--text-color);
+    border-radius: 6px;
+  }
+

@@ -9,6 +9,7 @@
     --border-color: transparent;
     --dropdown-focused: #505050;
     --bg-color-table: #393939;
+    --border-color: #c4c4c4;
   }
 
 .light {
@@ -21,5 +22,6 @@
 --border-color: #1A1C1D;
 --dropdown-focused: #f0f0f0;
 --bg-color-table: #d6d6d6;
+--border-color: #505050;
 }
   

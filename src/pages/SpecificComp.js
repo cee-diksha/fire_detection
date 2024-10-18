@@ -8,10 +8,11 @@ import { info } from '../assets/info'
 import Card from '../components/Card'
 import Footer from '../components/Footer'
 import user from "../assets/user.png"
+import UserDowndown from '../components/UserDowndown'
 
 const SpecificComp = () => {
     const {deck, comp} = useParams()
-    const {isLogin} = useContext(MainContext)
+    const {isLogin,theme, setIsLogin} = useContext(MainContext)
     const [compData, setCompData] = useState([])
     useEffect(() => {
       const compdata = info.filter(item => (item.deck === parseInt(deck) && item.compartment === parseInt(comp)))
@@ -28,10 +29,10 @@ const SpecificComp = () => {
             <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
-            <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link>
-            {isLogin ? <img src={user} alt="user-img" className='img' style={{marginRight: "20px", marginTop: "3px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
-            <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={settings} alt="settings" className='img'/></Link>
+          <Link to={isLogin ? "/settings" : "#"} 
+            style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "10px" }}><img src={settings} alt="settings" className='img'/></Link>
+          <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
+          <UserDowndown theme={theme} setIsLogin = {setIsLogin}/>      
         </div>
       </div>
       <div style={{marginTop: "-16%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>

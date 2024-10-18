@@ -20,7 +20,7 @@ const DropDown = ({cardData}) => {
     }
   return (
     <div style={{display: 'flex', flexDirection: "column", width: 'auto'}}>
-      <div style={{width: "auto", display: "flex", alignItems: "center", justifyContent: "center", margin: "22px 0px 0 0"}}>
+      <div style={{width: "auto", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", top: "14px"}}>
           {/* <select style={{height: "40px", width: "50%",borderRadius: "10px", marginBottom: "18px", padding: "0 4px", backgroundColor: "#3F3F3F", color: "#ffffff", borderColor: "transparent"}} onChange={(e) => handleClick(e)}>
               {optionsData.map((item, index) => {
                 console.log(item, item, "item.isDeleted")
