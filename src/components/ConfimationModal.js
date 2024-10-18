@@ -4,11 +4,13 @@ import "../comp-styles.css"
 import { MainContext } from '../context/MainContext'
 import { Link } from 'react-router-dom'
 import Card from './Card'
+import { toast } from 'react-toastify'
 
 export const ConfimationModal = ({open, handleClose}) => {
     const handleResetDatabase = () => {
         // api call to reset db
         handleClose(false)
+        toast.success("Database has been successfully reset")
     }
   return (
     <>
@@ -47,7 +49,10 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
       setDeviceInfo(prev => prev.map(device => {
       if (device.node_id === item.node_id) return {...device, status: ["deleted"], isDeleted: true, faultReason: reason}
       return device
-    }))}
+    }))
+    toast.success("Fault reason submitted")
+  }
+  toast.error("Please provide the reason for the fault")
   }
 
   const cancel = (event) => {
@@ -108,6 +113,7 @@ export const WarningModal = ({open, handleClose, handleCloseMain}) => {
     activateSuppressor(setSuppressorStatus, targetNode, setDeviceInfo, deviceInfo)
     handleClose(false)
     handleCloseMain(false)
+    toast.success("Suppressor activated")
   }
 
   return (

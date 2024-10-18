@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "../styles.css"
 import Header from '../components/Header'
 import { MainContext } from '../context/MainContext'
+import { toast } from 'react-toastify'
 
 const UserMangement = () => {
     const {deviceInfo} = useContext(MainContext)
@@ -20,7 +21,7 @@ const UserMangement = () => {
             Change Access Code
             <p>Please enter the new access code to activate the suppressor. Click 'Reset Access Code' to apply the changes.</p>
             <input type="text" placeholder='Enter access code' />
-            <button>Reset Access Code</button>
+            <button onClick={() => toast.success("Access code reset")}>Reset Access Code</button>
         </div>
         <div className='reset-password'>
             Change Password
@@ -30,7 +31,7 @@ const UserMangement = () => {
                 <input style={{marginLeft: "20px"}} placeholder='Enter password' type="password" />
                 <input style={{marginLeft: "20px"}} placeholder='Confirm password' type="password" />
             </div>
-            <button>Change Password</button>
+            <button onClick={() => toast.success("Password Changed")}>Change Password</button>
         </div>
         <div className='add-new-user'>
             Add New Authorized User
@@ -41,7 +42,7 @@ const UserMangement = () => {
                 <input style={{marginLeft: "20px"}} placeholder='Enter password' type="password" />
                 <input style={{marginLeft: "20px"}} placeholder='Confirm password' type="password" />
             </div>
-            <button>Add User</button>
+            <button onClick={() => toast.success("New user added")}>Add User</button>
         </div>
     </div>
   )
