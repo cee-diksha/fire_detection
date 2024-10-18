@@ -33,7 +33,7 @@ const UserDowndown = ({theme, setIsLogin}) => {
     <>
     <ClickAwayListener onClickAway={handleClickAway}>
         <Box sx={{ position: 'relative' }}>
-            <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginTop: "6px", marginRight: "14px"}} onClick={handleClick}/>
+            <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginTop: "4px", marginRight: "14px"}} onClick={handleClick}/>
             {open ? (
             <Box sx={styles}>
                 <Link style={{textDecoration: "none", color: "var(--text-color)"}} to ="/user-management"><span style={{cursor: "pointer"}}>User Management</span></Link> <br></br>
