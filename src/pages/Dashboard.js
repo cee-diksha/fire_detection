@@ -20,10 +20,11 @@ import { reduceDeckData } from '../utils/reduceDeckData'
 import { ExportPdfButton } from '../utils/ExportPdfButton'
 import sun from "../assets/sun.png"
 import moon from "../assets/moon.png"
+import UserDowndown from '../components/UserDowndown'
 
   
 const Dashboard = () => {
-    const {deviceInfo, isLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors, setTheme, theme} = useContext(MainContext)
+    const {deviceInfo, isLogin, setIsLogin, deckData, filteredDeckInfo, setfilteredDeckInfo, suppressorStatus, activeSuppressors, setActiveSuppressors, setTheme, theme} = useContext(MainContext)
     const [cardData, setCardData] = useState(deviceInfo) 
 
     const handleThemeChange =  () => {
@@ -59,10 +60,10 @@ const Dashboard = () => {
             <div className='imgWrapper-main'>
                 <div className="theme"><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
                 <div className='imgWrapper'>
-                    <ExportPdfButton data={cardData}/>
-                    {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='img' style={{marginTop: "3px", marginRight: "14px"}}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
                     <Link to={isLogin ? "/settings" : "#"} 
-                    style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5 }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>
+                    style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>
+                    {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+                    
                 </div>
             </div>
         </div>
