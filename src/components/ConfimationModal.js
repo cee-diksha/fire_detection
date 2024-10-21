@@ -51,8 +51,7 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
       return device
     }))
     toast.success("Fault reason submitted")
-  }
-  toast.error("Please provide the reason for the fault")
+  } else toast.error("Please provide the reason for the fault")
   }
 
   const cancel = (event) => {
@@ -71,6 +70,7 @@ export const MarkFault = ({open, handleClose, setDeviceInfo, item}) => {
       className='fault-modal'
       open={open}
       onClose={handleClose}
+      onClick ={handleRefresh}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       >
