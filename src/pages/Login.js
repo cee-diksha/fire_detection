@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react'
-import settings from "../assets/settings.png"
 import { Link } from 'react-router-dom'
 import { MainContext } from '../context/MainContext';
 import Footer from '../components/Footer';
-import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import Header from '../components/Header';
 
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {isLogin, setIsLogin} = useContext(MainContext)
+  const {setIsLogin} = useContext(MainContext)
 
   const handleSubmit = (e) => {
       e.preventDefault();

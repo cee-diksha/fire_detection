@@ -1,14 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import CardModal from './CardModal'
 import Select from 'react-select'
-import { MainContext } from '../context/MainContext'
 import { ExportPdfButton } from '../utils/ExportPdfButton'
 
 
 const DropDown = ({cardData}) => {
   const [showModal, setShowModal] = useState(false)
   const [option, setOption] = useState(null)
-  const {theme} = useContext(MainContext)
 
     const optionsData = cardData.map(item => {
         return {value: item.node_name, label: item.node_name, disabled: item.isDeleted}

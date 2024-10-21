@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import "../comp-styles.css";
 import battery from "../assets/battery.png";
@@ -12,7 +13,6 @@ import update from "../assets/update.png";
 import update2 from "../assets/update2.png";
 import smoke from "../assets/smoke.png";
 import StatusDisplay from '../utils/StatusDisplay';
-import stop from "../assets/stop.png"
 import {MainContext} from "../context/MainContext"
 import { ConnectedDevicesModal, GetCodeForTrigger, MarkFault } from './ConfimationModal';
 import ReactSwitch from 'react-switch';
