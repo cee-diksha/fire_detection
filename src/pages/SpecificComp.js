@@ -43,10 +43,10 @@ const SpecificComp = () => {
             <h1 id="dashboard-heading">Ship Name</h1>
         </div>
         <div className='specific-device-imgWrapper'>
-          <Link to={isLogin ? "/settings" : "#"} 
-            style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "10px" }}><img src={settings} alt="settings" className='img'/></Link>
+          {isLogin && <Link to={"/settings"} 
+            style={{ cursor: "pointer", marginRight: "10px" }}><img src={settings} alt="settings" className='img'/></Link>}
           <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
-          <UserDowndown theme={theme} setIsLogin = {setIsLogin}/>      
+          {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}      
         </div>
         <div className="theme" style={{ position: 'absolute', top: "6px", right: "30px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
       </div>

@@ -58,17 +58,18 @@ const SpecificDevice = () => {
             <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
                 Generate Report
             </button>
+            {console.log(isLogin, "isLogin")}
+            {isLogin && <Link to={"/settings"} 
+             style={{cursor: "pointer", marginRight: "10px" }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>}
             <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
-            <Link to={isLogin ? "/settings" : "#"} 
-             style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "10px" }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>
-            <UserDowndown theme={theme} setIsLogin = {setIsLogin}/>
+            {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
         </div>
       </div>
       <div className='specific-header-location'>
         <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
           <div className='specific-device-header'>
           <img src={
-          device[0].node_type === "sensor" ? sensor :
+            device[0].node_type === "sensor" ? sensor :
             device[0].node_type === "repeater" ? repeater :
             device[0].node_type === "suppressor" ? suppression : null} alt="sensor-logo" style={{ height: "30px", marginTop: "-26px", marginRight: "10px", filter: `${theme === "dark" ? "brightness(0) invert(1)":"grayscale(1) invert(1)"}` }} />
               <h4 className="h4">{device[0].node_name}</h4> 
@@ -80,6 +81,7 @@ const SpecificDevice = () => {
       {device[0].status.includes("danger") ? "Fire" : device[0].status.includes("orange") ? "Temp Rising" : device[0].status.includes("smoke") ? "Smoke" : device[0].status.includes("yellow") ? "Low Battery" : device[0].isDeleted ? "Needs Replacement" :  "Not Responding" }
       </div>}    
       {device[0].faultReason !== "" && <div style={{fontSize: "18px"}}><span style={{color: "#ff5a5a"}}>Fault Reason: </span>{device[0].faultReason}</div>}
+      {device[0].isDeleted && <Link to="/settings" style={{margin: "4px 34px 0 auto"}}><button style={{border: '1px solid var(--text-color)', color: "var(--text-color)", padding: "6px", borderRadius: "6px", cursor: "pointer", backgroundColor: "transparent"}}>Click here to replace</button></Link> }
 
       <div className='alerts-chart-wrapper'>
           {(specificData[0].alertlogstemp !== null && specificData[0].alertlogstemp.length !== 0) && <div className='alert-logs'>

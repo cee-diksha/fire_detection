@@ -40,8 +40,8 @@ const Header = ({cardData}) => {
             <div className='imgWrapper-main'>
                 <div className="theme"><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
                 <div className='imgWrapper'>
-                    <Link to={isLogin ? "/settings" : "#"} 
-                    style={{ pointerEvents: isLogin ? 'auto' : 'none', opacity: isLogin ? 1 : 0.5, marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>
+                    {isLogin && <Link to={"/settings"} 
+                    style={{ cursor: "pointer", marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>}
 
                     {window.location.pathname === "/login" ? <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link> : isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
 
