@@ -6,13 +6,13 @@ import Header from '../components/Header';
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const {setIsLogin} = useContext(MainContext)
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      console.log('Email:', email);
+      console.log('Email:', username);
       console.log('Password:', password);
   };
 
@@ -22,12 +22,12 @@ const Login = () => {
       <form className="login-form" onSubmit={handleSubmit}>
                 <h2>Login</h2>
                 <div className="input-wrapper">
-                    <label>Email</label>
+                    <label>Username</label>
                     <input 
-                        type="email" 
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} 
+                        type="text" 
+                        placeholder="Enter your username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)} 
                         required 
                     />
                 </div>
