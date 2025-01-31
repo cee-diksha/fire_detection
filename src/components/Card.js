@@ -109,8 +109,8 @@ const Card = ({ item }) => {
     <div 
       className={`${(node_type === "sensor" && !status.includes("deleted")) ? isAlarmMuted ? "blinking-border" : "card-wrapper" : triggeringDevice ? "blinking-activesupp"  : "card-wrapper" }`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "#8f8d8d" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "#ff7b7b " : status.includes("orange" )? "#ff9863" : status.includes("yellow") ? "#FFC648" : status.includes("smoke") ? "#b6ccc4 " : "#a391b8"}`, 
-        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#000"}`
+        backgroundColor: `${isDeleted ? "var(--replace-alert)" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "var(--fire-alert)" : status.includes("orange" )? "var(--temp-alert)" : status.includes("yellow") ? "var(--battery-alert)" : status.includes("smoke") ? "var(--smoke-alert)" : "var(--replace-alert)"}`, 
+        color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#fff"}`
       }}
     >
       {showModal && <GetCodeForTrigger open={true} handleClose={setShowModal} />}
@@ -121,11 +121,11 @@ const Card = ({ item }) => {
         <p id="sensor-name">
           <img src={
           node_type === "sensor" ? 
-            (whiteLogo ? sensor : sensor2) :
+            (sensor) :
           node_type === "repeater" ? 
-            (whiteLogo ? repeater : repeater2) :
+            (repeater) :
           node_type === "suppressor" ? 
-            (whiteLogo ? suppression : suppression2) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
+            (suppression) : null} alt="sensor-logo" style={{ height: "30px", marginTop: "4px", marginRight: "10px" }} />
           {node_type}
         </p>
         <p>{node_id}</p>

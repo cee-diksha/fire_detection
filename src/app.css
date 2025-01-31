@@ -1,5 +1,6 @@
 /* dark theme (default) */
 :root {
+    --bg-main-clr:#ffffff ;
     --bg-color: #1A1C1D;
     --bg-color-secondary:#393939;
     --bg-color-modal:#000000;
@@ -10,10 +11,20 @@
     --dropdown-focused: #505050;
     --bg-color-table: #393939;
     --border-color: #c4c4c4;
+
+    --fire-alert:#c70a0a;
+    --temp-alert: #ea4909;
+    --smoke-alert:#ababab;
+    --battery-alert:#FFA500;
+    --replace-alert:#3c418a;
+    --normal:rgb(94, 255, 94);
+    
+    --invert-filter:0;
   }
 
 .light {
---bg-color: #f0f0f0;
+  --bg-main-clr:#ffffff ;
+--bg-color: #dedede;
 --bg-color-secondary:#ffffff;
 --text-color-secondary: #393939;
 --bg-color-modal:#ffffff;
@@ -23,5 +34,99 @@
 --dropdown-focused: #f0f0f0;
 --bg-color-table: #d6d6d6;
 --border-color: #505050;
+
+--fire-alert:#c70a0a;
+--temp-alert: #f64600;
+--smoke-alert:#ababab;
+--battery-alert:#FFA500;
+--replace-alert:#3c418a;
+--normal:rgb(94, 255, 94);
+
+--invert-filter:1;
 }
+
+text{
+  fill: var(--text-color) !important;
+}
+
+.hm-head{
+  width:100%;
+  height: 90px;
+  padding:10px 30px;
+  box-sizing: border-box;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: var(--bg-main-clr);
+}
+
+.hm-logo{
+  height: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  gap:20px;
+}
+
+.hm-logo img{
+  object-fit: cover;
+  height: 100%;
+}
+
+.hm-logo-txt{
+  display: flex;
+  flex-direction: column;
+  width: 112px;
+  gap:6px;
+}
+
+#hm-name{
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 110%;
+  color:#AA1616
+}
+
+#hm-name-2{
+  font-size: 13px;
+  color:#7d7d7d;
+  width: 100%;
+  line-height: 100%;
+}
+
+.hm-head-txt{
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.hm-head-txt img{
+  height: 80%;
+  width:80%;
+  object-fit: contain;
+}
+
+
+
+.hm-head-txt span{
+  margin: 0;
+  font-weight: 700;
+  line-height: 100%;
+  font-size: 22px;
+  color:#AA1616;  
+}
+
+
+
+.main-layout{
+  background-color: var(--bg-main-clr);
+}
+
+
   

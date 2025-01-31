@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { MainContext } from '../context/MainContext';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import Header2 from '../components/Header2';
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      <Header />
+      <Header2/>
       <form className="login-form" onSubmit={handleSubmit}>
                 <h2>Login</h2>
                 <div className="input-wrapper">

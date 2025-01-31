@@ -17,6 +17,7 @@ import suppression from "../assets/suppression.png";
 import UserDowndown from '../components/UserDowndown'
 import sun from "../assets/sun.png"
 import moon from "../assets/moon.png"
+import Header2 from '../components/Header2'
 
 const SpecificDevice = () => {
   const {id} = useParams()
@@ -48,23 +49,10 @@ const SpecificDevice = () => {
 
   return (
     <div className='specific-device-wrapper'>
-      <div className="theme" style={{ marginRight: "10px", marginTop: "4px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
-      <div className='specific-device-mainheader' style={{marginTop: "-32px"}}>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
-            <img style={{height: "100px"}} src={shipcrest} alt="ship" />
-            <h1 id="dashboard-heading">Ship Name</h1>
-        </div>
-        <div className='specific-device-imgWrapper'>
-            <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
+      <Header2 />
+      <button onClick={() => downloadSpecificReport(specificData[0])}style={{width: "150px", cursor: "pointer", borderRadius: "6px", color: "var(--text-color)", backgroundColor: "var(--bg-color-secondary)", border: "1px solid #ffffff", height: "30px", fontSize: "14px", fontWeight: "500", marginRight: "20px"}}>
                 Generate Report
-            </button>
-            {console.log(isLogin, "isLogin")}
-            {isLogin && <Link to={"/settings"} 
-             style={{cursor: "pointer", marginRight: "10px" }}><img src={theme==="dark" ? settings: settingsLight} alt="settings" className='img'/></Link>}
-            <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
-            {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
-        </div>
-      </div>
+        </button>
       <div className='specific-header-location'>
         <h4 className="h4"> {device[0].node_type} - Deck: {device[0].deck}, Compartment: {device[0].compartment} </h4>
           <div className='specific-device-header'>

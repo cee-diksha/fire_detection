@@ -14,6 +14,8 @@ import Footer from '../components/Footer'
 import { reduceDeckData } from '../utils/reduceDeckData'
 
 import Header from '../components/Header'
+import AlertCard from '../components/AlertCard'
+import Header2 from '../components/Header2'
 
   
 const Dashboard = () => {
@@ -32,27 +34,27 @@ const Dashboard = () => {
   return (
     <>
         <div className='dashboard-wrapper'>
-            <Header cardData={cardData} />
+            <Header2 cardData={cardData}/>
             <div className='dashboard-main-screen'>
             <div className='dashboard-middle'>
                 <div className='dashboard-content-summary'>
                     <SummaryCard />
-                    <div style={{backgroundColor: "var(--bg-color-secondary)", borderRadius: '6px', height: "103%", width: "48%", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <div style={{backgroundColor: "var(--bg-color-secondary)", borderRadius: '6px', height: "100%", width: "48%", display: "flex", alignItems: "center", justifyContent: "center"}}>
                         <DeckCard />
                     </div>
                 </div>
-                <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
+                <div style={{backgroundColor: "var(--bg-color-secondary)", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center'}}>
                     <TempChart />
                 </div>
-                <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
+                <div style={{backgroundColor: "var(--bg-color-secondary)", width: "100%", borderRadius: "10px", display: "flex", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
                     <BatteryChart />
                 </div>
-                <div style={{backgroundColor: "#ffffff", width: "100%", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
+                <div style={{backgroundColor: "var(--bg-color-secondary)", width: "100%", borderRadius: "10px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: 'center', marginTop: "14px"}}>
                 <div style={{ display: 'flex', width: "auto", marginTop: "20px"}}>
                     <div style={{ width: '18px', height: '18px', backgroundColor: '#b7ff86', marginRight: '5px'}} />
-                    <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px" }}>Nornal</div>
+                    <div style={{color: "var(--text-color)", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px" }}>Normal</div>
                     <div style={{ width: '18px', height: '18px', backgroundColor: '#ff7b7b', marginRight: '5px', marginLeft: "5px" }} />
-                    <div style={{color: "#000000", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px"}}>Smoke</div>
+                    <div style={{color: "var(--text-color)", fontFamily: "Roboto, Helvetica, Arial, sans-serif", fontSize: "14px", marginTop: "3px"}}>Smoke</div>
                 </div>
                     <SmokeChart />
                 </div>
@@ -62,6 +64,7 @@ const Dashboard = () => {
             </div>
             {/* -------------------------------------------------------- */}
                 <div className='main-dashboard-wrapper'>
+                    <AlertCard/>
                 <div className='fixed-content'>
                 {cardData
                 .sort((a, b) => {

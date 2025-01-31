@@ -10,26 +10,9 @@ import { MainContext } from '../context/MainContext'
 import Footer from '../components/Footer'
 import sun from "../assets/sun.png"
 import moon from "../assets/moon.png"
+import Header2 from '../components/Header2'
 
-const SetSamplingTime = () => {
-  const {setSamplingTime} = useContext(MainContext)
-  const [time, setTime] = useState(null)
 
-  const handleSamplingTime = (event) => {
-    setTime(event.target.value)
-  }
-
-  const changeSamplingTime = () => {
-    setSamplingTime(time)
-  }
-
-  return (
-    <div className='samplingtime'>
-      <span style={{marginTop: "-8px", fontWeight: "500"}}>Set Sampling Time</span>
-      <span style={{marginTop: "8px"}}><input value={time} className='samplingtime-input' type="text" onChange={handleSamplingTime} /> min <button onClick={changeSamplingTime}>Set</button></span>
-    </div>
-  )
-}
 
 const Settings = () => {
   const {isLogin, setTheme, theme} = useContext(MainContext)
@@ -45,28 +28,28 @@ const Settings = () => {
     }
 
   return (
-    <div className='dashboard-wrapper'>
-      <div className='header-settings' style={{marginTop: "6px"}}>
-        <div style={{display: "flex"}}>
-          <LiveClock />
-          <SetSamplingTime />
+    <>
+    {isLogin && (
+      <div className='dashboard-wrapper'>
+        <Header2 />
+        <div className='total-cards-wrapper'>
+          <TotalSuppressionCard />
+          <TotalRepeaterCard />
+          <TotalSmokeCard />
         </div>
-        <div className='settings-imgWrapper'>
-          {isLogin ? <img src={theme==="dark" ? user: userLight} alt="user-img" className='settings-img'/> : <Link to="/login" className='link'><h6 className='settings-login'>Login</h6></Link>}
-          <Link to="/" className='link'><h6 className='settings-dashboard'>Dashboard</h6></Link>
+        <SettingsTable />
+        <div className="dashboard-sticky">    
+        <Footer />
         </div>
-        <div className="theme" style={{ position: 'absolute', top: "6px", right: "30px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
       </div>
-      <div className='total-cards-wrapper'>
-        <TotalSuppressionCard />
-        <TotalRepeaterCard />
-        <TotalSmokeCard />
-      </div>
-      <SettingsTable />
-      <div className="dashboard-sticky">    
-      <Footer />
-      </div>
-    </div>
+      )}
+      {!isLogin && (
+        <div>
+          you are not logged in.
+          <Link to='/login'>Click to Login</Link>
+        </div>
+      )}
+    </>
   )
 }
 

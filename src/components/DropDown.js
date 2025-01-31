@@ -17,8 +17,9 @@ const DropDown = ({cardData}) => {
       setShowModal(true)
     }
   return (
-    <div style={{display: 'flex', flexDirection: "column", width: 'auto'}}>
-      <div style={{width: "auto", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", top: "14px"}}>
+    <div style={{display: 'flex', flexDirection: "row", alignItems:'center',justifyContent:'center',gap:'30px'}}>
+      <ExportPdfButton data={cardData}/>
+      <div style={{width: "auto", display: "flex", alignItems: "center", justifyContent: "center"}}>
           {/* <select style={{height: "40px", width: "50%",borderRadius: "10px", marginBottom: "18px", padding: "0 4px", backgroundColor: "#3F3F3F", color: "#ffffff", borderColor: "transparent"}} onChange={(e) => handleClick(e)}>
               {optionsData.map((item, index) => {
                 console.log(item, item, "item.isDeleted")
@@ -38,7 +39,7 @@ const DropDown = ({cardData}) => {
             borderRadius: '10px',
             backgroundColor: "var(--bg-color-secondary)",
             color: '#ffffff',
-            marginBottom: "20px",
+            marginBottom: "0px",
             fontSize: "14px",
             borderColor: 'transparent',
           }),
@@ -66,7 +67,7 @@ const DropDown = ({cardData}) => {
           }}/>
           {showModal && <CardModal open={true} handleClose={setShowModal} option={option} />}
       </div>
-      <ExportPdfButton data={cardData}/>
+      
     </div>
   )
 }

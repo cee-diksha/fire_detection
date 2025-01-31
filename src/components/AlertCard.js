@@ -10,27 +10,27 @@ const AlertCard = () => {
         {/* </div> */}
         <div className='alert-label-wrap'>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#ff7b7b"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "var(--fire-alert)"}}></div>
                 <div id="alert-details-span1">Fire</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#8f8d8d"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "var(--replace-alert)"}}></div>
                 <div id="alert-details-span1">Replacement</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3"style={{backgroundColor: "#ff9863"}}></div>
+                <div id="alert-details-span3"style={{backgroundColor: "var(--temp-alert)"}}></div>
                 <div id="alert-details-span1">Temp Rise</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#FFC648"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "var(--battery-alert)"}}></div>
                 <div id="alert-details-span1">Low Battery</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#b6d9cc"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "var(--smoke-alert)"}}></div>
                 <div id="alert-details-span1">Smoke</div>
             </div>
             <div className='alert-details-combined' >
-                <div id="alert-details-span3" style={{backgroundColor: "#b7ff86"}}></div>
+                <div id="alert-details-span3" style={{backgroundColor: "var(--normal)"}}></div>
                 <div id="alert-details-span1">Normal</div>
             </div>
         </div>

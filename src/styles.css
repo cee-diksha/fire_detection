@@ -8,6 +8,8 @@
     flex-direction: column;
     background-color: var(--bg-color);
     color: var(--text-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .userManagement h4{
@@ -18,7 +20,9 @@
 .dashboard-main-screen{
     justify-content: space-between;
     display: flex;
-    width: 98%;
+    width: 100%;
+    padding-inline: 30px;
+    box-sizing: border-box;
 }
 
 .dashboard-header-cards{
@@ -52,22 +56,30 @@
     height: auto;
 }
 
+
+
 .dashboard-middle {
     width: 30%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 20px 0;
+    padding: 0px 0;
 }
     .dashboard-content-summary{
         width: 100%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
         margin-bottom: 4%;
-        padding:0 20px;
-        height: 140px;
+        padding:0 0px;
+        box-sizing: border-box;
+        height: 190px;
+        gap:20px
+    }
+    .dashboard-content-summary div{
+        box-sizing: border-box;
+        flex:1
     }
 
     .dashboard-content-summary .div-nested{
@@ -104,36 +116,20 @@
         background-color: var(--bg-color-secondary);
     }
 
-    .theme {
-        margin-left: auto;
-        margin-right: -20px;
-    }
 
-    .theme button {
-        margin-top: 2px;
-        background-color: transparent;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-    .theme img {
-        height: 22px;
-        width: 22px;
-    }
 .imgWrapper-main{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
-    height: 100px;
+    align-items: center;
+    height: 100%;
+    gap:10px
 }
 
 .imgWrapper{
-    margin-top: -20px;
     display: flex;
-    height: 100%;
-    margin-left: auto;
-    width: auto;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 } 
 
 .img{
@@ -183,7 +179,11 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--bg-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
+
+
 
 .login-form {
     margin-top: -130px;
@@ -240,12 +240,13 @@ input {
 }
 
 .main-dashboard-wrapper{
-    width: 64%;
+    width: 66%;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
     flex-wrap: wrap;
     justify-content: flex-start;
+    gap:10px;
     align-items: center;
     position: relative;
 }
@@ -271,7 +272,8 @@ input {
 
 .fixed-content {
     display: flex;
-    justify-content: space-evenly;
+    justify-content:space-between;
+    width: 100%;
     align-items: flex-start;
     flex-wrap: wrap;
 }
@@ -450,8 +452,9 @@ input {
 }
 
 .specific-device-mainheader{
-    width: 96%;
-    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding:30px;
     display: flex;
 }
 

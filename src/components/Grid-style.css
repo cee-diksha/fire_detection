@@ -7,7 +7,7 @@
   .box {
     width: 36px;
     height: 26px;
-    background-color: lightgray;
+    background-color: rgb(162, 162, 162);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,15 +134,15 @@
 
 @keyframes blinkingDeck {
   0% {
-    background-color: #ff7b7b;
+    background-color: #ff5050;
     color: #000000;
   }
   50% {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(246, 165, 165);
     color: #000000;
   }
   100% {
-    background-color: #ff7b7b;
+    background-color: #ff5050;
     color: #000000;
   }
 }

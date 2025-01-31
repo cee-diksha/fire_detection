@@ -9,6 +9,7 @@ import moon from "../assets/moon.png"
 import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import settings from "../assets/settings.png"
 import settingsLight from "../assets/settingsLight.png"
+import '../styles.css'
 
 
 const Header = ({cardData}) => {
@@ -27,28 +28,39 @@ const Header = ({cardData}) => {
 
   return (
     <>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%", width: "96%", marginTop: "6px"}}>
-            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto", marginRight: "20px"}}>
-                <img style={{height: "100px"}} src={shipcrest} alt="ship" />
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: "12%", width: "100%",padding:"20px 30px 10px 30px",boxSizing:'border-box'}}>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto" }}>
+                <div className='ship-logo-div'>
+                    <img style={{height: "100px"}} src={shipcrest} alt="ship" />
+                </div>
                 <h2 id="dashboard-heading">Ship Name</h2>
             </div>
-            {!arr.includes(window.location.pathname) && <>
-                <DropDown cardData={cardData} />
-                <AlertCard />
-            </>}
+            <div className='hm-search-login'>
+                {!arr.includes(window.location.pathname) && 
+                    <>
+                        <DropDown cardData={cardData} />
+                        {/* <AlertCard /> */}
+                    </>
+                }
             
-            <div className='imgWrapper-main'>
-                <div className="theme"><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
-                <div className='imgWrapper'>
-                    {isLogin && <Link to={"/settings"} 
-                    style={{ cursor: "pointer", marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>}
+                <div className='imgWrapper-main'>
+                    <div className="dashboard-img-div"><button onClick={handleThemeChange}><img src={theme==="dark" ? sun : moon} alt="theme-icon" /></button></div>
+                    <div className='imgWrapper'>
+                        {isLogin && <Link to={"/settings"} 
+                        style={{ cursor: "pointer", marginRight: "20px" }}><img src={theme === "dark" ? settings : settingsLight} alt="settings" className='img' /></Link>}
 
-                    {window.location.pathname === "/login" ? <Link to="/" className='link'><h6 className='login'>Dashboard</h6></Link> : isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin} /> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}
+                        {window.location.pathname === "/login" ? <Link to="/" className='link'><div className='dashboard-img-div'><img src='home.svg' alt='dashboard'></img></div></Link> : isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin} /> : <Link to="/login" className='link'>
+                            <div className='login-div'>
+                                <img src="login.svg" alt="login"/>
+                            </div>
+                        </Link>}
 
 
-                    
+                        
+                    </div>
                 </div>
             </div>
+
         </div>
     </>
   )

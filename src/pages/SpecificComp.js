@@ -12,6 +12,7 @@ import Footer from '../components/Footer'
 import UserDowndown from '../components/UserDowndown'
 import sun from "../assets/sun.png"
 import moon from "../assets/moon.png"
+import Header2 from '../components/Header2'
 
 const SpecificComp = () => {
     const {deck, comp} = useParams()
@@ -37,19 +38,7 @@ const SpecificComp = () => {
 
   return (
     <div className='specific-deck-wrapper'>
-      <div className='specific-device-mainheader'>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between", width: "auto"}}>
-            <img style={{height: "100px"}} src={shipcrest} alt="ship" />
-            <h1 id="dashboard-heading">Ship Name</h1>
-        </div>
-        <div className='specific-device-imgWrapper'>
-          {isLogin && <Link to={"/settings"} 
-            style={{ cursor: "pointer", marginRight: "10px" }}><img src={settings} alt="settings" className='img'/></Link>}
-          <Link to="/" className='link'><h6 className='login' style={{marginRight: "10px"}}>Dashboard</h6></Link>
-          {isLogin ? <UserDowndown theme={theme} setIsLogin = {setIsLogin}/> : <Link to="/login" className='link'><h6 className='login'>Login</h6></Link>}      
-        </div>
-        <div className="theme" style={{ position: 'absolute', top: "6px", right: "30px"}}><button onClick={handleThemeChange} style={{border: `${theme === "dark"? "1px solid #fff" : "1px solid #000"}`}}><img src={theme==="dark" ? sun : moon} style={{ filter: `${theme === "dark" ? "brightness(0) invert(1)": "grayscale(100%)"}`}} alt="theme-icon" /></button></div>
-      </div>
+     <Header2 />
       <div style={{marginTop: "-16%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
         <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
         <div className='display-specific-comp-card'>
