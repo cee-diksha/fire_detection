@@ -12,19 +12,19 @@
     --bg-color-table: #393939;
     --border-color: #c4c4c4;
 
-    --fire-alert:#c70a0a;
-    --temp-alert: #ea4909;
-    --smoke-alert:#ababab;
-    --battery-alert:#FFA500;
-    --replace-alert:#3c418a;
-    --normal:rgb(94, 255, 94);
-    
+    --fire-alert: linear-gradient(123.49deg, #C70A0A 0.07%, #610505 99.93%);
+    --temp-alert: linear-gradient(122.68deg, #f46b34 0.55%, #9d3d18 99.45%);
+    --smoke-alert:linear-gradient(122.78deg, #ABABAB 0.48%, #6A6A6A 99.52%);
+    --battery-alert:linear-gradient(122.46deg, #FFA500 0.71%, #996300 99.29%);
+    --replace-alert:linear-gradient(123.16deg, #3C418A 0.2%, #1F2147 99.8%);
+    --normal:linear-gradient(134.6deg, #2FD74E 0.89%, #197129 99.11%);
+
     --invert-filter:0;
   }
 
 .light {
   --bg-main-clr:#ffffff ;
---bg-color: #dedede;
+--bg-color: #e9e7e7;
 --bg-color-secondary:#ffffff;
 --text-color-secondary: #393939;
 --bg-color-modal:#ffffff;
@@ -35,14 +35,40 @@
 --bg-color-table: #d6d6d6;
 --border-color: #505050;
 
---fire-alert:#c70a0a;
---temp-alert: #f64600;
---smoke-alert:#ababab;
---battery-alert:#FFA500;
---replace-alert:#3c418a;
---normal:rgb(94, 255, 94);
+--fire-alert: linear-gradient(123.49deg, #C70A0A 0.07%, #610505 99.93%);
+--temp-alert: linear-gradient(122.68deg, #EA4909 0.55%, #842905 99.45%);
+--smoke-alert:linear-gradient(122.78deg, #ABABAB 0.48%, #6A6A6A 99.52%);
+--battery-alert:linear-gradient(122.46deg, #FFA500 0.71%, #996300 99.29%);
+--replace-alert:linear-gradient(123.16deg, #3C418A 0.2%, #1F2147 99.8%);
+--normal:linear-gradient(134.6deg, #2FD74E 0.89%, #197129 99.11%);
 
 --invert-filter:1;
+}
+
+a, span, button, div, input, textarea,section,main,svg,p,h1,h2,h3,h4{
+  transition: color 400ms cubic-bezier(0.9, 0.31, 0, 0.63);
+}
+div, html,input,textarea,section,main,body{
+  transition: background-color 400ms cubic-bezier(0.9, 0.31, 0, 0.63);
+}
+
+svg{
+  transition:stroke 400ms cubic-bezier(0.9, 0.31, 0, 0.63);
+}
+
+button{
+  transition: background-color 400ms cubic-bezier(0.9, 0.31, 0, 0.63);
+}
+
+button{
+  transition: background 400ms cubic-bezier(0.9, 0.31, 0, 0.63);
+}
+
+svg,text{
+  transition: fill 400ms cubic-bezier(0.9, 0.31, 0, 0.63) ;
+}
+svg path{
+  transition: fill 400ms cubic-bezier(0.9, 0.31, 0, 0.63) ;
 }
 
 text{
@@ -51,7 +77,7 @@ text{
 
 .hm-head{
   width:100%;
-  height: 90px;
+  height: 80px;
   padding:10px 30px;
   box-sizing: border-box;
   display:flex;
@@ -92,7 +118,8 @@ text{
 
 #hm-name-2{
   font-size: 13px;
-  color:#7d7d7d;
+  font-weight: 600;
+  color:#484848;
   width: 100%;
   line-height: 100%;
 }

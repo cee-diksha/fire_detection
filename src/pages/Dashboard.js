@@ -108,10 +108,7 @@ const Dashboard = () => {
 
                 </div>
             </div>
-            {/* -------------------------------------------------------- */}
-            <div className="dashboard-sticky">
-                <Footer />
-            </div>
+            
         </div>
     </>
   )

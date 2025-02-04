@@ -6,7 +6,8 @@
     background-color: #3F3F3F;
     margin-bottom: 20px;
     border-radius: 10px;
-    border: 7px solid transparent; 
+    gap:5px;
+    padding:7px; 
 }
 
 .blinking-activesupp {
@@ -46,6 +47,7 @@
     margin-bottom: 20px;
     border-radius: 10px;
     border: 7px solid #e4ff4b; 
+    gap:5px;
     animation: blink-border 0.5s infinite;
   }
 
@@ -838,13 +840,13 @@ tbody tr:hover {
   
   @keyframes text-blink {
     0% {
-      color: var(--fire-alert);
+      color: red;
     }
     50% {
       color: #ffffff; 
     }
     100% {
-      color: var(--fire-alert);
+      color: red;
     }
   }
 

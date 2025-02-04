@@ -172,12 +172,13 @@
 }
 
 .login-container {
-    min-height: 100vh;
-    height: auto; 
+    height: 100vh;
+    min-height: 600px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap:100px;
     background-color: var(--bg-color);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -186,7 +187,6 @@
 
 
 .login-form {
-    margin-top: -130px;
     background-color: var(--bg-color-secondary); 
     color: var(--text-color);
     padding: 30px;
@@ -310,6 +310,24 @@ input {
     align-items: center;
 } 
 
+.sttngs-user{
+    height: 94vh;
+    width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--bg-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color:var(--text-color)
+}
+
+.sttngs-user a{
+    color:var(--text-color)
+    
+}
+
 .header-settings{
     padding: 0 20px;
     width: 96%;
@@ -326,32 +344,40 @@ input {
     font-size: 26px;
     text-transform: capitalize;
     margin-top: 0px;
+    margin:0;
 }
 .specific-header-location{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    margin-top: -40px;
-    height: 100px;
-    width: 99%;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
+.indication-container{
+    width:100%;
+    padding-inline: 30px;
+    box-sizing: border-box;
+}
 .indication{
-    height: 55px;
-    width: 160px;
+    height: 80px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: capitalize;
-    margin : -5% 2% 0 auto;
     font-size: 22px;
     text-align: center;
     font-weight: 600;
-    border: 6px solid #ffffff;
     border-radius: 6px;
     animation: blink-warning 0.5s infinite;
+}
+
+.specific-alert-gen{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:18px;
 }
 
 #download-report{
@@ -363,26 +389,26 @@ input {
     width: auto;
     padding: 0 20px;
     cursor: pointer;
-    margin : -5% 2% 0 auto;
     border-radius: 6px;
 }
 
 @keyframes blink-warning {
     0% {
-      border-color: var(--text-color-secondary);
+      color: white;
     }
     50% {
-      border-color: transparent; 
+      color: transparent; 
     }
     100% {
-      border-color: var(--text-color-secondary);
+      color:white;
     }
   }
 
 .specific-device-header{
     display: flex;
     align-items: center;
-    height: 40px;
+    justify-content: center;
+    gap:20px;
 }
 
 #status-circle{
@@ -399,14 +425,25 @@ input {
 
 .specific-device-wrapper, .specific-deck-wrapper{
     min-height: 100vh;
-    height: auto; 
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap:20px;
     flex-direction: column;
     background-color: var(--bg-color);
     color: var(--text-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.specific-top{
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+    padding-inline:30px;
 }
 
 .specific-device-imgWrapper{
@@ -418,20 +455,20 @@ input {
 
 .alerts-chart-wrapper {
     display: flex;
-    width: 99%;
+    width: 100%;
     align-items:flex-start;
-    justify-content: space-evenly;
-    margin: 40px 0;
+    justify-content: space-between;
+    padding-inline: 30px;
+    box-sizing: border-box;
+
 }
 
 .specific-device-charts{
     display: flex;
     flex-direction: column;
+    gap:20px;
     justify-content: center;
     align-items: center;
-    width: auto;
-    background-color: #ffffff;
-    margin: 10px 0;
 }
 
 .single-alert{
@@ -441,9 +478,14 @@ input {
 .alert-logs{
     display: flex;
     flex-direction: column;
+    
     width: 50%;
     padding: 0 20px;
-    height: auto;
+}
+
+.alert-logs h2{
+    margin:0;
+    margin-bottom: 20px;
 }
 
 .alert-span{

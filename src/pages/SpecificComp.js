@@ -4,14 +4,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import "../styles.css"
 import { MainContext } from '../context/MainContext'
-import settings from "../assets/settings.png"
-import shipcrest from "../assets/INS_Vikrant_crest.jpg"
 import { info } from '../assets/info'
 import Card from '../components/Card'
-import Footer from '../components/Footer'
-import UserDowndown from '../components/UserDowndown'
-import sun from "../assets/sun.png"
-import moon from "../assets/moon.png"
 import Header2 from '../components/Header2'
 
 const SpecificComp = () => {
@@ -39,7 +33,7 @@ const SpecificComp = () => {
   return (
     <div className='specific-deck-wrapper'>
      <Header2 />
-      <div style={{marginTop: "-16%", display: "flex", flexDirection: "column", alignItems: "center", width: "auto"}}>
+      <div>
         <h4 className="h4">Deck - {deck}, Compartment - {comp} </h4>
         <div className='display-specific-comp-card'>
         {compData?.length !== 0 ? compData.map((item, index) => {
@@ -48,9 +42,6 @@ const SpecificComp = () => {
           }) : <h2>No device installed in this compartment</h2>}
         </div>
       </div>
-      <div className="dashboard-sticky">    
-      <Footer />
-    </div>
     </div>
   )
 }

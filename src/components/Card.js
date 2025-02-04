@@ -4,9 +4,7 @@ import "../comp-styles.css";
 import battery from "../assets/battery.png";
 import temperature from "../assets/temp.png";
 import sensor from "../assets/sensor.png";
-import sensor2 from "../assets/sensor2.png";
 import repeater from "../assets/repeater.png";
-import repeater2 from "../assets/repeater2.png";
 import suppression from "../assets/suppression.png";
 import suppression2 from "../assets/suppression2.png";
 import update from "../assets/update.png";
@@ -71,8 +69,6 @@ const SuppressorBtn = ({nodeData, id, setShowModal, trigger}) => {
   )
 }
 
-// --------------------------------------------------------------------------------------------------------
-
 const Card = ({ item }) => {
   const { status, node_type, node_name, node_id, battery_percentage, temp, last_update, isDeleted, deck, compartment, triggeringDevice, faultReason } = item;
   const {isActivated, setTargetNode, setIsActivated, targetNode, setDeviceInfo} = useContext(MainContext)
@@ -109,7 +105,7 @@ const Card = ({ item }) => {
     <div 
       className={`${(node_type === "sensor" && !status.includes("deleted")) ? isAlarmMuted ? "blinking-border" : "card-wrapper" : triggeringDevice ? "blinking-activesupp"  : "card-wrapper" }`} 
       style={{ 
-        backgroundColor: `${isDeleted ? "var(--replace-alert)" : status.includes("success") ? "#b7ff86" : status.includes("danger" )? "var(--fire-alert)" : status.includes("orange" )? "var(--temp-alert)" : status.includes("yellow") ? "var(--battery-alert)" : status.includes("smoke") ? "var(--smoke-alert)" : "var(--replace-alert)"}`, 
+        background: `${isDeleted ? "var(--replace-alert)" : status.includes("success") ? "var(--normal)" : status.includes("danger" )? "var(--fire-alert)" : status.includes("orange" )? "var(--temp-alert)" : status.includes("yellow") ? "var(--battery-alert)" : status.includes("smoke") ? "var(--smoke-alert)" : "var(--replace-alert)"}`, 
         color: `${isDeleted ? "#FFF" : (status.includes("danger") || status.includes("orange") ) ? "#fff" : "#fff"}`
       }}
     >

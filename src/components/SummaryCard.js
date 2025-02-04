@@ -68,7 +68,8 @@ const SummaryCard = () => {
             <div id="sum-details-span2">{functional}/{data.length}</div>
         </div>
         <div className='sum-all-div' onClick={()=>{setOpen(!open)}}>
-            <span>Show all</span>
+            {open?<span>Show Guage</span>:<span>Show All</span>}
+            
         </div>
     </div>
   )

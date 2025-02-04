@@ -1,11 +1,10 @@
 import React from 'react'
+import './Loading.css'
 
-const Loading = () => {
+export default function Loading(props) {
   return (
-    <div>
-      Loading...
+    <div className='ld-mn' style={props.height?{height:'100%'}:{}}>
+      <div className='loader'></div>
     </div>
   )
 }
-
-export default Loading

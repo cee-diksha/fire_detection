@@ -1,10 +1,19 @@
+.header-container{
+    width: 100%;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    display: flex;
+}
+
 .header-mn{
     width:100%;
     display:flex;
     align-items: center;
     justify-content: space-between;
     padding:10px 30px;
-    box-sizing: border-box;   
+    box-sizing: border-box;  
+    padding-top:30px; 
 }
 
 .header-ship-nm{
@@ -17,8 +26,8 @@
 
 .ship-logo-div{
     border-radius: 5px;
-    height:50px;
-    width:90px;
+    height:60px;
+    width:70px;
     overflow: hidden;
 }
 
@@ -38,6 +47,15 @@
 
 .header-icon-div{
     height: 44px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:6px;
+}
+
+.header-icon-div p{
+    margin: 0;
+    width:50%
 }
 
 .header-icon-div button{
@@ -59,6 +77,12 @@
 .header-sec2{
     display:flex;
     gap:60px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sttngs-time{
+    display: flex;
     align-items: center;
     justify-content: center;
 }

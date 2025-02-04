@@ -1,0 +1,1 @@
+export const SOCKET_URL = "ws://192.168.43.202:1880/ws/test"

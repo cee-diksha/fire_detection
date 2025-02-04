@@ -3,6 +3,8 @@ import { Route, Routes, Outlet } from 'react-router-dom';
 import Loading from './Loading';
 import ErrorPage from './pages/ErrorPage';
 import './app.css'
+import { useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'motion/react';
 
 // Lazy load components
 const Dashboard = lazy(() => import('./pages/Dashboard'));
@@ -20,14 +22,16 @@ const MainLayout = () => {
         <div className='hm-head'>          
           <div className='hm-head-txt'>
             <img src="/crimson-energy-xs.svg" alt="crimson logo" />
-            {/* <span>Red Raven</span> */}
+            <div className='hm-logo-txt'>
+              <span id='hm-name'>Crimson Energy</span>
+            </div>
           </div>
 
           <div className='hm-logo'>
             <img src="/redraven-xs.svg" alt="redraven logo" />
             <div className='hm-logo-txt'>
               <span id='hm-name'>RedRaven™</span>
-              <span id='hm-name-2'>Wireless Fire Detection System</span>
+              <span id='hm-name-2'>Wireless Detection Systems</span>
             </div>
           </div>
         </div>
@@ -37,7 +41,9 @@ const MainLayout = () => {
 };
 
 const Router = () => {
+  const location = useLocation();
   return (
+    <AnimatePresence mode='wait'>
     <Routes>
       <Route element={<MainLayout />}>
         <Route
@@ -99,6 +105,7 @@ const Router = () => {
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </Routes>
+    </AnimatePresence>
   );
 };
 

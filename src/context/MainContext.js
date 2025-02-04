@@ -1,9 +1,27 @@
 import { createContext, useEffect, useState } from "react";
 import { info, deckInfo} from "../assets/info";
+import connectWebSocket from "../socket/socket";
 
 const MainContext = createContext()
 
 const MainContextProvider = (props) => {
+    const [messages, setMessages] = useState([]);
+
+    let socket;
+
+    useEffect(() => {
+        socket = connectWebSocket(); // Initialize WebSocket
+
+        socket.onmessage = (event) => {
+            console.log("Received message in MainContext:", event.data);
+            setMessages((prev) => [...prev, event.data]);
+        };
+
+        return () => {
+            socket.close();
+        };
+    }, []);
+
     const [deviceInfo, setDeviceInfo] = useState(info)
     const [deckData, setDeckData] = useState(deckInfo)
     const [isLogin, setIsLogin] = useState(false)
@@ -17,6 +35,7 @@ const MainContextProvider = (props) => {
     const [theme, setTheme] = useState("dark")
 
     useEffect(() => {
+
         const deletedDevice = 102
         const data = [...deletedDevices, deletedDevice]
         setDeletedDevices(data)

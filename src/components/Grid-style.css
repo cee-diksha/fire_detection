@@ -1,20 +1,20 @@
   .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 34px); 
-    grid-gap: 6px;
+    grid-gap: 7px;
   }
 
   .box {
-    width: 36px;
+    width: 32px;
     height: 26px;
-    background-color: rgb(162, 162, 162);
+    background-color: rgb(211, 211, 211);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    border: 1px solid #ccc;
     cursor: pointer;
     color: #000000;
+    border-radius: 2px;
   }
 
   .grid-row {
@@ -23,46 +23,46 @@
   }
   
   .danger {
-    background-color: #ff7b7b;
+    background:var(--fire-alert);
     color: #ffffff;
     animation: blinking 1s infinite;
   }
 
   .temprise {
-    background-color: #ff9a03;
+    background: var(--temp-alert);
     color: #ffffff;
   }
 
   .lowbattery {
-    background-color: #ffeb32;
+    background:var(--battery-alert);
     color: #000000;
   }
 
   .deleted{
-    background-color: #696666;
+    background: var(--replace-alert);
     color: #ffffff;
   }
 
   .smoke{
-    background-color: #a5c4b9;
+    background: var(--smoke-alert);
     color: #ffffff;
   }
 
   .normal {
-    background-color: #b7ff86;
+    background: var(--normal);
     color: #000000;
   }
   
   @keyframes blinking {
     0% {
-      background-color: #ff7b7b;
+      background: var(--fire-alert);
     }
     50% {
-      color: #000000;
-      background-color: rgb(255, 255, 255);
+      color: var(--text-color);
+      background:rgb(211, 211, 211);
     }
     100% {
-      background-color: #ff7b7b;
+      background: var(--fire-alert);
     }
   }
   

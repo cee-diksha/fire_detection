@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import "../styles.css"
 import { Link, useParams } from 'react-router-dom'
-import Footer from '../components/Footer'
 import "../comp-styles.css"
 import { MainContext } from '../context/MainContext'
 import Card from '../components/Card'
@@ -69,8 +68,9 @@ const SpecificDeck = () => {
     <div style={{width: "100%", justifyContent: "center", alignItems: "center"}}>
     <Header2 />
      <div style={{display: "flex", flexDirection: "column", justifyContent:"space-evenly", margin:"auto", alignItems: "center"}}>
-      <h4 className="h4">Deck - {deck} </h4>
+
       <button id="download-report" onClick={() => handleDownloadData(specificDeviceChartData, deviceInfo, deckInfo, deck)}>Generate Report</button>
+      <h4 className="h4">Deck - {deck} </h4>
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-evenly", width: "96%" }}>
         <DeckDashboardPageDiv data={deckGrid} deckNo={deckGrid.deck} param={"deck"}/>
         <div className='card-holder-specificdeck'>
@@ -120,9 +120,6 @@ const SpecificDeck = () => {
         })}
       </div>
      </div>
-    </div>
-    <div className="dashboard-sticky">    
-      <Footer />
     </div>
     </div>
   )
